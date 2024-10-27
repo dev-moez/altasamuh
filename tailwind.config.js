@@ -11,6 +11,9 @@ export default {
 
     theme: {
         extend: {
+            backgroundImage: {
+                'headerBackground': "url('images/vector.png')",
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },

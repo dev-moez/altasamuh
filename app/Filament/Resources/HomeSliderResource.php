@@ -45,11 +45,22 @@ class HomeSliderResource extends Resource
                 Section::make()
                     ->schema([
                         SpatieMediaLibraryFileUpload::make('file')
-                            ->collection(HomeSlider::HOME_SLIDER_MEDIA)
-                            ->label(__('messages.Image'))
+                            ->collection(HomeSlider::HOME_SLIDER_MEDIA_DESKTOP)
+                            ->label(__('messages.Image (Desktop)'))
                             ->rules(['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'])
                             ->helperText(__('messages.Only jpeg, png, jpg, gif, svg images are allowed. Maximum size: 2MB'))
                             ->required(),
+                        SpatieMediaLibraryFileUpload::make('file')
+                            ->collection(HomeSlider::HOME_SLIDER_MEDIA_MOBILE)
+                            ->label(__('messages.Image (Mobile)'))
+                            ->rules(['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'])
+                            ->helperText(__('messages.Only jpeg, png, jpg, gif, svg images are allowed. Maximum size: 2MB'))
+                            ->required(),
+                        Forms\Components\TextInput::make('heading')
+                            ->label(__('messages.Heading'))
+                            ->maxLength(255),
+                        Forms\Components\Textarea::make('sub_heading')
+                            ->label(__('messages.Sub heading')),
                         Forms\Components\TextInput::make('url')
                             ->activeUrl()
                             ->label(__('messages.URL'))
@@ -70,7 +81,7 @@ class HomeSliderResource extends Resource
             ->columns([
                 SpatieMediaLibraryImageColumn::make('file')
                     ->label(__('messages.Image'))
-                    ->collection(HomeSlider::HOME_SLIDER_MEDIA)
+                    ->collection(HomeSlider::HOME_SLIDER_MEDIA_DESKTOP)
                     ->size(50, 50)
                     ->alignCenter(),
                 Tables\Columns\TextColumn::make('url')

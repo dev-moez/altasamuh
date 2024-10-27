@@ -18,6 +18,8 @@ class HomeSliderFactory extends Factory
     public function definition(): array
     {
         return [
+            'heading' => $this->faker->words(3, true),
+            'sub_heading' => $this->faker->paragraph(2),
             'url' => $this->faker->url(),
             'display_order' => $this->faker->numberBetween(1, 10),
         ];
@@ -26,7 +28,8 @@ class HomeSliderFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (HomeSlider $homeSlider) {
-            $homeSlider->addMediaFromUrl($this->faker->imageUrl())->toMediaCollection(HomeSlider::HOME_SLIDER_MEDIA);
+            $homeSlider->addMediaFromUrl($this->faker->imageUrl())->toMediaCollection(HomeSlider::HOME_SLIDER_MEDIA_DESKTOP);
+            $homeSlider->addMediaFromUrl($this->faker->imageUrl())->toMediaCollection(HomeSlider::HOME_SLIDER_MEDIA_MOBILE);
         });
     }
 }

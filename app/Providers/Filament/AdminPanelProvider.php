@@ -30,6 +30,9 @@ class AdminPanelProvider extends PanelProvider
             ->darkMode(false)
             ->profile()
             ->passwordReset()
+            ->brandLogo(asset("images/logo.png"))
+            ->brandLogoHeight("40px")
+            ->favicon(asset("images/favicon.png"))
             ->login()
             ->colors([
                 'primary' => Color::hex("#000000"),

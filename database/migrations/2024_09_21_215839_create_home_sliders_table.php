@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('home_sliders', function (Blueprint $table) {
             $table->id();
             $table->string('url')->nullable();
-            $table->integer('display_order');a
+            $table->string('heading')->nullable();
+            $table->text('sub_heading')->nullable();
+            $table->integer('display_order');
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Casts\ArabicDateCast;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
@@ -29,6 +30,20 @@ class Article extends Model implements HasMedia
         'is_published' => 'boolean',
     ];
 
+    public function isPublished()
+    {
+        return $this->is_published;
+    }
+
+    public function scopePublished(Builder $query): Builder
+    {
+        return $query->where('is_published', true);
+    }
+    public function scopePinned(Builder $query): Builder
+    {
+        return $query->published()->where('is_pinned', true);
+    }
+
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection(static::MEDIA_COVER)->singleFile();
@@ -39,5 +54,10 @@ class Article extends Model implements HasMedia
         $this->addMediaConversion('thumb')
             ->width(300)
             ->height(300);
+    }
+
+    public function getContentBriefAttribute(): string
+    {
+        return substr(strip_tags($this->content), 0, 100) . '...';
     }
 }

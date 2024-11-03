@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\HomeSlider;
+use Illuminate\Http\UploadedFile;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\HomeSlider>
@@ -28,8 +29,8 @@ class HomeSliderFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (HomeSlider $homeSlider) {
-            $homeSlider->addMediaFromUrl($this->faker->imageUrl())->toMediaCollection(HomeSlider::HOME_SLIDER_MEDIA_DESKTOP);
-            $homeSlider->addMediaFromUrl($this->faker->imageUrl())->toMediaCollection(HomeSlider::HOME_SLIDER_MEDIA_MOBILE);
+            $homeSlider->addMedia(UploadedFile::fake()->image('cover.jpg'))->toMediaCollection(HomeSlider::HOME_SLIDER_MEDIA_DESKTOP);
+            $homeSlider->addMedia(UploadedFile::fake()->image('cover.jpg'))->toMediaCollection(HomeSlider::HOME_SLIDER_MEDIA_MOBILE);
         });
     }
 }

@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Models\Project;
+use App\Models\CategoryProject;
+use Illuminate\Database\Eloquent\Builder;
 
 class Category extends Model
 {
@@ -33,4 +37,14 @@ class Category extends Model
         'display_on_homepage' => 'boolean',
         'created_at' => ArabicDateCast::class
     ];
+
+    public function projects(): BelongsToMany
+    {
+        return $this->belongsToMany(Project::class)->using(CategoryProject::class)->withTimestamps();
+    }
+
+    public function scopeNavbarCategories(Builder $query): Builder
+    {
+        return $query->where('display_on_navbar', true);
+    }
 }

@@ -16,8 +16,11 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@preline/input-number": "^2.5.0",
         "moment": "^2.30.1",
         "moment-hijri": "^2.30.0",
+        "notiflix": "^3.2.7",
+        "preline": "^2.5.1",
         "swiper": "^11.1.14"
     }
 }

@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Models\Role;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Permission;
+use Filament\Tables\Columns\TextColumn;
 
 class UserResource extends Resource
 {
@@ -38,13 +39,15 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')->label(__('messages.Name')),
+                TextColumn::make('phone_number')->label(__('messages.Phone number')),
+                TextColumn::make('created_at')->label(__('messages.Created at')),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

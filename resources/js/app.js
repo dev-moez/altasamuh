@@ -1,8 +1,35 @@
 import moment from 'moment';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 
+
+
+
+Notify.init({
+    fontFamily: 'Cairo',
+    fontSize: '16px',
+    useGoogleFont: true,
+    width: '400px',
+});
+
+window.addEventListener('success-message', event => {
+    Notify.success(event.detail[0]['message']);
+});
+
+window.addEventListener('error-message', event => {
+    Notify.failure(event.detail[0]['message']);
+});
+
+window.addEventListener('warning-message', event => {
+    Notify.warning(event.detail[0]['message']);
+});
+
+window.addEventListener('info-message', event => {
+    Notify.info(event.detail[0]['message']);
+});
 
 function displayHijriDate() {
     // Get current Gregorian date and time

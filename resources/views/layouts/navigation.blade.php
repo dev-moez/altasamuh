@@ -1,3 +1,4 @@
+@use('App\Models\Category', 'Category')
 @use('App\Settings\GeneralSettings', 'GeneralSettings')
 <div class="p-3 bg-blue-500 bg-[url('{{ asset('images/vector.png') }}')] bg-no-repeat bg-center bg-cover text-white">
     <div class="container mx-auto">
@@ -16,35 +17,85 @@
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="flex items-center shrink-0">
-                    <a href="{{ route('home') }}">
-                        <x-application-logo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
-                    </a>
-                </div>
+            <div class="flex items-center justify-between w-full">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <div class="flex items-center shrink-0">
+                        <a href="{{ route('home') }}">
+                            <x-application-logo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
+                        </a>
+                    </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        الرئيسية
-                    </x-nav-link>
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        من نحن
-                    </x-nav-link>
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        المركز الإعلامي
-                    </x-nav-link>
+                    <!-- Navigation Links -->
+                    <div class="items-center hidden sm:-my-px sm:ms-10 sm:flex gap-x-3">
+                        <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                            الرئيسية
+                        </x-nav-link>
+                        @foreach (Category::navbarCategories()->get() as $category)
+                            <x-dropdown align="right" width="48">
+                                <x-slot name="trigger">
+                                    <button class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
+                                        <div class="flex items-center text-nowrap gap-x-3">
+                                            {{ $category->name }}
+                                            <svg fill="#000000" class="w-4 h-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </x-slot>
+
+                                <x-slot name="content">
+                                    @forelse ($category->children as $subcategory)
+                                        <x-dropdown-link :href="route('profile.edit')">
+                                            {{ $subcategory->name }}
+                                        </x-dropdown-link>
+                                    @empty
+                                        <p>لا يوجد فرع</p>
+                                    @endforelse
+                                </x-slot>
+                            </x-dropdown>
+                        @endforeach
+                        <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                            من نحن
+                        </x-nav-link>
+                        <x-nav-link :href="route('media')" :active="request()->routeIs('media')">
+                            المركز الإعلامي
+                        </x-nav-link>
+                        <x-nav-link :href="route('articles.list')" :active="request()->routeIs('articles.list')">
+                            أخبار الجمعية
+                        </x-nav-link>
+                        <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
+                            تواصل معنا
+                        </x-nav-link>
+                    </div>
                 </div>
+                @guest
+                    <div>
+                        <livewire:auth>
+                    </div>
+                @endguest
             </div>
 
             @auth
+                <button>
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.37096 0.00290613C0.922263 0.00290613 0.560059 0.391947 0.560059 0.873894C0.560059 1.35584 0.922263 1.74488 1.37096 1.74488H3.95505L6.74187 15.8723C6.85269 16.4036 7.17705 16.8478 7.58791 16.842H21.103C21.5301 16.8478 21.9247 16.4326 21.9247 15.971C21.9247 15.5094 21.5301 15.0942 21.103 15.1H8.24745L7.90146 13.3581H22.1842C22.5464 13.3552 22.8897 13.059 22.9708 12.6787L24.8629 3.96881C24.9683 3.46364 24.5602 2.91201 24.0763 2.9062H5.84717L5.40657 0.690985C5.33089 0.304847 4.9795 0 4.61189 0H1.37096V0.00290613ZM6.18504 4.64817H23.0546L21.5436 11.6161H7.56358L6.18504 4.64817ZM10.2909 17.4227C8.80697 17.4227 7.58791 18.732 7.58791 20.326C7.58791 21.9199 8.80697 23.2292 10.2909 23.2292C11.7749 23.2292 12.9939 21.9199 12.9939 20.326C12.9939 18.732 11.7749 17.4227 10.2909 17.4227ZM18.4 17.4227C16.916 17.4227 15.697 18.732 15.697 20.326C15.697 21.9199 16.916 23.2292 18.4 23.2292C19.8839 23.2292 21.103 21.9199 21.103 20.326C21.103 18.732 19.8839 17.4227 18.4 17.4227ZM10.2909 19.1646C10.8964 19.1646 11.3721 19.6756 11.3721 20.326C11.3721 20.9763 10.8964 21.4873 10.2909 21.4873C9.68545 21.4873 9.20972 20.9763 9.20972 20.326C9.20972 19.6756 9.68545 19.1646 10.2909 19.1646ZM18.4 19.1646C19.0055 19.1646 19.4812 19.6756 19.4812 20.326C19.4812 20.9763 19.0055 21.4873 18.4 21.4873C17.7945 21.4873 17.3188 20.9763 17.3188 20.326C17.3188 19.6756 17.7945 19.1646 18.4 19.1646Z" fill="#3F3F3F" />
+                    </svg>
+
+                </button>
                 <!-- Settings Dropdown -->
-                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <div class="hidden sm:flex sm:items-center">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
-                                <div>{{ Auth::user()->name }}</div>
+                                <div class="flex items-center text-nowrap gap-x-3">
+                                    <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16.2018 6.39222C16.2018 9.55933 13.8225 12.0344 10.9974 12.0344C8.17229 12.0344 5.79297 9.55933 5.79297 6.39222C5.79297 3.2251 8.17229 0.75 10.9974 0.75C13.8225 0.75 16.2018 3.2251 16.2018 6.39222Z" stroke="#3F3F3F" stroke-width="1.5" />
+                                        <path d="M0.773082 24.2501C1.13144 18.4496 5.61632 13.9443 10.9972 13.9443C16.378 13.9443 20.8629 18.4496 21.2212 24.2501H10.9972H0.773082Z" stroke="#3F3F3F" stroke-width="1.5" />
+                                    </svg>
+
+                                    {{ Auth::user()->name }}
+                                </div>
 
                                 {{-- <div class="ms-1">
                                 <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -56,7 +107,10 @@
 
                         <x-slot name="content">
                             <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Profile') }}
+                                الحساب
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('profile.edit')">
+                                الملف الشخصي
                             </x-dropdown-link>
 
                             <!-- Authentication -->
@@ -65,7 +119,7 @@
 
                                 <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    تسجيل الخروج
                                 </x-dropdown-link>
                             </form>
                         </x-slot>
@@ -89,7 +143,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
@@ -98,7 +152,14 @@
         @auth
             <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                 <div class="px-4">
-                    <div class="text-base font-medium text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
+                    <div class="text-base font-medium text-gray-800 dark:text-gray-200">
+                        <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.2018 6.39222C16.2018 9.55933 13.8225 12.0344 10.9974 12.0344C8.17229 12.0344 5.79297 9.55933 5.79297 6.39222C5.79297 3.2251 8.17229 0.75 10.9974 0.75C13.8225 0.75 16.2018 3.2251 16.2018 6.39222Z" stroke="#3F3F3F" stroke-width="1.5" />
+                            <path d="M0.773082 24.2501C1.13144 18.4496 5.61632 13.9443 10.9972 13.9443C16.378 13.9443 20.8629 18.4496 21.2212 24.2501H10.9972H0.773082Z" stroke="#3F3F3F" stroke-width="1.5" />
+                        </svg>
+
+                        {{ Auth::user()->name }}
+                    </div>
                     <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
                 </div>
 
@@ -118,6 +179,7 @@
                     </form>
                 </div>
             </div>
+        @else
         @endauth
     </div>
 </nav>

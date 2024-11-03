@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Article;
+use Illuminate\Http\UploadedFile;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Article>
@@ -29,7 +30,7 @@ class ArticleFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Article $article) {
-            $article->addMedia(fake()->image())->preservingOriginal()->toMediaCollection(Article::MEDIA_COVER);
+            $article->addMedia(UploadedFile::fake()->image('cover.jpg'))->preservingOriginal()->toMediaCollection(Article::MEDIA_COVER);
         });
     }
 }

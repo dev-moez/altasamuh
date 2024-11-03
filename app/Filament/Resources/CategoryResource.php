@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CategoryResource\RelationManagers\SubcategoriesRelationManager;
 use Filament\Forms\Components\Section;
 use App\Models\Permission;
+use Filament\Tables\Columns\IconColumn;
 use Illuminate\Database\Eloquent\Model;
 
 class CategoryResource extends Resource
@@ -54,6 +55,10 @@ class CategoryResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->label(__('messages.Name'))
                     ->searchable(),
+                IconColumn::make('display_on_navbar')
+                    ->label(__('messages.Display on navbar')),
+                IconColumn::make('display_on_homepage')
+                    ->label(__('messages.Display on home page')),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('messages.Created at'))
                     ->sortable(),

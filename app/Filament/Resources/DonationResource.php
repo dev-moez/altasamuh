@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Tables\Columns\TextColumn;
 
 class DonationResource extends Resource
 {
@@ -34,20 +35,16 @@ class DonationResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('transaction.invoice_id')->label(__('Invoice ID')),
+                TextColumn::make('donationable.title')->label(__('messages.Donationable')),
+                TextColumn::make('amount')->label(__('messages.Amount'))->suffix(' د.ك'),
+                TextColumn::make('created_at')->label(__('messages.Created at')),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->actions([])
+            ->bulkActions([]);
     }
 
     public static function getRelations(): array
@@ -73,6 +70,11 @@ class DonationResource extends Resource
     }
 
     public static function canEdit(Model $record): bool
+    {
+        return false;
+    }
+
+    public static function canView(Model $record): bool
     {
         return false;
     }

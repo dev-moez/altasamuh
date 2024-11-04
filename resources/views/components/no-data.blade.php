@@ -1,8 +1,8 @@
 <div>
     <div class="p-4 bg-white shadow sm:p-8 dark:bg-gray-800 sm:rounded-lg">
-        <div class="max-w-xl">
-            <div>
-                <svg width="800px" height="800px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" id="_x3C_Layer_x3E_" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <div class="flex flex-col items-center justify-center w-full">
+            <div class="items-center text-center">
+                <svg width="120px" height="120px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" id="_x3C_Layer_x3E_" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
                     <g id="page_x2C__document_x2C__emoji_x2C__No_results_x2C__empty_page">
 
@@ -58,7 +58,9 @@
 
                 </svg>
             </div>
-            {{ $slot }}
+            <p class="mt-5 text-center text-gray-800">
+                لا يوجد بيانات
+            </p>
         </div>
     </div>
 </div>

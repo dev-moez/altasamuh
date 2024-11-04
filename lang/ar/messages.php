@@ -81,4 +81,9 @@ return [
     'Amount' => 'المبلغ',
     'Payment status' => 'حالة الدفع',
     'Donations' => 'التبرعات',
+    'Donations amount' => 'مبلغ التبرعات',
+    'Status' => 'الحالة',
+    'User name' => 'اسم المستخدم',
+    'User phone number' => 'رقم هاتف المستخدم',
+    'Donationable' => 'التبرع',
 ];

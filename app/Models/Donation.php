@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use App\Models\Transaction;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Builder;
 
 class Donation extends Model
 {
@@ -20,6 +21,7 @@ class Donation extends Model
         'donationable_type',
         'donationable_id',
         'user_id',
+        'transaction_id',
         'amount',
     ];
 
@@ -33,13 +35,18 @@ class Donation extends Model
         return $this->morphTo();
     }
 
+    public function transaction(): BelongsTo
+    {
+        return $this->belongsTo(Transaction::class);
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function transaction(): MorphOne
+    public function scopePaid(Builder $query): Builder
     {
-        return $this->morphOne(Transaction::class, 'transactionable');
+        return $query->whereHas('transaction', fn($query) => $query->whereNotNull('paid_at')->where('status', Transaction::STATUS_PAID));
     }
 }

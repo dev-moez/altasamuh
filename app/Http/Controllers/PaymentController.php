@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use App\Models\Donation;
+use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
 {
@@ -14,12 +16,28 @@ class PaymentController extends Controller
             $invoiceId = $data['InvoiceId'];
             $status = $data['TransactionStatus'];
             $paidAt = $status == 'SUCCESS' ? now() : null;
-            Transaction::where('invoice_id', $invoiceId)
-                ->update([
-                    'status' => $status,
-                    'paid_at' => $paidAt,
-                    'callback_response' => json_encode($request->all()),
-                ]);
+            $transaction = Transaction::where('invoice_id', $invoiceId)->first();
+            DB::transaction(function () use ($transaction, $status, $paidAt, $request) {
+                $transaction
+                    ->update([
+                        'status' => $status,
+                        'paid_at' => $paidAt,
+                        'callback_response' => json_encode($request->all()),
+                    ]);
+
+                if ($status == 'SUCCESS') {
+                    foreach ($transaction->cart->items as $cartItem) {
+                        Donation::create([
+                            'transaction_id' => $transaction->id,
+                            'donationable_type' => $cartItem->cartable_type,
+                            'donationable_id' => $cartItem->cartable_id,
+                            'amount' => $cartItem->amount,
+                            'user_id' => $transaction->user_id,
+                            'phone_number' => $transaction->phone_number,
+                        ]);
+                    }
+                }
+            });
         }
     }
 }

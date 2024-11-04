@@ -7,7 +7,6 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 
 
-
 Notify.init({
     fontFamily: 'Cairo',
     fontSize: '16px',

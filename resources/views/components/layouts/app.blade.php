@@ -2,6 +2,27 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
 
 <head>
+    @production
+        <!-- Google Tag Manager -->
+        <script>
+            (function(w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })
+            (window, document, 'script', 'dataLayer', 'GTM-WT8HQRNS');
+        </script>
+        <!-- End Google Tag Manager -->
+    @endproduction
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -20,6 +41,11 @@
 </head>
 
 <body class="font-sans antialiased rtl">
+    @production
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT8HQRNS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    @endproduction
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
         @include('layouts.navigation')
 
@@ -95,7 +121,7 @@
                         <h5 class="font-bold">روابط هامة</h5>
                         <a href="{{ route('home') }}" class="hover:underline">الرئيسية</a>
                         <a href="{{ route('about') }}" class="hover:underline">من نحن</a>
-                        <a href="{{ route('media') }}" class="hover:underline">المركز الإعلامي</a>
+                        <a href="{{ route('galleries.list') }}" class="hover:underline">المركز الإعلامي</a>
                         <a href="{{ route('contact') }}" class="hover:underline">تواصل معنا</a>
                     </nav>
 

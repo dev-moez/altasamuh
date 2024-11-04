@@ -90,7 +90,17 @@ class ProjectResource extends Resource
             ->columns([
                 TextColumn::make('title')
                     ->label(__('messages.Title'))
-                    ->searchable()
+                    ->searchable(),
+                TextColumn::make('required_donation_value')
+                    ->label(__('messages.Required donation value'))
+                    ->suffix(' د.ك'),
+                TextColumn::make('donations_amount')
+                    ->label(__('messages.Donations amount'))
+                    ->getStateUsing(function (Project $record) {
+                        return $record->donations()
+                            ->whereHas('transaction', fn($query) => $query->whereNotNull('paid_at'))
+                            ->sum('amount');
+                    })->suffix(' د.ك'),
             ])
             ->filters([
                 //

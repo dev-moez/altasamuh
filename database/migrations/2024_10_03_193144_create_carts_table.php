@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('donations', function (Blueprint $table) {
+        Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->foreignId('transaction_id')->constrained()->cascadeOnDelete();
-            $table->morphs('donationable');
+            $table->string('session_id')->nullable();
             $table->string('phone_number')->nullable();
-            $table->decimal('amount');
+            $table->boolean('checked_out')->default(0);
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('donations');
+        Schema::dropIfExists('carts');
     }
 };

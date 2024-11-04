@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Gallery\ListGalleries;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -11,11 +12,29 @@ use App\Livewire\Media;
 use App\Livewire\ContactUs;
 use App\Livewire\Profile\ChangePassword;
 use App\Livewire\Profile\Profile;
+use App\Livewire\Projects\ListProjects;
+use App\Livewire\Projects\ViewProject;
+use App\Livewire\Gallery\ViewGallery;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/about', About::class)->name('about');
-Route::get('/media', Media::class)->name('media');
+Route::group([
+    'prefix' => 'galleries',
+    'as' => 'galleries.',
+], function () {
+    Route::get('/', ListGalleries::class)->name('list');
+    Route::get('/{gallery}', ViewGallery::class)->name('view');
+});
 Route::get('/contact', ContactUs::class)->name('contact');
+
+Route::group([
+    'prefix' => 'projects',
+    'as' => 'projects.',
+], function () {
+    Route::get('{category}', ListProjects::class)->name('list');
+    Route::get('/view/{project}', ViewProject::class)->name('view');
+});
+
 Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {
     Route::get('/', ListArticles::class)->name('list');
     Route::get('/{article}', ViewArticle::class)->name('view');
@@ -24,7 +43,6 @@ Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {
 Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
     Route::get('/edit', Profile::class)->name('edit');
     Route::get('/change-password', ChangePassword::class)->name('change-password');
-    // Route::get('/{article}', ViewArticle::class)->name('view');
 });
 
 Route::post('callback', [PaymentController::class, 'callback'])->name('callback');

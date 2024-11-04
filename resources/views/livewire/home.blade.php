@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <section class="pt-8 pb-12">
+    <section class="bg-white py-14">
         <div class="container">
             <div class="flex flex-grow-0 w-full">
                 <div class="flex-1 p-6 border-[5px] lg:border-l-0 border-[#0072BB] rounded-lg rounded-l-lg lg:rounded-l-none">
@@ -33,12 +33,8 @@
                         الزكاة والصدقات والكفارات
                     </h4>
                     <p class="mt-2 text-gray-600">الغرض من التبرع</p>
-                    <div class="flex gap-3 mt-4">
-                        @forelse($miscDonations as $donation)
-                            <button class="px-5 py-2 text-sm text-gray-800 bg-gray-200 rounded-md">{{ $donation->name }}</button>
-                        @empty
-                        @endforelse
-                    </div>
+
+                    <livewire:misc-donation-actions />
                 </div>
                 <div class="relative flex-1 hidden lg:block">
                     <img src="{{ asset('images/mask-bg.png') }}" class="">
@@ -52,7 +48,17 @@
         <div class="container">
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
                 @forelse($projects as $project)
-                    <livewire:projects.project-card :project="$project" />
+                    <div class="border-2 border-gray-200 rounded-md ">
+                        <img src="{{ $project->getFirstMedia('project-cover')?->getUrl() }}" alt="" class="object-cover object-center w-full h-72">
+                        <div class="px-3 pt-4 pb-6 bg-white">
+                            <div class="mb-4">
+                                <a href="{{ route('projects.view', $project) }}">
+                                    <h2 class="font-bold text-md">{{ $project->title }}</h2>
+                                </a>
+                            </div>
+                            <livewire:projects.project-donation-actions :project="$project" />
+                        </div>
+                    </div>
                 @empty
                 @endforelse
             </div>
@@ -70,7 +76,7 @@
                 @empty
                 @endforelse
             </div>
-            <div class="mt-6 text-center">
+            <div class="mt-10 text-center">
                 <a href="{{ route('articles.list') }}" class="px-4 py-2 text-white rounded-lg text-md hover:bg-blue-600 bg-primary">
                     المزيد من الأخبار
                 </a>

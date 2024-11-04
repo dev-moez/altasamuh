@@ -9,11 +9,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Project;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\User;
+use App\Models\Cart;
 
 class Transaction extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    const STATUS_PENDING = 'pending';
+    const STATUS_PAID = 'SUCCESS';
+    const STATUS_FAILED = 'FAILED';
 
     protected $fillable = [
         'user_id',
@@ -22,11 +27,13 @@ class Transaction extends Model
         'invoice_id',
         'order_id',
         'paid_at',
+        'cart_id',
         'callback_response',
         'redirect_response',
-        'transactionable_type',
-        'transactionable_id',
-        'status'
+        // 'transactionable_type',
+        // 'transactionable_id',
+        'status',
+        'amount'
     ];
 
     protected $casts = [
@@ -38,13 +45,28 @@ class Transaction extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function project(): BelongsTo
+    public function cart(): BelongsTo
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(Cart::class);
     }
 
-    public function transactionable()
+    // public function project(): BelongsTo
+    // {
+    //     return $this->belongsTo(Project::class);
+    // }
+
+    // public function transactionable()
+    // {
+    //     return $this->morphTo();
+    // }
+
+    public function isPaid(): bool
     {
-        return $this->morphTo();
+        return $this->status === self::STATUS_PAID && $this->paid_at !== null;
+    }
+
+    public function scopePaid($query)
+    {
+        return $query->where('status', self::STATUS_PAID)->whereNotNull('paid_at');
     }
 }

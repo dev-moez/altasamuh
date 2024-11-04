@@ -42,7 +42,7 @@ class DonationsRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')->label(__('messages.Name')),
                 Tables\Columns\TextColumn::make('user.phone_number')->label(__('messages.Phone number')),
-                Tables\Columns\TextColumn::make('amount')->label(__('messages.Amount'))->suffix(' KWT'),
+                Tables\Columns\TextColumn::make('amount')->label(__('messages.Amount'))->suffix(' د.ك'),
                 Tables\Columns\TextColumn::make('transaction.status')->label(__('messages.Payment status')),
                 Tables\Columns\TextColumn::make('transaction.invoice_id')->label(__('INVOICE ID')),
             ])

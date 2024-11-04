@@ -14,6 +14,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use App\Models\Donation;
 use App\Models\ProjectQuickDonation;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use App\Models\Transaction;
 
 class Project extends Model implements HasMedia
 {
@@ -33,8 +35,6 @@ class Project extends Model implements HasMedia
         'donationـofficer_name',
         'donationـofficer_number',
         'required_donation_value',
-        'phone_number',
-        'slug',
     ];
 
     protected $casts = [
@@ -46,9 +46,13 @@ class Project extends Model implements HasMedia
         return $this->belongsToMany(Category::class)->using(CategoryProject::class)->withTimestamps();
     }
 
-    public function donations(): MorphToMany
+    public function transactions(): MorphMany
     {
-        return $this->morphToMany(Donation::class, 'donationable');
+        return $this->morphMany(Transaction::class, 'transactionable');
+    }
+    public function donations(): MorphMany
+    {
+        return $this->morphMany(Donation::class, 'donationable');
     }
 
     public function quickDonationValues(): HasMany

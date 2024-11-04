@@ -13,15 +13,18 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->morphs('transactionable');
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('cart_id')->constrained()->cascadeOnDelete();
+            // $table->morphs('transactionable');
             $table->string('invoice_url');
             $table->string('order_id');
             $table->string('invoice_id');
+            $table->decimal('amount');
             $table->string('status')->default('pending');
             $table->timestamp('paid_at', 0)->nullable();
             $table->json('callback_response')->nullable();
             $table->json('redirect_response')->nullable();
+            $table->string('phone_number')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

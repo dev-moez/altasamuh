@@ -1,5 +1,5 @@
 <div>
     <x-page-header>
-        المركز الإعلامي
+        {{ $category->name }}
     </x-page-header>
 </div>

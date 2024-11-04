@@ -33,7 +33,7 @@ class MiscDonationResource extends Resource
             ->schema([
                 Section::make()
                     ->schema([
-                        TextInput::make('name')->label('الغرض')
+                        TextInput::make('title')->label('الغرض')
                             ->required()
                             ->maxLength(255)
                     ])
@@ -44,7 +44,7 @@ class MiscDonationResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->label('الغرض')->searchable(),
+                TextColumn::make('title')->label('الغرض')->searchable(),
                 TextColumn::make('created_at')
                     ->label(__('messages.Created at'))
             ])

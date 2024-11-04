@@ -7,10 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\GalleryItem;
 use App\Casts\ArabicDateCast;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Gallery extends Model
+class Gallery extends Model implements HasMedia
 {
+    use InteractsWithMedia;
+
     use HasFactory;
+    const MEDIA_COLLECTION = 'gallery-cover';
+
     protected $fillable = [
         'name',
         'display_order'

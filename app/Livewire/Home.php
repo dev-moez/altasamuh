@@ -13,7 +13,6 @@ class Home extends Component
     public $slides;
     public $articles;
     public $projects;
-    public $miscDonations;
 
     public function mount()
     {
@@ -26,7 +25,6 @@ class Home extends Component
         });
         $this->articles = Article::pinned()->get();
         $this->projects = Project::get();
-        $this->miscDonations = MiscDonation::get();
     }
     public function render()
     {

@@ -14,6 +14,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class GalleryResource extends Resource
 {
@@ -43,6 +44,9 @@ class GalleryResource extends Resource
             ->schema([
                 Section::make()
                     ->schema([
+                        SpatieMediaLibraryFileUpload::make('cover')
+                            ->collection(Gallery::MEDIA_COLLECTION)
+                            ->required(),
                         Forms\Components\TextInput::make('title')
                             ->label(__('messages.Title'))
                             ->required()

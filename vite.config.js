@@ -11,7 +11,4 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    commonjsOptions: {
-        esmExternals: true
-    },
 });

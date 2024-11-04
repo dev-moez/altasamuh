@@ -14,6 +14,8 @@ use Database\Seeders\GallerySeeder;
 use Database\Seeders\CategorySeeder;
 use Database\Seeders\ArticleSeeder;
 use Database\Seeders\HomeSliderSeeder;
+use Database\Seeders\ProjectSeeder;
+use Database\Seeders\MiscDonationSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -36,6 +38,8 @@ class DatabaseSeeder extends Seeder
                 GallerySeeder::class,
                 ArticleSeeder::class,
                 HomeSliderSeeder::class,
+                ProjectSeeder::class,
+                MiscDonationSeeder::class
             ]);
         }
     }

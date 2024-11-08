@@ -7,15 +7,18 @@ use App\Models\MiscDonation;
 use App\Actions\Cart\AddToCartAction;
 use App\Actions\Cart\CheckoutAction;
 use App\Livewire\CartComponent;
+use App\Models\MiscDonationValue;
 
 class MiscDonationActions extends Component
 {
     public $miscDonations;
     public $amount = 0;
     public $misc_donation_id;
+    public $quickDonations;
     public function mount()
     {
         $this->miscDonations = MiscDonation::all();
+        $this->quickDonations = MiscDonationValue::all();
     }
     public function render()
     {

@@ -17,10 +17,13 @@ class CartComponent extends Component
 
     public function mount()
     {
-        $this->cartItems = CartItem::whereHas('cart', fn($query) => $query->where([
-            'user_id' => auth()->id(),
-            'checked_out' => false
-        ]))->get();
+        $this->cartItems = CartItem::whereHas(
+            'cart',
+            fn($query) => $query->where([
+                'checked_out' => false
+            ])->where(['user_id' => auth()->id()])->orWhere('session_id', session()->get('session_id'))
+        )
+            ->get();
     }
     public function render()
     {
@@ -53,7 +56,10 @@ class CartComponent extends Component
 
     public function clearCart()
     {
-        Cart::where('user_id', auth()->id())->delete();
+        if (auth()->check())
+            Cart::where('user_id', auth()->id())->delete();
+        else
+            Cart::where('session_id', session()->get('session_id'))->delete();
         $this->dispatch('refreshCart');
     }
 

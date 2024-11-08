@@ -89,4 +89,7 @@ return [
     'Requires donator phone number' => 'يتطلب رقم هاتف المتبرع',
     'Key' => 'الاسم',
     'Value' => 'القيمة',
+    'Views' => 'المشاهدات',
+    'Published' => 'منشور',
+    'Donation for' => 'التبرع لـ',
 ];

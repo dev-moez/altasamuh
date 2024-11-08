@@ -6,6 +6,7 @@ use App\Filament\Resources\DonationResource\Pages;
 use App\Filament\Resources\DonationResource\RelationManagers;
 use App\Models\Donation;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -14,6 +15,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Select;
+use App\Models\Project;
 
 class DonationResource extends Resource
 {
@@ -27,7 +30,16 @@ class DonationResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Select::make('project_id')
+                    ->label(__('messages.Project'))
+                    ->searchable()
+                    ->options(Project::all()->pluck('title', 'id'))
+                    ->required(),
+                TextInput::make('phone_number')->label(__('messages.Phone number')),
+                TextInput::make('amount')->label(__('messages.Amount'))
+                    ->numeric()
+                    ->minValue(1)
+                    ->required(),
             ]);
     }
 
@@ -66,7 +78,7 @@ class DonationResource extends Resource
 
     public static function canCreate(): bool
     {
-        return false;
+        return true;
     }
 
     public static function canEdit(Model $record): bool

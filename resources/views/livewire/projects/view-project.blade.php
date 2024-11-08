@@ -36,7 +36,7 @@
 
                         </div>
                     </div>
-                    <div class="p-5 mt-8 border border-[#0072BB] rounded-md">
+                    <div class="p-5 mt-8 border border-[#0072BB] rounded-md text-start items-start">
                         <livewire:projects.project-donation-actions :project="$project" showPhoneNumber="true" />
                     </div>
                     <div class=mt-4>

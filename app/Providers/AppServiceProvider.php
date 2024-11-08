@@ -9,6 +9,7 @@ use App\Models\Role;
 use Carbon\Carbon;
 use App\Services\CategoryService;
 use App\Settings\GeneralSettings;
+use Filament\Tables\Table;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,14 @@ class AppServiceProvider extends ServiceProvider
 
         Gate::before(function ($user, $ability) {
             return $user->hasRole(Role::ROLE_SUPER_ADMIN) ? true : null;
+        });
+
+        Table::configureUsing(function (Table $table): void {
+            $table
+                ->paginationPageOptions([10, 25, 50])
+                ->deferLoading()
+                ->defaultSort('created_at', 'desc')
+                ->poll(null);
         });
     }
 }

@@ -24,7 +24,7 @@ class Home extends Component
             ];
         });
         $this->articles = Article::pinned()->get();
-        $this->projects = Project::get();
+        $this->projects = Project::published()->get();
     }
     public function render()
     {

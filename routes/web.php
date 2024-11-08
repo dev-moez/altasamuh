@@ -3,6 +3,7 @@
 use App\Livewire\Gallery\ListGalleries;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\ProjectViewsMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Home;
 use App\Livewire\About;
@@ -32,7 +33,7 @@ Route::group([
     'as' => 'projects.',
 ], function () {
     Route::get('{category}', ListProjects::class)->name('list');
-    Route::get('/view/{project}', ViewProject::class)->name('view');
+    Route::get('/view/{project}', ViewProject::class)->name('view')->middleware(ProjectViewsMiddleware::class);
 });
 
 Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {

@@ -17,7 +17,9 @@ class CheckoutAction
     public function __construct(?string $phone_number = null)
     {
         $this->phone_number = $phone_number;
-        $this->cart = Cart::where('user_id', auth()->id())->where('checked_out', false)->with('items')->first();
+        $this->cart = Cart::where(function ($query) {
+            $query->where('user_id', auth()->id())->orWhere('session_id', session()->get('session_id'));
+        })->where('checked_out', false)->with('items')->first();
     }
 
     public function execute()

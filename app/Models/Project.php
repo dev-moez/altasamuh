@@ -16,6 +16,7 @@ use App\Models\ProjectQuickDonation;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use App\Models\Transaction;
+use Illuminate\Database\Eloquent\Builder;
 
 class Project extends Model implements HasMedia
 {
@@ -36,12 +37,15 @@ class Project extends Model implements HasMedia
         'donationـofficer_number',
         'required_donation_value',
         'requires_donator_phone_number',
+        'views',
+        'is_published',
     ];
 
     protected $casts = [
         'created_at' => ArabicDateCast::class,
         'details' => 'array',
         'requires_donator_phone_number' => 'boolean',
+        'is_published' => 'boolean',
     ];
 
     public function categories(): BelongsToMany
@@ -61,5 +65,10 @@ class Project extends Model implements HasMedia
     public function quickDonationValues(): HasMany
     {
         return $this->hasMany(ProjectQuickDonation::class);
+    }
+
+    public function scopePublished(Builder $query): Builder
+    {
+        return $query->where('is_published', true);
     }
 }

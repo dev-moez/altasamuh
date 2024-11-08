@@ -22,6 +22,9 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Repeater;
+use Filament\Tables\Columns\BadgeColumn;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 
 class ProjectResource extends Resource
 {
@@ -79,6 +82,9 @@ class ProjectResource extends Resource
                             ->required(),
                         Toggle::make('requires_donator_phone_number')
                             ->label(__('messages.Requires donator phone number')),
+                        Toggle::make('is_published')
+                            ->label(__('messages.Published'))
+                            ->accepted(),
                         // Toggle::make('display_in_navbar')
                         //     ->label(__('messages.Display in navbar')),
                         Toggle::make('display_in_homepage')
@@ -101,6 +107,9 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
+                SpatieMediaLibraryImageColumn::make('image')
+                    ->collection(Project::MEDIA_COLLECTION)
+                    ->label(__('messages.Image')),
                 TextColumn::make('title')
                     ->label(__('messages.Title'))
                     ->searchable(),
@@ -114,6 +123,13 @@ class ProjectResource extends Resource
                             ->whereHas('transaction', fn($query) => $query->whereNotNull('paid_at'))
                             ->sum('amount');
                     })->suffix(' د.ك'),
+                TextColumn::make('categories.name')
+                    ->label(__('messages.Categories'))
+                    ->badge(),
+                TextColumn::make('views')
+                    ->label(__('messages.Views')),
+                IconColumn::make('is_published')
+                    ->label(__('messages.Published'))
             ])
             ->filters([
                 //

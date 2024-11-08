@@ -46,7 +46,7 @@
 
                                 <x-slot name="content">
                                     @forelse ($category->children as $subcategory)
-                                        <x-dropdown-link :href="route('profile.edit')">
+                                        <x-dropdown-link :href="route('projects.view', $subcategory)">
                                             {{ $subcategory->name }}
                                         </x-dropdown-link>
                                     @empty
@@ -76,13 +76,14 @@
                 @endguest
             </div>
 
+            <div class="flex items-center">
+                <livewire:cart-component />
+            </div>
             @auth
                 {{-- Cart --}}
                 @role('user')
-                    <div class="flex items-center">
-                        <livewire:cart-component />
-                    </div>
                 @endrole
+
                 <!-- Settings Dropdown -->
                 <div class="hidden sm:flex sm:items-center">
                     <x-dropdown align="right" width="48">

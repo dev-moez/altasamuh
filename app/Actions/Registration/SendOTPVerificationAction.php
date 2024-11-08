@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Actions\Registration;
+
 use App\Models\PhoneNumberVerification;
 use App\Models\User;
 use App\Actions\WhatsApp\SendWhatsAppMessageAction;

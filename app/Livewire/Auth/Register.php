@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\DB;
-use SendOTPVerificationAction;
+use App\Actions\Registration\SendOTPVerificationAction;
 
 class Register extends Component
 {

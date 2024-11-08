@@ -53,7 +53,6 @@
                 </button>
             </div>
         </div>
-        {{ $amount + 1 }}
         <!-- End Input Number -->
     </div>
 

@@ -4,6 +4,7 @@ namespace App\Livewire\Projects;
 
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\Project;
 
 class ListProjects extends Component
 {
@@ -15,6 +16,7 @@ class ListProjects extends Component
 
     public function render()
     {
-        return view('livewire.projects.list-projects');
+        $projects = Project::whereHas('categories', fn($query) => $query->where('id', $this->category->id))->paginate(10);
+        return view('livewire.projects.list-projects', compact('projects'));
     }
 }

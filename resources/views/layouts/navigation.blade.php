@@ -46,7 +46,7 @@
 
                                 <x-slot name="content">
                                     @forelse ($category->children as $subcategory)
-                                        <x-dropdown-link :href="route('projects.view', $subcategory)">
+                                        <x-dropdown-link :href="route('projects.list', $subcategory)">
                                             {{ $subcategory->name }}
                                         </x-dropdown-link>
                                     @empty

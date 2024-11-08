@@ -86,4 +86,7 @@ return [
     'User name' => 'اسم المستخدم',
     'User phone number' => 'رقم هاتف المستخدم',
     'Donationable' => 'التبرع',
+    'Requires donator phone number' => 'يتطلب رقم هاتف المتبرع',
+    'Key' => 'الاسم',
+    'Value' => 'القيمة',
 ];

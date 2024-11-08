@@ -20,7 +20,7 @@ class ProjectDonationActions extends Component
     public $requiredDonationValue = 0;
     public $remainingAmount = 0;
     public $donationsPercentage = 0;
-    public $amount = 0;
+    public $amount;
     public $minimumDonationValue;
     public $phone_number;
     public $showPhoneNumber;
@@ -45,10 +45,14 @@ class ProjectDonationActions extends Component
 
     public function addToCart()
     {
-        $this->resetErrorBag();
-        $data = $this->validate([
+        $rules = [
             'amount' => 'required|numeric|min:' . $this->minimumDonationValue . '|max:' . $this->remainingAmount,
-        ]);
+        ];
+        if ($this->project->requires_donator_phone_number) {
+            $rules['phone_number'] = 'required';
+        }
+        $this->resetErrorBag();
+        $data = $this->validate($rules);
         $this->dispatch(
             'addToCart',
             cartableType: Project::class,

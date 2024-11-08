@@ -28,9 +28,9 @@
 
                     <!-- Navigation Links -->
                     <div class="items-center hidden sm:-my-px sm:ms-10 sm:flex gap-x-3">
-                        <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                        {{-- <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                             الرئيسية
-                        </x-nav-link>
+                        </x-nav-link> --}}
                         @foreach (Category::navbarCategories()->get() as $category)
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
@@ -61,9 +61,9 @@
                         <x-nav-link :href="route('galleries.list')" :active="request()->routeIs('galleries.view')">
                             المركز الإعلامي
                         </x-nav-link>
-                        <x-nav-link :href="route('articles.list')" :active="request()->routeIs('articles.list')">
+                        {{-- <x-nav-link :href="route('articles.list')" :active="request()->routeIs('articles.list')">
                             أخبار الجمعية
-                        </x-nav-link>
+                        </x-nav-link> --}}
                         <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
                             تواصل معنا
                         </x-nav-link>

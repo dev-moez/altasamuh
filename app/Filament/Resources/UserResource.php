@@ -85,7 +85,7 @@ class UserResource extends Resource
 
     public static function canCreate(): bool
     {
-        return auth()->user()->can(Permission::PERMISSION_LIST['CREATE_USER']);
+        return false;
     }
 
     public static function canEdit(Model $record): bool

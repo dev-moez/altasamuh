@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Actions\WhatsApp\SendWhatsAppMessageAction;
 use App\Casts\ArabicDateCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,6 +15,7 @@ use Spatie\Permission\Traits\HasRoles;
 use App\Models\Role;
 use App\Models\Cart;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\PhoneNumberVerification;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -57,6 +59,16 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
+    public static function booted(): void
+    {
+        parent::booted();
+
+        static::created(function (User $user) {
+            if ($user->hasRole(Role::ROLE_USER)) {
+                (new SendWhatsAppMessageAction($user->phone_number))->execute("Welcome to {{ config('app.name') }}");
+            }
+        });
+    }
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->hasAnyRole([Role::ROLE_ADMIN, Role::ROLE_SUPER_ADMIN]);
@@ -65,5 +77,10 @@ class User extends Authenticatable implements FilamentUser
     public function carts(): HasMany
     {
         return $this->hasMany(Cart::class);
+    }
+
+    public function phoneNumberVerifications(): HasMany
+    {
+        return $this->hasMany(PhoneNumberVerification::class);
     }
 }

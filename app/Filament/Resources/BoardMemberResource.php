@@ -82,7 +82,7 @@ class BoardMemberResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])->reorderable('position');
     }
 
     public static function getRelations(): array

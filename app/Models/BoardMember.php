@@ -11,7 +11,8 @@ class BoardMember extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'role'
+        'role',
+        'position'
     ];
 
     protected $casts = [

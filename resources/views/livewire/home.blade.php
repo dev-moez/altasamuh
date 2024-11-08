@@ -64,23 +64,25 @@
             </div>
         </div>
     </section>
-    <section class="pt-8 pb-12">
-        <div class="container">
-            <x-section-header class="text-blue-900">
-                أخبــار الجمــعيــة
-            </x-section-header>
+    @if ($articles->count() > 0)
+        <section class="pt-8 pb-12">
+            <div class="container">
+                <x-section-header class="text-blue-900">
+                    أخبــار الجمــعيــة
+                </x-section-header>
 
-            <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
-                @forelse ($articles as $article)
-                    <x-pages.article-card :article="$article" />
-                @empty
-                @endforelse
+                <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+                    @forelse ($articles as $article)
+                        <x-pages.article-card :article="$article" />
+                    @empty
+                    @endforelse
+                </div>
+                <div class="mt-10 text-center">
+                    <a href="{{ route('articles.list') }}" class="px-4 py-2 text-white rounded-lg text-md hover:bg-blue-600 bg-primary">
+                        المزيد من الأخبار
+                    </a>
+                </div>
             </div>
-            <div class="mt-10 text-center">
-                <a href="{{ route('articles.list') }}" class="px-4 py-2 text-white rounded-lg text-md hover:bg-blue-600 bg-primary">
-                    المزيد من الأخبار
-                </a>
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
 </div>

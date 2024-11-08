@@ -9,6 +9,8 @@
                 <div>
                     <img src="{{ $project->getFirstMedia(Project::MEDIA_COLLECTION)?->getUrl() }}" alt="" class="w-full rounded-md">
                     <div class="mt-5">
+                        <h6 class="mb-3 text-lg font-bold">وصف المشروع</h6>
+
                         {!! $project->description !!}
                     </div>
                 </div>
@@ -18,7 +20,7 @@
                         <div class="flex items-center gap-x-4">
                             عدد المتبرعين: <span class="font-bold text-green-500">{{ $project->donations()->paid()->count() }}</span>
                         </div>
-                        <div class="flex items-center gap-x-4">
+                        <div class="flex items-center cursor-pointer gap-x-4" onclick="copyToClipboard('{{ route('projects.view', $project) }}')">
                             شارك المشروع
                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_435_1909)">
@@ -37,8 +39,38 @@
                     <div class="p-5 mt-8 border border-[#0072BB] rounded-md">
                         <livewire:projects.project-donation-actions :project="$project" showPhoneNumber="true" />
                     </div>
+                    <div class=mt-4>
+                        <h6 class="mb-3 text-lg font-bold">تفاصيل المشروع</h6>
+                        @if (count($project->details) > 0)
+                            <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+                                <tbody>
+                                    @foreach ($project->details as $details)
+                                        <tr class="border-b border-gray-200">
+                                            <td class="px-6 py-2 text-sm font-bold text-gray-800 whitespace-nowrap dark:text-neutral-200">{{ $details['key'] ?? '' }}</td>
+                                            <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap dark:text-neutral-200">{{ $details['value'] ?? '' }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    Livewire.dispatch('success-message', [{
+                        'message': 'تم نسخ الرابط'
+                    }]);
+                })
+                .catch(err => {
+                    Livewire.dispatch('error-message', [{
+                        'message': 'حدث خطاء ما، يرجى المحاولة مرة اخرى'
+                    }]);
+                });
+        }
+    </script>
 </div>

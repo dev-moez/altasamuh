@@ -4,15 +4,18 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\ContactMessage;
+use App\Settings\GeneralSettings;
 
 class ContactUs extends Component
 {
     public $name;
     public $phone_number;
     public $message;
+
     public function render()
     {
-        return view('livewire.contact-us');
+        $generalSettings = app(GeneralSettings::class);
+        return view('livewire.contact-us', compact('generalSettings'));
     }
 
     public function submit()

@@ -35,10 +35,13 @@ class Project extends Model implements HasMedia
         'donationـofficer_name',
         'donationـofficer_number',
         'required_donation_value',
+        'requires_donator_phone_number',
     ];
 
     protected $casts = [
         'created_at' => ArabicDateCast::class,
+        'details' => 'array',
+        'requires_donator_phone_number' => 'boolean',
     ];
 
     public function categories(): BelongsToMany

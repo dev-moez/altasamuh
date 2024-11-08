@@ -7,10 +7,11 @@ use Spatie\LaravelSettings\Settings;
 class GeneralSettings extends Settings
 {
 
-    public ?string $facebook_url;
+    public ?string $whatsapp_number;
     public ?string $youtube_url;
     public ?string $x_url;
     public ?string $instagram_url;
+    public ?string $facebook_url;
     public ?string $linkedin_url;
 
     public ?string $header_text;
@@ -22,6 +23,8 @@ class GeneralSettings extends Settings
     public ?string $contact_mailbox;
     public ?string $contact_phone_number;
     public ?string $contact_email;
+
+    public ?string $maps_location_url;
     public ?string $contact_contact_us_link;
     public ?string $contact_whatsapp_link;
 

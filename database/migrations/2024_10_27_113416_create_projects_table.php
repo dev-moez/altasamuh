@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longText('description');
-            $table->longText('details');
+            $table->json('details');
             $table->decimal('minimum_donation_value');
             $table->string('donationـofficer_name');
             $table->string('donationـofficer_number');
             $table->decimal('required_donation_value');
+            $table->boolean('requires_donator_phone_number')->default(0);
             $table->timestamps();
         });
     }

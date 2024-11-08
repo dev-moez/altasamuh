@@ -41,9 +41,9 @@ class CategoryResource extends Resource
                         Forms\Components\Toggle::make('display_on_navbar')
                             ->label(__('messages.Display on navbar'))
                             ->required(),
-                        Forms\Components\Toggle::make('display_on_homepage')
-                            ->label(__('messages.Display on home page'))
-                            ->required(),
+                        // Forms\Components\Toggle::make('display_on_homepage')
+                        //     ->label(__('messages.Display on home page'))
+                        //     ->required(),
                     ]),
             ]);
     }
@@ -57,8 +57,8 @@ class CategoryResource extends Resource
                     ->searchable(),
                 IconColumn::make('display_on_navbar')
                     ->label(__('messages.Display on navbar')),
-                IconColumn::make('display_on_homepage')
-                    ->label(__('messages.Display on home page')),
+                // IconColumn::make('display_on_homepage')
+                //     ->label(__('messages.Display on home page')),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('messages.Created at'))
                     ->sortable(),

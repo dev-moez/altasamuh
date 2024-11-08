@@ -6,6 +6,8 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Role;
+use Illuminate\Support\Facades\DB;
+use SendOTPVerificationAction;
 
 class Register extends Component
 {
@@ -42,14 +44,15 @@ class Register extends Component
     public function submit()
     {
         $this->validate();
-        $user = new User();
-        $user->name = $this->name;
-        $user->phone_number = $this->phone_number;
-        $user->password = Hash::make($this->password);
-        $user->save();
-        $user->assignRole(Role::ROLE_USER);
-        auth()->login($user);
-        $this->dispatch('userRegistered');
-        $this->redirect(route('home'));
+        DB::transaction(function () {
+            $user = User::create([
+                'name' => $this->name,
+                'phone_number' => $this->phone_number,
+                'password' => Hash::make($this->password),
+            ])->assignRole(Role::ROLE_USER);
+            // (new SendOTPVerificationAction($user))->execute();
+            auth()->login($user);
+        });
+        $this->redirect(route('verify-phone-number'));
     }
 }

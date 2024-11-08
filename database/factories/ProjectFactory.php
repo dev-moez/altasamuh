@@ -23,7 +23,11 @@ class ProjectFactory extends Factory
             'display_in_homepage' => $this->faker->boolean,
             'title' => fake()->words(2, true),
             'description' => fake()->words(10, true),
-            'details' => fake()->paragraphs(3, true),
+            'details' => json_encode([
+                'Prop 1' => fake()->words(2, true),
+                'Prop 2' => fake()->words(2, true),
+                'Prop 3' => fake()->words(2, true),
+            ]),
             'minimum_donation_value' => $this->faker->numberBetween(1, 20),
             'donationـofficer_name' => fake()->name(),
             'donationـofficer_number' => fake()->phoneNumber(),

@@ -30,6 +30,9 @@ class ManageGeneralSettings extends SettingsPage
             ->schema([
                 Section::make(__('messages.Footer'))
                     ->schema([
+                        TextInput::make('whatsapp_url')
+                            ->label(__('messages.Whatsapp URL'))
+                            ->url(),
                         TextInput::make('facebook_url')
                             ->label(__('messages.Facebook URL'))
                             ->url(),
@@ -60,6 +63,8 @@ class ManageGeneralSettings extends SettingsPage
                             ->label(__('messages.Contact us link')),
                         TextInput::make('contact_whatsapp_link')
                             ->label(__('messages.Whatsapp link')),
+                        TextInput::make('maps_location_url')
+                            ->label(__('messages.Google Maps location url')),
                     ]),
                 Section::make(__('messages.Header'))
                     ->schema([

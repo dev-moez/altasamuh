@@ -21,6 +21,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Repeater;
 
 class ProjectResource extends Resource
 {
@@ -57,17 +58,29 @@ class ProjectResource extends Resource
                         RichEditor::make('description')
                             ->label(__('messages.Description'))
                             ->required(),
-                        RichEditor::make('details')
+                        Repeater::make('details')
                             ->label(__('messages.Details'))
-                            ->required(),
+                            ->schema([
+                                TextInput::make('key')
+                                    ->label(__('messages.Key'))
+                                    ->required(),
+                                TextInput::make('value')
+                                    ->label(__('messages.Value'))
+                                    ->required(),
+                            ])
+                            ->reorderable()
+                            ->required()
+                            ->columns(2),
                         TextInput::make('donationـofficer_name')
                             ->label(__('messages.Donation officer name'))
                             ->required(),
                         TextInput::make('donationـofficer_number')
                             ->label(__('messages.Donation officer number'))
                             ->required(),
-                        Toggle::make('display_in_navbar')
-                            ->label(__('messages.Display in navbar')),
+                        Toggle::make('requires_donator_phone_number')
+                            ->label(__('messages.Requires donator phone number')),
+                        // Toggle::make('display_in_navbar')
+                        //     ->label(__('messages.Display in navbar')),
                         Toggle::make('display_in_homepage')
                             ->label(__('messages.Display in home page')),
                         TextInput::make('required_donation_value')

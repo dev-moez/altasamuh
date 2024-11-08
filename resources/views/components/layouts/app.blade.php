@@ -1,3 +1,4 @@
+@use('App\Settings\GeneralSettings', 'GeneralSettings')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
 
@@ -128,7 +129,7 @@
                     <div class="flex flex-col items-center md:items-start">
                         <h3 class="mb-4 text-lg font-semibold">تواصل معنا</h3>
                         <div class="flex space-x-3 space-x-reverse">
-                            <a href="#" class="text-white hover:text-gray-400">
+                            <a href="https://api.whatsapp.com/send?phone={{ app(GeneralSettings::class)->whatsapp_number }}" target="_blank" class="text-white hover:text-gray-400">
                                 <!-- WhatsApp Icon -->
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_530_1048)">
@@ -143,21 +144,22 @@
                                 </svg>
 
                             </a>
-                            <a href="#" class="text-white hover:text-gray-400">
-                                <!-- LinkedIn Icon -->
-                                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g clip-path="url(#clip0_530_1046)">
-                                        <path d="M19.98 0H5.97998C3.21898 0 0.97998 2.239 0.97998 5V19C0.97998 21.761 3.21898 24 5.97998 24H19.98C22.742 24 24.98 21.761 24.98 19V5C24.98 2.239 22.742 0 19.98 0ZM8.97998 19H5.97998V8H8.97998V19ZM7.47998 6.732C6.51398 6.732 5.72998 5.942 5.72998 4.968C5.72998 3.994 6.51398 3.204 7.47998 3.204C8.44598 3.204 9.22998 3.994 9.22998 4.968C9.22998 5.942 8.44698 6.732 7.47998 6.732ZM20.98 19H17.98V13.396C17.98 10.028 13.98 10.283 13.98 13.396V19H10.98V8H13.98V9.765C15.376 7.179 20.98 6.988 20.98 12.241V19Z" fill="white" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_530_1046">
-                                            <rect width="24" height="24" fill="white" transform="translate(0.97998)" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-
-                            </a>
-                            <a href="#" class="text-white hover:text-gray-400">
+                            @if (app(GeneralSettings::class)->facebook_url)
+                                <a href="{{ app(GeneralSettings::class)->facebook_url }}" target="_blank" class="text-white hover:text-gray-400">
+                                    <!-- LinkedIn Icon -->
+                                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_530_1046)">
+                                            <path d="M19.98 0H5.97998C3.21898 0 0.97998 2.239 0.97998 5V19C0.97998 21.761 3.21898 24 5.97998 24H19.98C22.742 24 24.98 21.761 24.98 19V5C24.98 2.239 22.742 0 19.98 0ZM8.97998 19H5.97998V8H8.97998V19ZM7.47998 6.732C6.51398 6.732 5.72998 5.942 5.72998 4.968C5.72998 3.994 6.51398 3.204 7.47998 3.204C8.44598 3.204 9.22998 3.994 9.22998 4.968C9.22998 5.942 8.44698 6.732 7.47998 6.732ZM20.98 19H17.98V13.396C17.98 10.028 13.98 10.283 13.98 13.396V19H10.98V8H13.98V9.765C15.376 7.179 20.98 6.988 20.98 12.241V19Z" fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_530_1046">
+                                                <rect width="24" height="24" fill="white" transform="translate(0.97998)" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </a>
+                            @endif
+                            <a href="{{ app(GeneralSettings::class)->youtube_url }}" target="_blank" class="text-white hover:text-gray-400">
                                 <!-- YouTube Icon -->
                                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_530_1044)">
@@ -171,7 +173,7 @@
                                 </svg>
 
                             </a>
-                            <a href="#" class="text-white hover:text-gray-400">
+                            <a href="{{ app(GeneralSettings::class)->instagram_url }}" target="_blank" class="text-white hover:text-gray-400">
                                 <!-- Instagram Icon -->
                                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_530_1042)">
@@ -185,7 +187,7 @@
                                 </svg>
 
                             </a>
-                            <a href="#" class="text-white hover:text-gray-400">
+                            <a href="{{ app(GeneralSettings::class)->x_url }}" target="_blank" class="text-white hover:text-gray-400">
                                 <!-- X Icon -->
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M14.2737 10.1635L23.2023 0H21.0872L13.3313 8.82305L7.14125 0H0L9.3626 13.3433L0 24H2.11504L10.3002 14.6806L16.8388 24H23.98M2.8784 1.5619H6.12769L21.0856 22.5148H17.8355" fill="white" />
@@ -197,7 +199,7 @@
                 </div>
                 <div class="py-2 subfooter">
                     <p class="text-center text-white">
-                        جميع الحقوق محفوظة لـ جمعية التسامح للاعمال الخيرية © {{ date('Y') }} .
+                        جميع الحقوق محفوظة لـ جمعية التسامح للاعمال الخيرية © {{ date('Y') }} . تمت البرمجة بواسطة شركة بداية
                     </p>
                 </div>
         </footer>

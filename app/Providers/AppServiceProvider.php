@@ -8,18 +8,14 @@ use App\Models\User;
 use App\Models\Role;
 use Carbon\Carbon;
 use App\Services\CategoryService;
+use App\Settings\GeneralSettings;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
      */
-    public function register(): void
-    {
-        $this->app->singleton(CategoryService::class, function ($app) {
-            return new CategoryService();
-        });
-    }
+    public function register(): void {}
 
     /**
      * Bootstrap any application services.

@@ -31,7 +31,6 @@ class Permission extends SpatiePermission
         'DELETE_ADMIN' => 'delete admins',
         // List for users
         'VIEW_USER' => 'view users',
-        'CREATE_USER' => 'create users',
         'EDIT_USER' => 'edit users',
         'DELETE_USER' => 'delete users',
         // List for board members

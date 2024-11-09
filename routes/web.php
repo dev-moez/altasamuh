@@ -16,6 +16,7 @@ use App\Livewire\Profile\Profile;
 use App\Livewire\Projects\ListProjects;
 use App\Livewire\Projects\ViewProject;
 use App\Livewire\Gallery\ViewGallery;
+use App\Livewire\Profile\Donations;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/about', About::class)->name('about');
@@ -43,6 +44,7 @@ Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
     Route::get('/edit', Profile::class)->name('edit');
+    Route::get('/donations', Donations::class)->name('donations');
     Route::get('/change-password', ChangePassword::class)->name('change-password');
 });
 

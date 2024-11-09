@@ -68,7 +68,7 @@
                                 <a href="{{ route('profile.edit') }}" class="flex items-center justify-between px-4 py-3 text-sm font-medium text-gray-800 bg-white border-b border-gray-300 gap-x-2 focus:outline-none disabled:opacity-50 disabled:pointer-events-none hover:bg-gray-50">
                                     حسابي الشخصي
                                 </a>
-                                <a href="{{ route('profile.edit') }}" class="flex items-center justify-between px-4 py-3 text-sm font-medium text-gray-800 bg-white border-b border-gray-300 gap-x-2 focus:outline-none disabled:opacity-50 disabled:pointer-events-none hover:bg-gray-50">
+                                <a href="{{ route('profile.donations') }}" class="flex items-center justify-between px-4 py-3 text-sm font-medium text-gray-800 bg-white border-b border-gray-300 gap-x-2 focus:outline-none disabled:opacity-50 disabled:pointer-events-none hover:bg-gray-50">
                                     حسابي الخيري
                                 </a>
                                 <a href="{{ route('profile.change-password') }}" class="flex items-center justify-between px-4 py-3 text-sm font-medium text-gray-800 bg-white border-b border-gray-300 gap-x-2 focus:outline-none disabled:opacity-50 disabled:pointer-events-none hover:bg-gray-50">

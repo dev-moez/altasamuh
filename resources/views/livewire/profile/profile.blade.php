@@ -21,7 +21,6 @@
                     <x-input-error class="mt-2" :messages="$errors->get('phone_number')" />
                 </div>
             </div>
-            {{-- </div> --}}
             <x-primary-button class="w-full" wire:click.prevent="submit" wire:loading.attr="disabled">تحديث</x-primary-button>
         </form>
     </div>

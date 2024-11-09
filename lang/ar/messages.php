@@ -96,4 +96,5 @@ return [
     'Project number' => 'رقم المشروع',
     'Donations sum' => 'مجموع التبرعات',
     'Donations count' => 'عدد التبرعات',
+    'Phone verified' => 'تم التحقق من رقم الهاتف',
 ];

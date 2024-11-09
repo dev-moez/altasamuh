@@ -45,7 +45,7 @@ class UserResource extends Resource
             ->columns([
                 TextColumn::make('name')->label(__('messages.Name'))->searchable(),
                 TextColumn::make('phone_number')->label(__('messages.Phone number'))->searchable(),
-                IconColumn::make('phone_verified_at')->label(__('messages.Phone verified '))
+                IconColumn::make('phone_verified_at')->label(__('messages.Phone verified'))
                     ->getStateUsing(fn($record) => $record->phone_verified_at ? true : false)
                     ->boolean(),
                 TextColumn::make('created_at')->label(__('messages.Created at')),

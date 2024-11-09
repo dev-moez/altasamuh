@@ -17,7 +17,8 @@ class DonationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'phone_number' => fake()->phoneNumber(),
+            'amount' => fake()->randomFloat(2, 100, 1000),
         ];
     }
 }

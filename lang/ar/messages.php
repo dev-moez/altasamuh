@@ -92,4 +92,8 @@ return [
     'Views' => 'المشاهدات',
     'Published' => 'منشور',
     'Donation for' => 'التبرع لـ',
+    'Anonymous phone number' => 'رقم فاعل الخير',
+    'Project number' => 'رقم المشروع',
+    'Donations sum' => 'مجموع التبرعات',
+    'Donations count' => 'عدد التبرعات',
 ];

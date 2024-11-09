@@ -10,13 +10,20 @@ use Carbon\Carbon;
 use App\Services\CategoryService;
 use App\Settings\GeneralSettings;
 use Filament\Tables\Table;
+use Filament\Support\Facades\FilamentAsset;
+use Filament\Support\Assets\Css;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
      */
-    public function register(): void {}
+    public function register(): void
+    {
+        FilamentAsset::register([
+            Css::make('custom-stylesheet', __DIR__ . '/../../resources/css/filament/admin/theme.css'),
+        ]);
+    }
 
     /**
      * Bootstrap any application services.

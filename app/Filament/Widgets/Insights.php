@@ -17,25 +17,18 @@ class Insights extends BaseWidget
         $usersCount = User::whereHas('roles', function ($query) {
             $query->where('name', Role::ROLE_USER);
         })->count();
-        $totalDonationsForProjects = Donation::query()
-            ->whereHas('transaction', function ($query) {
-                $query->whereNotNull('paid_at');
-            })
-            ->where('donationable_type', Project::class)
-            ->sum('amount');
-        $mostDonatedProject = Project::query()
-            ->whereHas('donations', function ($query) {
-                $query->whereHas('transaction', function ($query) {
-                    $query->whereNotNull('paid_at');
-                });
-            })
-            ->withCount('donations')
-            ->orderBy('donations_count', 'desc')
+        $totalDonationsForProjects = Donation::paid()->sum('amount');
+        $topProjects = Project::withSum('donations', 'amount')
+            ->having('donations_sum_amount', '>', 0)
+            ->orderByDesc('donations_sum_amount')
+            ->take(5)
             ->count();
+        $donationsCount = Donation::count();
         return [
             Stat::make('اجمالي التبرعات في خلال 7 ايام', $totalDonationsForProjects),
-            Stat::make('المشاريع الاكثر جمع للتبرعات', $mostDonatedProject),
+            Stat::make('المشاريع الاكثر جمع للتبرعات', $topProjects),
             Stat::make('عدد المستخدمين', $usersCount),
+            Stat::make('عدد عمليات التبرعات', $donationsCount),
         ];
     }
 }

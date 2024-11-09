@@ -15,7 +15,11 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Models\Role;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Permission;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
 class UserResource extends Resource
 {
@@ -39,12 +43,15 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->label(__('messages.Name')),
-                TextColumn::make('phone_number')->label(__('messages.Phone number')),
+                TextColumn::make('name')->label(__('messages.Name'))->searchable(),
+                TextColumn::make('phone_number')->label(__('messages.Phone number'))->searchable(),
+                IconColumn::make('phone_verified_at')->label(__('messages.Phone verified '))
+                    ->getStateUsing(fn($record) => $record->phone_verified_at ? true : false)
+                    ->boolean(),
                 TextColumn::make('created_at')->label(__('messages.Created at')),
             ])
             ->filters([
-                //
+                DateRangeFilter::make('created_at')->label(__('messages.Created at')),
             ])
             ->actions([
                 // Tables\Actions\EditAction::make(),
@@ -54,6 +61,11 @@ class UserResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ])->headerActions([
+                ExportAction::make('export')
+                    ->exports([
+                        ExcelExport::make('table')->fromTable()->queue(),
+                    ]),
             ]);
     }
 

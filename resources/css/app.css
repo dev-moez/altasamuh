@@ -11,3 +11,8 @@
 .subfooter {
     background-color: #2E3192;
 }
+
+.filament-apex-charts-filter-form div {
+    left: 0 !important;
+    right: unset !important;
+}

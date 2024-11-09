@@ -16,7 +16,7 @@ class ListProjects extends Component
 
     public function render()
     {
-        $projects = Project::whereHas('categories', fn($query) => $query->where('categories.id', $this->category->id))->paginate(10);
+        $projects = Project::whereHas('categories', fn($query) => $query->where('categories.id', $this->category->id))->published()->paginate(10);
         return view('livewire.projects.list-projects', compact('projects'));
     }
 }

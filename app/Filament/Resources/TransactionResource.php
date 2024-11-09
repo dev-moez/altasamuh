@@ -10,10 +10,14 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Eloquent\Model;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
+use Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter;
 
 class TransactionResource extends Resource
 {
@@ -33,32 +37,43 @@ class TransactionResource extends Resource
 
     public static function table(Table $table): Table
     {
+        $statusOptions = Transaction::getStatusOptions();
         return $table
             ->columns([
-                TextColumn::make('invoice_id')->label(__('Invoice ID')),
+                TextColumn::make('invoice_id')->label(__('Invoice ID'))
+                    ->searchable(),
                 TextColumn::make('amount')->label(__('messages.Amount')),
                 TextColumn::make('status')->label(__('messages.Status')),
                 TextColumn::make('user.name')
                     ->label(__('messages.User name'))
                     ->getStateUsing(function ($record) {
                         return $record->user ? $record->user->name : 'فاعل خير';
-                    }),
+                    })->searchable(),
                 TextColumn::make('user.phone_number')
                     ->label(__('messages.User phone number'))
                     ->getStateUsing(function ($record) {
                         return $record->user ? $record->user->phone_number : 'فاعل خير';
-                    }),
+                    })->searchable(),
                 TextColumn::make('cart.phone_number')
-                    ->label(__('messages.Phone number')),
-                TextColumn::make('order_id')->label('Order ID'),
+                    ->label(__('messages.Anonymous phone number'))->searchable(),
+                TextColumn::make('order_id')->label('Order ID')->searchable(),
                 TextColumn::make('created_at')
                     ->label(__('messages.Created at')),
             ])
             ->filters([
-                //
+                SelectFilter::make('status')
+                    ->options($statusOptions),
+                DateRangeFilter::make('created_at')->label(__('messages.Created at')),
+
             ])
             ->actions([])
-            ->bulkActions([]);
+            ->bulkActions([])
+            ->headerActions([
+                ExportAction::make('export')
+                    ->exports([
+                        ExcelExport::make('table')->fromTable()->queue(),
+                    ]),
+            ]);
     }
 
     public static function getRelations(): array

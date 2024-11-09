@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\DonationResource\Pages;
 use App\Filament\Resources\DonationResource\RelationManagers;
+use App\Filament\Resources\DonationResource\Widgets\DonationsStats;
 use App\Models\Donation;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
@@ -17,6 +18,9 @@ use Illuminate\Database\Eloquent\Model;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Select;
 use App\Models\Project;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
+use Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter;
 
 class DonationResource extends Resource
 {
@@ -49,22 +53,29 @@ class DonationResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('transaction.invoice_id')->label(__('Invoice ID'))
-                    ->getStateUsing(fn($record) => $record->transaction->invoice_id ?? 'MANUAL'),
+                    ->getStateUsing(fn($record) => $record->transaction->invoice_id ?? 'MANUAL')
+                    ->searchable(),
                 TextColumn::make('donationable.title')->label(__('messages.Donationable')),
                 TextColumn::make('amount')->label(__('messages.Amount'))
                     ->getStateUsing(function ($record) {
                         return number_format($record->amount, 0, ',', ',');
                     })
                     ->suffix(' د.ك'),
-                TextColumn::make('phone_number')->label(__('messages.Phone number')),
-                TextColumn::make('name')->label(__('messages.Name')),
+                TextColumn::make('phone_number')->label(__('messages.Phone number'))->searchable(),
+                TextColumn::make('name')->label(__('messages.Name'))->searchable(),
                 TextColumn::make('created_at')->label(__('messages.Created at')),
             ])
             ->filters([
-                //
+                DateRangeFilter::make('created_at')->label(__('messages.Created at')),
             ])
             ->actions([])
-            ->bulkActions([]);
+            ->bulkActions([])
+            ->headerActions([
+                ExportAction::make('export')
+                    ->exports([
+                        ExcelExport::make('table')->fromTable()->queue(),
+                    ]),
+            ]);
     }
 
     public static function getRelations(): array
@@ -102,5 +113,12 @@ class DonationResource extends Resource
     public static function canDelete(Model $record): bool
     {
         return false;
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            DonationsStats::class
+        ];
     }
 }

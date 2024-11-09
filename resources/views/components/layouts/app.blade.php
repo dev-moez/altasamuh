@@ -203,6 +203,27 @@
                     </p>
                 </div>
         </footer>
+
+        <script>
+            function updateHijriClock() {
+                const now = new Date();
+                const hijriDateFormatter = new Intl.DateTimeFormat("ar-KW-u-ca-islamic", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                    second: "numeric",
+                    hour12: true
+                });
+                let hijriDateTime = hijriDateFormatter.format(now);
+                hijriDateTime = hijriDateTime.replace(" في ", "  ");
+
+                document.getElementById("hijri-clock").innerText = hijriDateTime;
+            }
+
+            setInterval(updateHijriClock, 1000);
+        </script>
 </body>
 
 </html>

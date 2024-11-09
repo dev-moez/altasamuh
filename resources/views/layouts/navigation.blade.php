@@ -8,7 +8,7 @@
                     {{ app(GeneralSettings::class)->header_text }}
                 </a>
             </div>
-            <div id="datetime">
+            <div id="hijri-clock">
             </div>
         </div>
     </div>
@@ -80,45 +80,47 @@
                 <livewire:cart-component />
             </div>
             @auth
-                {{-- Cart --}}
                 @role('user')
-                @endrole
+                    <!-- Settings Dropdown -->
+                    <div class="hidden sm:flex sm:items-center">
+                        <x-dropdown align="right" width="48">
+                            <x-slot name="trigger">
+                                <button class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
+                                    <div class="flex items-center text-nowrap gap-x-3">
+                                        <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.2018 6.39222C16.2018 9.55933 13.8225 12.0344 10.9974 12.0344C8.17229 12.0344 5.79297 9.55933 5.79297 6.39222C5.79297 3.2251 8.17229 0.75 10.9974 0.75C13.8225 0.75 16.2018 3.2251 16.2018 6.39222Z" stroke="#3F3F3F" stroke-width="1.5" />
+                                            <path d="M0.773082 24.2501C1.13144 18.4496 5.61632 13.9443 10.9972 13.9443C16.378 13.9443 20.8629 18.4496 21.2212 24.2501H10.9972H0.773082Z" stroke="#3F3F3F" stroke-width="1.5" />
+                                        </svg>
+                                        {{ Auth::user()->name }}
+                                    </div>
+                                </button>
+                            </x-slot>
 
-                <!-- Settings Dropdown -->
-                <div class="hidden sm:flex sm:items-center">
-                    <x-dropdown align="right" width="48">
-                        <x-slot name="trigger">
-                            <button class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
-                                <div class="flex items-center text-nowrap gap-x-3">
-                                    <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M16.2018 6.39222C16.2018 9.55933 13.8225 12.0344 10.9974 12.0344C8.17229 12.0344 5.79297 9.55933 5.79297 6.39222C5.79297 3.2251 8.17229 0.75 10.9974 0.75C13.8225 0.75 16.2018 3.2251 16.2018 6.39222Z" stroke="#3F3F3F" stroke-width="1.5" />
-                                        <path d="M0.773082 24.2501C1.13144 18.4496 5.61632 13.9443 10.9972 13.9443C16.378 13.9443 20.8629 18.4496 21.2212 24.2501H10.9972H0.773082Z" stroke="#3F3F3F" stroke-width="1.5" />
-                                    </svg>
-                                    {{ Auth::user()->name }}
-                                </div>
-                            </button>
-                        </x-slot>
-
-                        <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">
-                                الحساب
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('profile.edit')">
-                                الملف الشخصي
-                            </x-dropdown-link>
-
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-
-                                <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                    تسجيل الخروج
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('profile.edit')">
+                                    الحساب
                                 </x-dropdown-link>
-                            </form>
-                        </x-slot>
-                    </x-dropdown>
-                </div>
+                                <x-dropdown-link :href="route('profile.edit')">
+                                    الملف الشخصي
+                                </x-dropdown-link>
+
+                                <!-- Authentication -->
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                        تسجيل الخروج
+                                    </x-dropdown-link>
+                                </form>
+                            </x-slot>
+                        </x-dropdown>
+                    </div>
+                @else
+                    <div class="flex items-center ms-3">
+                        <a class="items-center" href="{{ route('filament.admin.pages.dashboard') }}">Admin</a>
+                    </div>
+                @endrole
             @else
             @endauth
 

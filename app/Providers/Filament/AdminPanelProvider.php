@@ -18,6 +18,7 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Kenepa\TranslationManager\TranslationManagerPlugin;
+use Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -30,12 +31,13 @@ class AdminPanelProvider extends PanelProvider
             ->darkMode(false)
             ->profile()
             ->passwordReset()
+            ->breadcrumbs(false)
             ->brandLogo(asset("images/logo.png"))
             ->brandLogoHeight("40px")
             ->favicon(asset("images/favicon.png"))
             ->login()
             ->colors([
-                'primary' => Color::hex("#000000"),
+                'primary' => Color::Slate,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -61,7 +63,11 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->plugins([])
-            ->spa();
+            ->plugins([
+                FilamentApexChartsPlugin::make()
+            ])
+            ->viteTheme('resources/css/filament/admin/theme.css')
+            ->spa()
+            ->databaseNotifications();
     }
 }

@@ -14,9 +14,12 @@
         "filament/spatie-laravel-settings-plugin": "^3.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "leandrocfe/filament-apex-charts": "^3.1",
         "livewire/livewire": "^3.5",
+        "malzariey/filament-daterangepicker-filter": "^3.1",
         "myfatoorah/laravel-package": "^2.2",
         "myfatoorah/library": "^2.2",
+        "pxlrbt/filament-excel": "^2.3",
         "spatie/laravel-permission": "^6.9"
     },
     "require-dev": {

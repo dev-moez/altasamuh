@@ -39,6 +39,7 @@ class Project extends Model implements HasMedia
         'requires_donator_phone_number',
         'views',
         'is_published',
+        'project_number',
     ];
 
     protected $casts = [

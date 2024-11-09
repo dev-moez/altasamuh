@@ -25,6 +25,10 @@ use Filament\Forms\Components\Repeater;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use Filament\Tables\Filters\SelectFilter;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
+use Filament\Tables\Actions\Action;
 
 class ProjectResource extends Resource
 {
@@ -97,6 +101,9 @@ class ProjectResource extends Resource
                             ->numeric()
                             ->minValue(1)
                             ->required(),
+                        TextInput::make('project_number')
+                            ->label(__('messages.Project number'))
+                            ->default(Project::count() + 1)
                     ])
             ]);
     }
@@ -108,6 +115,9 @@ class ProjectResource extends Resource
                 TextColumn::make('index')
                     ->label('No. ')
                     ->rowIndex(),
+                TextColumn::make('project_number')
+                    ->label(__('messages.Project number'))
+                    ->searchable(),
                 SpatieMediaLibraryImageColumn::make('image')
                     ->collection(Project::MEDIA_COLLECTION)
                     ->label(__('messages.Image')),
@@ -137,16 +147,28 @@ class ProjectResource extends Resource
                     ->label(__('messages.Published'))
             ])
             ->filters([
-                //
+                SelectFilter::make(__('messages.Category'))
+                    ->label(__('messages.Categories'))
+                    ->relationship('categories', 'name')
+                    ->searchable()
+                    ->preload()
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Action::make('go_to_project')
+                    ->label('الذهاب الي المشروع')
+                    ->url(fn($record) => route('projects.view', $record))
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ])->defaultSort('project_number', 'desc')
+            ->headerActions([
+                ExportAction::make()->exports([
+                    ExcelExport::make('table')->fromTable(),
+                ])
             ]);
     }
 

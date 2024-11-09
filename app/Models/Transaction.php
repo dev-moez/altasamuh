@@ -69,4 +69,9 @@ class Transaction extends Model
     {
         return $query->where('status', self::STATUS_PAID)->whereNotNull('paid_at');
     }
+
+    public static function getStatusOptions()
+    {
+        return self::select('status')->distinct()->get()->pluck('status', 'status')->toArray();
+    }
 }

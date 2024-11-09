@@ -36,6 +36,7 @@ class DonationResource extends Resource
                     ->options(Project::all()->pluck('title', 'id'))
                     ->required(),
                 TextInput::make('phone_number')->label(__('messages.Phone number')),
+                TextInput::make('name')->label(__('messages.Name')),
                 TextInput::make('amount')->label(__('messages.Amount'))
                     ->numeric()
                     ->minValue(1)
@@ -47,9 +48,16 @@ class DonationResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('transaction.invoice_id')->label(__('Invoice ID')),
+                TextColumn::make('transaction.invoice_id')->label(__('Invoice ID'))
+                    ->getStateUsing(fn($record) => $record->transaction->invoice_id ?? 'MANUAL'),
                 TextColumn::make('donationable.title')->label(__('messages.Donationable')),
-                TextColumn::make('amount')->label(__('messages.Amount'))->suffix(' د.ك'),
+                TextColumn::make('amount')->label(__('messages.Amount'))
+                    ->getStateUsing(function ($record) {
+                        return number_format($record->amount, 0, ',', ',');
+                    })
+                    ->suffix(' د.ك'),
+                TextColumn::make('phone_number')->label(__('messages.Phone number')),
+                TextColumn::make('name')->label(__('messages.Name')),
                 TextColumn::make('created_at')->label(__('messages.Created at')),
             ])
             ->filters([

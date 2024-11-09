@@ -31,7 +31,7 @@ class ProjectDonationActions extends Component
         $this->showPhoneNumber = $showPhoneNumber;
         $this->project = $project;
         $this->donationsAmount = $project->donations()
-            ->whereHas('transaction', fn($query) => $query->whereNotNull('paid_at'))
+            ->paid()
             ->sum('amount');
         $this->requiredDonationValue = $project->required_donation_value;
         $this->remainingAmount = $this->requiredDonationValue - $this->donationsAmount;
@@ -48,9 +48,11 @@ class ProjectDonationActions extends Component
         $rules = [
             'amount' => 'required|numeric|min:' . $this->minimumDonationValue . '|max:' . $this->remainingAmount,
         ];
+
         if ($this->project->requires_donator_phone_number) {
             $rules['phone_number'] = 'required';
         }
+
         $this->resetErrorBag();
         $data = $this->validate($rules);
         $this->dispatch(
@@ -66,9 +68,14 @@ class ProjectDonationActions extends Component
     public function donate()
     {
         $this->resetErrorBag();
-        $data = $this->validate([
+        $rules = [
             'amount' => 'required|numeric|min:' . $this->minimumDonationValue . '|max:' . $this->remainingAmount,
-        ]);
+        ];
+
+        if ($this->project->requires_donator_phone_number) {
+            $rules['phone_number'] = 'required';
+        }
+        $data = $this->validate($rules);
 
         (new AddToCartAction(Project::class, $this->project->id, $data['amount'], $this->phone_number))->execute();
         (new CheckoutAction())->execute();

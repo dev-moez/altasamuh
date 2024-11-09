@@ -23,6 +23,8 @@ class Donation extends Model
         'user_id',
         'transaction_id',
         'amount',
+        'phone_number',
+        'name'
     ];
 
     protected $casts = [
@@ -47,6 +49,7 @@ class Donation extends Model
 
     public function scopePaid(Builder $query): Builder
     {
-        return $query->whereHas('transaction', fn($query) => $query->whereNotNull('paid_at')->where('status', Transaction::STATUS_PAID));
+        return $query->whereHas('transaction', fn($query) => $query->whereNotNull('paid_at')->where('status', Transaction::STATUS_PAID))
+            ->orWhereNull('transaction_id');
     }
 }

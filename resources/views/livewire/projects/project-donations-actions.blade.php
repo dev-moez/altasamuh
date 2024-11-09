@@ -1,24 +1,22 @@
 <div>
-
-
     {{-- Donations details --}}
     <div id="donationsDetails" class="flex flex-grow gap-3">
         <div class="flex-1 border border-blue-600 rounded-md">
             <h5 class="px-2 py-2 text-sm font-bold text-center text-white bg-blue-600">قيمة المشروع</h5>
             <div class="p-2 text-center">
-                <span>{{ $requiredDonationValue }} د.ك</span>
+                <span>{{ number_format($requiredDonationValue, 0, ',', ',') }} د.ك</span>
             </div>
         </div>
         <div class="flex-1 border border-green-600 rounded-md">
             <h5 class="px-2 py-2 text-sm font-bold text-center text-white bg-green-600">المدفوع</h5>
             <div class="p-2 text-center">
-                <span>{{ $donationsAmount }} د.ك</span>
+                <span>{{ number_format($donationsAmount, 0, ',', ',') }} د.ك</span>
             </div>
         </div>
         <div class="flex-1 border border-red-600 rounded-md">
             <h5 class="px-2 py-2 text-sm font-bold text-center text-white bg-red-600">المتبقي</h5>
             <div class="p-2 text-center">
-                <span>{{ $remainingAmount }} د.ك</span>
+                <span>{{ number_format($remainingAmount, 0, ',', ',') }} د.ك</span>
             </div>
         </div>
     </div>
@@ -59,7 +57,7 @@
     {{-- Quick donation --}}
     <div class="flex flex-wrap items-center justify-center w-full gap-3 mt-4">
         @forelse($project->quickDonationValues as $quickDonation)
-            <button type="button" wire:click.prevent="$set('amount', {{ $quickDonation->amount }})" class="inline-flex p-2 border border-gray-400 rounded-3xl {{ $amount == $quickDonation->amount ? 'bg-green-500 border-green-500 text-white' : '' }}" wire:click="$set('amount', {{ $quickDonation->amount }}}">{{ $quickDonation->amount }}</button>
+            <button type="button" wire:click.prevent="$set('amount', {{ $quickDonation->amount }})" class="inline-flex px-4 py-1 border border-gray-400 rounded-3xl {{ $amount == $quickDonation->amount ? 'bg-green-500 border-green-500 text-white' : '' }}" wire:click="$set('amount', {{ $quickDonation->amount }}}">{{ $quickDonation->amount }}</button>
         @empty
         @endforelse
     </div>
@@ -69,7 +67,6 @@
             <div class="flex items-center justify-between gap-4 mt-4">
                 <span class="font-bold text-nowrap">رقم الهاتف</span>
                 <x-text-input wire:model="phone_number" type="text" class="w-full" placeholder="رقم الهاتف" />
-                <x-input-error class="mt-2" :messages="$errors->get('phone_number')" />
             </div>
         </div>
     @endif
@@ -89,6 +86,7 @@
     </div>
     <div>
         <x-input-error class="mt-2" :messages="$errors->get('amount')" />
+        <x-input-error class="mt-2" :messages="$errors->get('phone_number')" />
     </div>
 
 </div>

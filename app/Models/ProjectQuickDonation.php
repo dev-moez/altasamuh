@@ -18,7 +18,8 @@ class ProjectQuickDonation extends Model
     ];
 
     protected $casts = [
-        'created_at' => ArabicDateCast::class
+        'created_at' => ArabicDateCast::class,
+        'amount' => 'integer',
     ];
 
     public function project(): BelongsTo

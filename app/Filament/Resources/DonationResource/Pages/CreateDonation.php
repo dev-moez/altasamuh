@@ -10,21 +10,19 @@ use Illuminate\Database\Eloquent\Model;
 use App\Actions\Cart\AddToCartAction;
 use App\Actions\Cart\CheckoutAction;
 use App\Models\Transaction;
+use App\Models\Donation;
 
 class CreateDonation extends CreateRecord
 {
     protected static string $resource = DonationResource::class;
 
-    // protected function handleRecordCreation(array $data): Model
-    // {
-    //     (new AddToCartAction(Project::class, $data['project_id'], $data['amount'], $data['phone_number']))->execute();
-    //     (new CheckoutAction())->execute();
-    //     return Transaction::latest()->first();
-    //     // return static::getModel()::create([
-    //     //     'donationable_id' => $data['project_id'],
-    //     //     'donationable_type' => Project::class,
-    //     //     'amount' => $data['amount'],
-    //     //     'phone_number' => $data['phone_number'],
-    //     // ]);
-    // }
+    protected function handleRecordCreation(array $data): Model
+    {
+        return Donation::create([
+            'donationable_type' => Project::class,
+            'donationable_id' => $data['project_id'],
+            'amount' => $data['amount'],
+            'phone_number' => $data['phone_number'] ?? null,
+        ]);
+    }
 }

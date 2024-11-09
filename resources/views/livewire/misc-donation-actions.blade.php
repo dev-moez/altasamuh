@@ -12,7 +12,7 @@
             <div class="grid w-full grid-cols-2 gap-x-4">
                 <div class="flex flex-wrap items-center gap-3">
                     @forelse($quickDonations as $quickDonation)
-                        <button type="button" wire:click.prevent="$set('amount', {{ $quickDonation->value }})" class="inline-flex p-2 border border-gray-400 rounded-3xl {{ $amount == $quickDonation->value ? 'bg-green-500 border-green-500 text-white' : '' }}" wire:click="$set('amount', {{ $quickDonation->value }}}">{{ $quickDonation->value }}</button>
+                        <button type="button" wire:click.prevent="$set('amount', {{ $quickDonation->value }})" class="inline-flex px-4 py-1 border border-gray-400 rounded-3xl {{ $amount == $quickDonation->value ? 'bg-green-500 border-green-500 text-white' : '' }}" wire:click="$set('amount', {{ $quickDonation->value }}}">{{ $quickDonation->value }}</button>
                     @empty
                     @endforelse
                 </div>

@@ -34,6 +34,7 @@ class PaymentController extends Controller
                             'amount' => $cartItem->amount,
                             'user_id' => $transaction->user_id,
                             'phone_number' => $transaction->phone_number,
+                            'name' => 'فاعل خير',
                         ]);
                     }
                 }

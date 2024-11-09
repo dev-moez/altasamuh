@@ -84,9 +84,7 @@ class ProjectResource extends Resource
                             ->label(__('messages.Requires donator phone number')),
                         Toggle::make('is_published')
                             ->label(__('messages.Published'))
-                            ->accepted(),
-                        // Toggle::make('display_in_navbar')
-                        //     ->label(__('messages.Display in navbar')),
+                            ->default(true),
                         Toggle::make('display_in_homepage')
                             ->label(__('messages.Display in home page')),
                         TextInput::make('required_donation_value')
@@ -107,6 +105,9 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('index')
+                    ->label('No. ')
+                    ->rowIndex(),
                 SpatieMediaLibraryImageColumn::make('image')
                     ->collection(Project::MEDIA_COLLECTION)
                     ->label(__('messages.Image')),
@@ -115,13 +116,17 @@ class ProjectResource extends Resource
                     ->searchable(),
                 TextColumn::make('required_donation_value')
                     ->label(__('messages.Required donation value'))
+                    ->getStateUsing(fn($record) => number_format($record->required_donation_value, 0, ',', ','))
                     ->suffix(' د.ك'),
                 TextColumn::make('donations_amount')
                     ->label(__('messages.Donations amount'))
                     ->getStateUsing(function (Project $record) {
-                        return $record->donations()
-                            ->whereHas('transaction', fn($query) => $query->whereNotNull('paid_at'))
-                            ->sum('amount');
+                        return number_format($record->donations()
+                            ->where(function ($query) {
+                                $query->whereHas('transaction', fn($query) => $query->whereNotNull('paid_at'))
+                                    ->orWhere('transaction_id', null);
+                            })
+                            ->sum('amount'), 0, ',', ',');
                     })->suffix(' د.ك'),
                 TextColumn::make('categories.name')
                     ->label(__('messages.Categories'))

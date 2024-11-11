@@ -29,41 +29,44 @@ class DonationsPerDayPerProject extends ApexChartWidget
 
     protected function getTopProjectsData(): array
     {
-        // Fetch donations grouped by project and date, summing the donation amounts
-        $donations = Donation::where('donationable_type', Project::class)
-            ->with('donationable') // Load the related project
-            ->selectRaw('donationable_id, DATE(created_at) as date, SUM(amount) as total, donationable_type')
-            ->when($this->filterFormData['date_start'], function ($query) {
-                $query->whereDate('created_at', '>=', $this->filterFormData['date_start']);
-            })
-            ->when($this->filterFormData['date_end'], function ($query) {
-                $query->whereDate('created_at', '<=', $this->filterFormData['date_end']);
-            })
-            ->groupBy('donationable_id', 'date', 'donationable_type')
-            ->orderByDesc('total')
-            ->get()
-            ->take(5)
-            ->groupBy('date');
+        // Get dates from date_start to date_end
+        $dates = [];
+        $startDate = Carbon::parse($this->filterFormData['date_start']);
+        $endDate = Carbon::parse($this->filterFormData['date_end']);
 
-        $categories = [];
-        $series = [];
-
-        // Iterate through dates and top projects for each date
-        foreach ($donations as $date => $topProjects) {
-            $categories[] = $date;
-
-            foreach ($topProjects as $donation) {
-                $projectName = $donation->donationable->title; // Assuming Project has a 'name' attribute
-                if (!isset($series[$projectName])) {
-                    $series[$projectName] = [];
-                }
-                $series[$projectName][] = $donation->total;
-            }
+        while ($startDate->lte($endDate)) {
+            $dates[] = $startDate->format('Y-m-d');
+            $startDate->addDay();
         }
 
-        // Normalize series data to fill missing days with zeroes
-        foreach ($series as &$data) {
-            $data += array_fill(0, count($categories), 0); // Fill in zeros where data is missing
+        $categories = $dates;
+        $series = [];
+
+        // Fetch top 5 projects with most donations overall
+        $topProjects = Donation::where('donationable_type', Project::class)
+            ->with('donationable') // Load the related project
+            ->selectRaw('donationable_id, SUM(amount) as total, donationable_type')
+            ->whereBetween('created_at', [$this->filterFormData['date_start'], $this->filterFormData['date_end']])
+            ->groupBy('donationable_id', 'donationable_type')
+            ->orderByDesc('total')
+            ->take(5)
+            ->get();
+
+        // Iterate through top projects
+        foreach ($topProjects as $project) {
+            $projectName = $project->donationable->title; // Assuming Project has a 'name' attribute
+            $series[$projectName] = [];
+
+            // Iterate through dates
+            foreach ($dates as $date) {
+                // Fetch donations for the current project and date
+                $donation = Donation::where('donationable_type', Project::class)
+                    ->where('donationable_id', $project->donationable_id)
+                    ->whereDate('created_at', $date)
+                    ->sum('amount');
+
+                $series[$projectName][] = $donation;
+            }
         }
 
         return ['categories' => $categories, 'series' => $series];

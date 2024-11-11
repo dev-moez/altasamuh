@@ -18,7 +18,7 @@ class Gallery extends Model implements HasMedia
     const MEDIA_COLLECTION = 'gallery-cover';
 
     protected $fillable = [
-        'name',
+        'title',
         'display_order'
     ];
 

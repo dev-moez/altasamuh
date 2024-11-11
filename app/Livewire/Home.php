@@ -32,7 +32,8 @@ class Home extends Component
                 $query->select('categories.id')->distinct();
             })->pluck('id')->unique()->values()->toArray();
         // dd($categoryIds);
-        $this->categories = Category::find($categoryIds);
+        $this->categories = Category::whereIn('id', $categoryIds)
+            ->where('display_on_homepage', true)->get();
         $this->currentCategoryId = $this->categories->first()->id;
         // $this->updatedCurrentCategoryId();
     }
@@ -43,7 +44,6 @@ class Home extends Component
             ->when($this->currentCategoryId, function ($query) {
                 $query->whereHas('categories', fn($query) => $query->where('categories.id', $this->currentCategoryId));
             })
-            // ->whereHas('categories', fn($query) => $query->where('categories.id', $this->currentCategoryId))
             ->get();
         return view('livewire.home', compact('projects'));
     }

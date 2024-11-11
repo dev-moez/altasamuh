@@ -33,7 +33,7 @@
                         الزكاة والصدقات والكفارات
                     </h4>
                     <p class="mt-2 text-gray-600">الغرض من التبرع</p>
-                    <livewire:misc-donation-actions wire:key='{{ unique_id() }}' />
+                    <livewire:misc-donation-actions wire:key='{{ uniqid() }}' />
                 </div>
                 <div class="relative flex-1 hidden lg:block">
                     <img src="{{ asset('images/mask-bg.png') }}" class="">
@@ -67,7 +67,7 @@
                                         <h2 class="font-bold text-md">{{ $project->title }}</h2>
                                     </a>
                                 </div>
-                                <livewire:projects.project-donation-actions :project="$project" wire:key='{{ unique_id() }}' />
+                                <livewire:projects.project-donation-actions :project="$project" wire:key='{{ uniqid() }}' />
                             </div>
                         </div>
                     @empty

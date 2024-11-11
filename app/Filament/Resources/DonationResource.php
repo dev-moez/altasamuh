@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Select;
 use App\Models\Project;
+use Filament\Tables\Filters\SelectFilter;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use pxlrbt\FilamentExcel\Exports\ExcelExport;
 use Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter;
@@ -55,7 +56,8 @@ class DonationResource extends Resource
                 TextColumn::make('transaction.invoice_id')->label(__('Invoice ID'))
                     ->getStateUsing(fn($record) => $record->transaction->invoice_id ?? 'MANUAL')
                     ->searchable(),
-                TextColumn::make('donationable.title')->label(__('messages.Donationable')),
+                TextColumn::make('donationable.title')->label(__('messages.Donationable'))
+                    ->searchable(),
                 TextColumn::make('amount')->label(__('messages.Amount'))
                     ->getStateUsing(function ($record) {
                         return number_format($record->amount, 0, ',', ',');
@@ -67,6 +69,10 @@ class DonationResource extends Resource
                 TextColumn::make('created_at')->label(__('messages.Created at')),
             ])
             ->filters([
+                // SelectFilter::make('project_id')
+                //     ->label(__('messages.Project'))
+                //     ->relationship('donationable', 'title')
+                //     ->searchable(),
                 DateRangeFilter::make('created_at')->label(__('messages.Created at')),
             ])
             ->actions([])

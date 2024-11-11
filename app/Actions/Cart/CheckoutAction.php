@@ -19,7 +19,7 @@ class CheckoutAction
     {
         $this->phone_number = $phone_number;
         $this->cart = Cart::where(function ($query) {
-            $query->where('user_id', auth()->id())->orWhere('session_id', session()->get('session_id'));
+            $query->where('user_id', auth()->id())->orWhere('session_id', session()->get('altasamuh_cart_session_id'));
         })->where('checked_out', false)->with('items')->first();
     }
 

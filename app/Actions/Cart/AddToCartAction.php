@@ -15,8 +15,8 @@ class AddToCartAction
     public function execute()
     {
         if (auth()->guest()) {
-            Session::put('session_id', Str::random(40));
-            $cart = Cart::firstOrCreate(['checked_out' => false, 'session_id' => Session::get('session_id')]);
+            Session::put('altasamuh_cart_session_id', Str::random(40));
+            $cart = Cart::firstOrCreate(['checked_out' => false, 'session_id' => Session::get('altasamuh_cart_session_id')]);
         } else {
             $cart = auth()->user()->carts()->firstOrCreate(['checked_out' => false]);
         }

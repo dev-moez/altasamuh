@@ -21,7 +21,7 @@ class CartComponent extends Component
             'cart',
             fn($query) => $query->where([
                 'checked_out' => false
-            ])->where(['user_id' => auth()->id()])->orWhere('session_id', session()->get('session_id'))
+            ])->where(['user_id' => auth()->id()])->orWhere('session_id', session()->get('altasamuh_cart_session_id'))
         )
             ->get();
     }
@@ -59,7 +59,7 @@ class CartComponent extends Component
         if (auth()->check())
             Cart::where('user_id', auth()->id())->delete();
         else
-            Cart::where('session_id', session()->get('session_id'))->delete();
+            Cart::where('session_id', session()->get('altasamuh_cart_session_id'))->delete();
         $this->dispatch('refreshCart');
     }
 

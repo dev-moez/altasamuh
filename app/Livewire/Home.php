@@ -27,13 +27,7 @@ class Home extends Component
             ];
         });
         $this->articles = Article::pinned()->get();
-        $categoryIds = Project::published()->where('display_in_homepage', true)
-            ->whereHas('categories', function ($query) {
-                $query->select('categories.id')->distinct();
-            })->pluck('id')->unique()->values()->toArray();
-        // dd($categoryIds);
-        $this->categories = Category::whereIn('id', $categoryIds)
-            ->where('display_on_homepage', true)->get();
+        $this->categories = Category::where('display_on_homepage', true)->get();
         $this->currentCategoryId = $this->categories->first()?->id;
         // $this->updatedCurrentCategoryId();
     }

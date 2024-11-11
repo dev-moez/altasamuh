@@ -49,7 +49,7 @@ class ProjectDonationActions extends Component
             'amount' => 'required|numeric|min:' . $this->minimumDonationValue . '|max:' . $this->remainingAmount,
         ];
 
-        if ($this->project->requires_donator_phone_number && $this->showPhoneNumber == true && auth()->check()) {
+        if ($this->project->requires_donator_phone_number && $this->showPhoneNumber == true) {
             $rules['phone_number'] = 'required';
         }
 
@@ -72,7 +72,7 @@ class ProjectDonationActions extends Component
             'amount' => 'required|numeric|min:' . $this->minimumDonationValue . '|max:' . $this->remainingAmount,
         ];
 
-        if ($this->project->requires_donator_phone_number && auth()->check()) {
+        if ($this->project->requires_donator_phone_number && $this->showPhoneNumber == true) {
             $rules['phone_number'] = 'required';
         }
         $data = $this->validate($rules);

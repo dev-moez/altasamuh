@@ -17,8 +17,8 @@ class AffiliateMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->has('affiliate')) {
-            $affiliate = Affiliate::where('tracking_code', $request->input('affiliate'))->first();
+        if ($request->has('ad')) {
+            $affiliate = Affiliate::where('tracking_code', $request->input('ad'))->first();
             if ($affiliate) {
                 $affiliate->increment('visits');
                 Session::put('affiliate_id', $affiliate->id);

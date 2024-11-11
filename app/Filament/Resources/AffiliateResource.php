@@ -65,7 +65,7 @@ class AffiliateResource extends Resource
                     ->searchable(),
                 TextColumn::make('link')
                     ->label(__('messages.Link'))
-                    ->getStateUsing(fn($record) => route('projects.view', ['project' => $record->project, 'affiliate' => $record->tracking_code]))
+                    ->getStateUsing(fn($record) => route('projects.view', ['project' => $record->project, 'ad' => $record->tracking_code]))
                     ->color(Color::Blue)
                     ->copyable(),
                 TextColumn::make('visits')

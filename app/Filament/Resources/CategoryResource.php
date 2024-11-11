@@ -41,9 +41,9 @@ class CategoryResource extends Resource
                         Forms\Components\Toggle::make('display_on_navbar')
                             ->label(__('messages.Display on navbar'))
                             ->required(),
-                        // Forms\Components\Toggle::make('display_on_homepage')
-                        //     ->label(__('messages.Display on home page'))
-                        //     ->required(),
+                        Forms\Components\Toggle::make('display_on_homepage')
+                            ->label(__('messages.Display on home page'))
+                            ->required(),
                     ]),
             ]);
     }

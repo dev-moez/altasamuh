@@ -34,7 +34,7 @@ class Home extends Component
         // dd($categoryIds);
         $this->categories = Category::whereIn('id', $categoryIds)
             ->where('display_on_homepage', true)->get();
-        $this->currentCategoryId = $this->categories->first()->id;
+        $this->currentCategoryId = $this->categories->first()?->id;
         // $this->updatedCurrentCategoryId();
     }
     public function render()

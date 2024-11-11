@@ -62,6 +62,7 @@ class TransactionResource extends Resource
             ])
             ->filters([
                 SelectFilter::make('status')
+                    ->label(__('messages.Payment status'))
                     ->options($statusOptions),
                 DateRangeFilter::make('created_at')->label(__('messages.Created at')),
 

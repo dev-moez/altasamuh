@@ -141,7 +141,7 @@ class DonationsPerDayPerProject extends ApexChartWidget
 
             DatePicker::make('date_end')
                 ->label('الى تاريخ')
-                ->default(Carbon::now()->addDay()),
+                ->default(Carbon::now()),
         ];
     }
 }

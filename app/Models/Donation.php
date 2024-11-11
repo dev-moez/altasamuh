@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use App\Models\Transaction;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Builder;
+use App\Models\Affiliate;
 
 class Donation extends Model
 {
@@ -24,7 +25,8 @@ class Donation extends Model
         'transaction_id',
         'amount',
         'phone_number',
-        'name'
+        'name',
+        'affiliate_id'
     ];
 
     protected $casts = [
@@ -51,5 +53,10 @@ class Donation extends Model
     {
         return $query->whereHas('transaction', fn($query) => $query->whereNotNull('paid_at')->where('status', Transaction::STATUS_PAID))
             ->orWhereNull('transaction_id');
+    }
+
+    public function affiliate(): BelongsTo
+    {
+        return $this->belongsTo(Affiliate::class);
     }
 }

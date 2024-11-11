@@ -43,10 +43,7 @@ class DonationsPerDayPerProject extends ApexChartWidget
             ->orderByDesc('total')
             ->get()
             ->take(5)
-            ->groupBy('date')
-            ->map(function ($dayDonations) {
-                return $dayDonations->take(5); // Take top 5 projects per day
-            });
+            ->groupBy('date');
 
         $categories = [];
         $series = [];
@@ -137,11 +134,11 @@ class DonationsPerDayPerProject extends ApexChartWidget
         return [
             DatePicker::make('date_start')
                 ->label('من تاريخ')
-                ->default(Carbon::now()->subWeek()->format('Y-m-d')),
+                ->default(Carbon::now()->subWeek()),
 
             DatePicker::make('date_end')
                 ->label('الى تاريخ')
-                ->default(Carbon::now()->format('Y-m-d')),
+                ->default(Carbon::now()->addDay()),
         ];
     }
 }

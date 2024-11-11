@@ -23,6 +23,7 @@ class CreateDonation extends CreateRecord
             'donationable_id' => $data['project_id'],
             'amount' => $data['amount'],
             'phone_number' => $data['phone_number'] ?? null,
+            'name' => $data['name'] ?? null,
         ]);
     }
 }

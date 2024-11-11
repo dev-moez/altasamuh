@@ -9,6 +9,7 @@ use App\Models\Donation;
 use MyFatoorah\Library\API\Payment\MyFatoorahPayment;
 use Illuminate\Support\Facades\DB;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\Session;
 
 class CheckoutAction
 {
@@ -45,7 +46,8 @@ class CheckoutAction
                 'invoice_id' => $paymentData['invoiceId'],
                 'invoice_url' => $paymentData['invoiceURL'],
                 'order_id' => $orderId,
-                'cart_id' => $this->cart->id
+                'cart_id' => $this->cart->id,
+                'affiliate_id' => Session::get('affiliate_id') ?? null
             ]);
 
             $this->cart->update(['checked_out' => true]);

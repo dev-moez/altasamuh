@@ -17,6 +17,7 @@ use App\Livewire\Projects\ListProjects;
 use App\Livewire\Projects\ViewProject;
 use App\Livewire\Gallery\ViewGallery;
 use App\Livewire\Profile\Donations;
+use App\Http\Middleware\AffiliateMiddleware;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/about', About::class)->name('about');
@@ -34,7 +35,10 @@ Route::group([
     'as' => 'projects.',
 ], function () {
     Route::get('{category}', ListProjects::class)->name('list');
-    Route::get('/view/{project}', ViewProject::class)->name('view')->middleware(ProjectViewsMiddleware::class);
+    Route::get('/view/{project}', ViewProject::class)->name('view')->middleware([
+        ProjectViewsMiddleware::class,
+        AffiliateMiddleware::class
+    ]);
 });
 
 Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {

@@ -33,7 +33,6 @@
                         الزكاة والصدقات والكفارات
                     </h4>
                     <p class="mt-2 text-gray-600">الغرض من التبرع</p>
-
                     <livewire:misc-donation-actions />
                 </div>
                 <div class="relative flex-1 hidden lg:block">
@@ -44,23 +43,36 @@
             </div>
         </div>
     </section>
-    <section class="pt-8 pb-12">
+    <section class="pt-20 pb-12">
         <div class="container">
-            <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
-                @forelse($projects as $project)
-                    <div class="border-2 border-gray-200 rounded-md ">
-                        <img src="{{ $project->getFirstMedia('project-cover')?->getUrl() }}" alt="" class="object-cover object-center w-full h-72">
-                        <div class="px-3 pt-4 pb-6 bg-white">
-                            <div class="mb-4">
-                                <a href="{{ route('projects.view', $project) }}">
-                                    <h2 class="font-bold text-md">{{ $project->title }}</h2>
-                                </a>
+            <div class="p-4 border-[#0072BB] border-2 rounded-md">
+                {{-- <div class="px-6 pb-5 mt-8 border border-blue-600 rounded-xl"> --}}
+                {{-- Tabs --}}
+                <div class="relative flex items-center justify-center px-2 py-2 mx-auto bg-white rounded-3xl gap-x-1 w-fit -top-10">
+                    @forelse($categories as $category)
+                        <button wire:click.prevent="$set('currentCategoryId', {{ $category->id }} )" type="button" class="px-5 py-1 rounded-2xl {{ $currentCategoryId == $category->id ? 'bg-blue-600 text-white font-bold' : 'bg-transparent text-gray-700' }}">
+                            {{ $category->name }}
+                        </button>
+                    @empty
+                    @endforelse
+                </div>
+                {{-- </div> --}}
+                <div class="grid grid-cols-1 gap-4 mt-8 lg:grid-cols-3">
+                    @forelse($projects as $project)
+                        <div class="border-2 border-gray-200 rounded-lg ">
+                            <img src="{{ $project->getFirstMedia('project-cover')?->getUrl() }}" alt="" class="object-cover object-center w-full h-72">
+                            <div class="px-3 pt-4 pb-6 bg-white">
+                                <div class="mb-4">
+                                    <a href="{{ route('projects.view', $project) }}">
+                                        <h2 class="font-bold text-md">{{ $project->title }}</h2>
+                                    </a>
+                                </div>
+                                <livewire:projects.project-donation-actions :project="$project" />
                             </div>
-                            <livewire:projects.project-donation-actions :project="$project" />
                         </div>
-                    </div>
-                @empty
-                @endforelse
+                    @empty
+                    @endforelse
+                </div>
             </div>
         </div>
     </section>

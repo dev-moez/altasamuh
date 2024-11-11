@@ -10,6 +10,7 @@ use App\Models\Project;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\User;
 use App\Models\Cart;
+use App\Models\Affiliate;
 
 class Transaction extends Model
 {
@@ -33,7 +34,8 @@ class Transaction extends Model
         // 'transactionable_type',
         // 'transactionable_id',
         'status',
-        'amount'
+        'amount',
+        'affiliate_id',
     ];
 
     protected $casts = [
@@ -73,5 +75,10 @@ class Transaction extends Model
     public static function getStatusOptions()
     {
         return self::select('status')->distinct()->get()->pluck('status', 'status')->toArray();
+    }
+
+    public function affiliate(): BelongsTo
+    {
+        return $this->belongsTo(Affiliate::class);
     }
 }

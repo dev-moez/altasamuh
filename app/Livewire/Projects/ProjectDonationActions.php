@@ -49,7 +49,7 @@ class ProjectDonationActions extends Component
             'amount' => 'required|numeric|min:' . $this->minimumDonationValue . '|max:' . $this->remainingAmount,
         ];
 
-        if ($this->project->requires_donator_phone_number) {
+        if ($this->project->requires_donator_phone_number || $this->showPhoneNumber) {
             $rules['phone_number'] = 'required';
         }
 

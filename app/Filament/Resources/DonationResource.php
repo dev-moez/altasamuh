@@ -63,6 +63,7 @@ class DonationResource extends Resource
                     ->suffix(' د.ك'),
                 TextColumn::make('phone_number')->label(__('messages.Phone number'))->searchable(),
                 TextColumn::make('name')->label(__('messages.Name'))->searchable(),
+                TextColumn::make('affiliate.name')->label(__('messages.Affiliate'))->searchable(),
                 TextColumn::make('created_at')->label(__('messages.Created at')),
             ])
             ->filters([

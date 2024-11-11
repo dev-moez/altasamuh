@@ -97,4 +97,9 @@ return [
     'Donations sum' => 'مجموع التبرعات',
     'Donations count' => 'عدد التبرعات',
     'Phone verified' => 'تم التحقق من رقم الهاتف',
+    'Name' => 'الاسم',
+    'Tracking code' => 'كود التتبع',
+    'Affiliate' => 'رابط الاعلان',
+    'Link' => 'الرابط',
+    'Visits' => 'الزيارات',
 ];

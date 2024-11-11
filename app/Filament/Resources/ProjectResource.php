@@ -144,7 +144,9 @@ class ProjectResource extends Resource
                 TextColumn::make('views')
                     ->label(__('messages.Views')),
                 IconColumn::make('is_published')
-                    ->label(__('messages.Published'))
+                    ->label(__('messages.Published')),
+                TextColumn::make('created_at')
+                    ->label(__('messages.Created at')),
             ])
             ->filters([
                 SelectFilter::make(__('messages.Category'))
@@ -167,7 +169,8 @@ class ProjectResource extends Resource
             ])->defaultSort('project_number', 'desc')
             ->headerActions([
                 ExportAction::make()->exports([
-                    ExcelExport::make('table')->fromTable(),
+                    ExcelExport::make('table')->fromTable()
+                        ->except(['index']),
                 ])
             ]);
     }

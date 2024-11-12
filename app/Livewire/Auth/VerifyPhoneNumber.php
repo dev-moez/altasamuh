@@ -11,11 +11,13 @@ class VerifyPhoneNumber extends Component
     public $otp;
     public $phone_number;
     public $user_id;
+    public $phoneNumberVerified;
 
     public function mount()
     {
         $this->phone_number = auth()->user()->phone_number;
         $this->user_id = auth()->id();
+        $this->phoneNumberVerified = auth()->user()->phone_verified_at != null;
     }
     public function render()
     {
@@ -29,13 +31,13 @@ class VerifyPhoneNumber extends Component
         ]);
         if (PhoneNumberVerification::where([
             'otp' => $this->otp,
-            'phone_number' => $this->phone_number,
+            'phone_number' => auth()->user()->fullPhoneNumber(),
             'user_id' => $this->user_id
         ])->exists()) {
             User::where('id', $this->user_id)
                 ->update(['phone_verified_at' => now()]);
-
-            return redirect()->route('home');
         }
+
+        $this->phoneNumberVerified = true;
     }
 }

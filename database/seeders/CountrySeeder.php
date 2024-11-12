@@ -32,5 +32,10 @@ class CountrySeeder extends Seeder
             'name' => 'قطر',
             'code' => '974',
         ]);
+
+        Country::updateOrCreate([
+            'name' => 'مصر',
+            'code' => '20',
+        ]);
     }
 }

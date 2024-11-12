@@ -113,4 +113,6 @@ return [
     'Select' => 'حدد',
     'Country' => 'الدولة',
     'Code' => 'الكود',
+    'Thanks for verifying your phone number' => 'شكرا لتحققك من رقم الهاتف الخاص بك',
+    'Go to home' => 'الذهاب للصفحة الرئيسية',
 ];

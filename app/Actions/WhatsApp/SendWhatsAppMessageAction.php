@@ -40,7 +40,7 @@ class SendWhatsAppMessageAction
                                 "parameters" => [
                                     [
                                         "type" => "text",
-                                        "text" => "12345"
+                                        "text" => $otp
                                     ]
                                 ]
                             ]

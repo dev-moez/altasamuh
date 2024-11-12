@@ -19,6 +19,7 @@ class Register extends Component
     public $password;
     #[Computed('countries')]
     public $countries;
+    public $country_code;
 
     public function mount()
     {

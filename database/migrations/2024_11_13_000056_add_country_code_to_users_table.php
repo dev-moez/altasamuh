@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('phone_numbers_verifications', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('phone_number');
-            $table->string('otp');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('country_code')->nullable();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('phone_numbers_verifications');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('country_code');
+        });
     }
 };

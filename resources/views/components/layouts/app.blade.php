@@ -47,6 +47,9 @@
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT8HQRNS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
     @endproduction
+    {{-- <div class="py-3 font-bold text-center text-white bg-orange-500 w-100">
+        @lang('messages.You have not verified your phone number yet. Please verify your phone number.')
+    </div> --}}
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
         @include('layouts.navigation')
 

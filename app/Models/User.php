@@ -31,7 +31,9 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
-        'phone_number'
+        'phone_number',
+        'phone_verified_at',
+        'country_code'
     ];
 
     /**
@@ -65,7 +67,7 @@ class User extends Authenticatable implements FilamentUser
 
         static::created(function (User $user) {
             if ($user->hasRole(Role::ROLE_USER)) {
-                (new SendWhatsAppMessageAction($user->phone_number))->execute("Welcome to {{ config('app.name') }}");
+                (new SendWhatsAppMessageAction($user->fullPhoneNumber()))->execute("Welcome to {{ config('app.name') }}");
             }
         });
     }
@@ -82,5 +84,10 @@ class User extends Authenticatable implements FilamentUser
     public function phoneNumberVerifications(): HasMany
     {
         return $this->hasMany(PhoneNumberVerification::class);
+    }
+
+    public function fullPhoneNumber()
+    {
+        return $this->country_code . $this->phone_number;
     }
 }

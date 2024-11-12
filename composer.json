@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.9",
         "leandrocfe/filament-apex-charts": "^3.1",
         "livewire/livewire": "^3.5",
+        "lwwcas/laravel-countries": "^4.11",
         "malzariey/filament-daterangepicker-filter": "^3.1",
         "myfatoorah/laravel-package": "^2.2",
         "myfatoorah/library": "^2.2",

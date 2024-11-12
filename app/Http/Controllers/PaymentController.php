@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\WhatsApp\SendPaymentConfirmationAction;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Donation;
@@ -37,6 +38,11 @@ class PaymentController extends Controller
                             'name' => 'فاعل خير',
                             'affiliate_id' => $transaction->affiliate_id,
                         ]);
+
+                        $phoneNumber = $transaction->user ? $transaction->user->fullPhoneNumber() : $transaction->phone_number;
+                        if (!is_null($phoneNumber)) {
+                            (new SendPaymentConfirmationAction($phoneNumber))->execute($cartItem->amount, $cartItem->cartable->title, $transaction->created_at);
+                        }
                     }
                 }
             });

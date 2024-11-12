@@ -53,12 +53,6 @@ function displayHijriDate() {
     document.getElementById("datetime").innerHTML = formattedDate;
 }
 
-// Call the function every second (1000ms)
-// setInterval(displayHijriDate, 1000);
-
-// Call once to display immediately on load
-// displayHijriDate();
-
 Swiper.use([Navigation, Pagination]);
 
 

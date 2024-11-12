@@ -16,6 +16,7 @@ use Database\Seeders\ArticleSeeder;
 use Database\Seeders\HomeSliderSeeder;
 use Database\Seeders\ProjectSeeder;
 use Database\Seeders\MiscDonationSeeder;
+use Database\Seeders\CountrySeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             PermissionSeeder::class,
             SuperAdminSeeder::class,
+            CountrySeeder::class,
         ]);
 
         if (app()->environment('local')) {

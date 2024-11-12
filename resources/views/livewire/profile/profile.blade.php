@@ -5,7 +5,7 @@
                 ملفي الشخصي
             </h1>
         </div>
-        <form wire:submit.prevent="submit" class="max-w-lg py-4">
+        <form wire:submit.prevent="submit" class="max-w-2xl py-4">
             {{-- <div class="flex flex-col mb-3 space-y-4"> --}}
             <div class="flex items-center mb-3 ">
                 <x-input-label class="w-32" for="name" value="{{ __('messages.Name') }}" />
@@ -17,8 +17,17 @@
             <div class="flex items-center mb-3 ">
                 <x-input-label class="w-32" for="name" value="رقم الهاتف" />
                 <div class="flex-grow">
-                    <x-text-input id="phone_number" minlength="8" maxlength="11" wire:model="phone_number" class="block w-full text-end" type="tel" name="phone_number" placeholder="رقم الهاتف" :value="old('phone_number')" required autocomplete="phone_number" />
+                    <div class="flex gap-x-4">
+                        <x-select wire:model="country_code" class="w-1/3">
+                            <option selected>--@lang('messages.Country')--</option>
+                            @foreach ($countries as $country)
+                                <option value="{{ $country->code }}">(+{{ $country->code }}) {{ $country->name }}</option>
+                            @endforeach
+                        </x-select>
+                        <x-text-input id="phone_number" minlength="8" maxlength="12" wire:model="phone_number" class="block w-full text-end" type="tel" name="phone_number" placeholder="رقم الهاتف" :value="old('phone_number')" required autocomplete="phone_number" />
+                    </div>
                     <x-input-error class="mt-2" :messages="$errors->get('phone_number')" />
+                    <x-input-error class="mt-2" :messages="$errors->get('country_code')" />
                 </div>
             </div>
             <x-primary-button class="w-full" wire:click.prevent="submit" wire:loading.attr="disabled">تحديث</x-primary-button>

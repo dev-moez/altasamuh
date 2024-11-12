@@ -16,7 +16,7 @@ class SendOTPVerificationAction
         PhoneNumberVerification::create([
             'user_id' => $this->user->id,
             'phone_number' => $this->user->fullPhoneNumber(),
-            'otp' => random_int(100000, 999999),
+            'otp' => $otp,
         ]);
         (new SendWhatsAppMessageAction($this->user->fullPhoneNumber()))->execute($otp);
     }

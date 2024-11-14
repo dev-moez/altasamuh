@@ -17,6 +17,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use App\Models\Role;
 use App\Models\Permission;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 
 class AdminResource extends Resource
@@ -78,6 +79,9 @@ class AdminResource extends Resource
                 Tables\Columns\TextColumn::make('email')
                     ->label(__('messages.Email'))
                     ->searchable(),
+                TextColumn::make('permissions.name')
+                    ->label(__('messages.Permissions'))
+                    ->badge(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('messages.Created at'))
 

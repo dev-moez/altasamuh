@@ -117,4 +117,5 @@ return [
     'Go to home' => 'الذهاب للصفحة الرئيسية',
     'Whatsapp URL' => 'رابط WhatsApp',
     'Google Maps location url' => 'رابط موقع Google Maps',
+    'Permissions' => 'الصلاحيات',
 ];

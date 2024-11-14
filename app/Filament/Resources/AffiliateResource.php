@@ -74,7 +74,7 @@ class AffiliateResource extends Resource
                     ->label(__('messages.Visits')),
                 TextColumn::make('donations_sum')
                     ->label(__('messages.Donations'))
-                    ->sum('donations', 'amount')
+                    ->getStateUsing(fn($record) => $record->donations()->sum('amount'))
                     ->suffix(' د.ك'),
                 TextColumn::make('created_at')
                     ->label(__('messages.Created at'))

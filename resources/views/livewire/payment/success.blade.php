@@ -27,6 +27,10 @@
                                             <td class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">{{ $paymentData->CustomerReference }}</td>
                                         </tr>
                                         <tr>
+                                            <td class="px-6 py-4 text-sm font-bold text-gray-800 whitespace-nowrap">رقم الفاتورة</td>
+                                            <td class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">{{ $paymentData->InvoiceId }}</td>
+                                        </tr>
+                                        <tr>
                                             <td class="px-6 py-4 text-sm font-bold text-gray-800 whitespace-nowrap">التاريخ</td>
                                             <td class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">{{ $paymentData->InvoiceTransactions[0]->TransactionDate }}</td>
                                         </tr>

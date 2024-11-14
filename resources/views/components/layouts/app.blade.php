@@ -111,7 +111,8 @@
             </main>
         @endif
 
-        <footer class="text-white bg-blue-500">
+        <footer class="text-white" style="background: linear-gradient(270deg, #0071BC 43.5%, #1751A5 100%);">
+
             <div class="">
                 <div class="container flex flex-wrap justify-between grid-cols-1 px-4 py-8 mx-auto lg:gap-5 lg:grid-cols-3 grow-0">
                     <div class="grow-0 lg:max-w-72">

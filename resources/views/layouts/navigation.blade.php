@@ -20,14 +20,14 @@
     </div>
 
 
-    <div class="container z-10 mx-auto">
+    <div class="container relative z-10 mx-auto">
         <div class="flex justify-between">
-            <div id="header-contact">
+            <div id="header-contact" class="text-sm">
                 <a href="{{ app(GeneralSettings::class)->header_url }}" target="_blank">
                     {{ app(GeneralSettings::class)->header_text }}
                 </a>
             </div>
-            <div id="hijri-clock">
+            <div id="hijri-clock" class="text-sm">
             </div>
         </div>
     </div>

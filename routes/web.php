@@ -18,6 +18,8 @@ use App\Livewire\Projects\ViewProject;
 use App\Livewire\Gallery\ViewGallery;
 use App\Livewire\Profile\Donations;
 use App\Http\Middleware\AffiliateMiddleware;
+use App\Livewire\Payment\Success;
+use App\Livewire\Payment\Failed;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/about', About::class)->name('about');
@@ -53,6 +55,10 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
 });
 
 Route::post('callback', [PaymentController::class, 'callback'])->name('callback');
+Route::group(['prefix' => 'payment', 'as' => 'payment.'], function () {
+    Route::get('success', Success::class)->name('success');
+    Route::get('failed', Failed::class)->name('failed');
+});
 
 
 require __DIR__ . '/auth.php';

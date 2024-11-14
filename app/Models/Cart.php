@@ -19,6 +19,7 @@ class Cart extends Model
         'checked_out',
         'session_id',
         'phone_number',
+        'country_code',
     ];
 
     protected $casts = [

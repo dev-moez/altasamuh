@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Models\Permission;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -19,6 +20,10 @@ class ManageGeneralSettings extends SettingsPage
     protected static string $settings = GeneralSettings::class;
     protected static ?string $title = 'الاعدادات العامة';
 
+    public static function canAccess(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_GENERAL_SETTINGS']);
+    }
     public static function getNavigationLabel(): string
     {
         return __('messages.General settings');

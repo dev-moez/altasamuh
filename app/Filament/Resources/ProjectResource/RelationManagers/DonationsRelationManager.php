@@ -22,7 +22,7 @@ class DonationsRelationManager extends RelationManager
 
     protected static function getModelLabel(): ?string
     {
-        return __('messages.Donation');
+        return __('messages.Donations') . " ";
     }
 
     public function form(Form $form): Form

@@ -115,4 +115,6 @@ return [
     'Code' => 'الكود',
     'Thanks for verifying your phone number' => 'شكرا لتحققك من رقم الهاتف الخاص بك',
     'Go to home' => 'الذهاب للصفحة الرئيسية',
+    'Whatsapp URL' => 'رابط WhatsApp',
+    'Google Maps location url' => 'رابط موقع Google Maps',
 ];

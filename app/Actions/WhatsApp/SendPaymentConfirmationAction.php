@@ -10,7 +10,7 @@ class SendPaymentConfirmationAction
 
     public function execute(string $amount, string $projectName, string $date): void
     {
-        $response = Http::withToken(env('WHATSAPP_ACCESS_TOKEN'))
+        Http::withToken(env('WHATSAPP_ACCESS_TOKEN'))
             ->post(
                 "https://graph.facebook.com/v21.0/" . env('WHATSAPP_PHONE_NUMBER_ID') . "/messages",
                 [
@@ -56,41 +56,5 @@ class SendPaymentConfirmationAction
                     ]
                 ]
             );
-
-
-        // dd($response->body());
-        // if ($response->successful()) {
-        //     return "Successful";
-        // } else {
-        //     dd($response->body());
-        //     return "False";
-        // }
     }
 }
-
-/*
-
-[
-                "messaging_product" => "whatsapp",
-                "to" => $this->recipient,
-                "type" => "template",
-                "template" => [
-                    "name" => "marketing001",
-                    "language" => [
-                        "code" => "ar",
-                        "policy" => "deterministic"
-                    ],
-                    "components" => [
-                        [
-                            "type" => "body",
-                            "parameters" => [
-                                [
-                                    "type" => "text",
-                                    "text" => $message
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
-                */

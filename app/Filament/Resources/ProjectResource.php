@@ -29,6 +29,8 @@ use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use Filament\Tables\Filters\SelectFilter;
 use pxlrbt\FilamentExcel\Exports\ExcelExport;
 use Filament\Tables\Actions\Action;
+use App\Models\Permission;
+use Illuminate\Database\Eloquent\Model;
 
 class ProjectResource extends Resource
 {
@@ -190,5 +192,25 @@ class ProjectResource extends Resource
             'create' => Pages\CreateProject::route('/create'),
             'edit' => Pages\EditProject::route('/{record}/edit'),
         ];
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_PROJECT']);
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['CREATE_PROJECT']);
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['EDIT_PROJECT']);
+    }
+
+    public static function canDelete(Model $record): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_PROJECT']);
     }
 }

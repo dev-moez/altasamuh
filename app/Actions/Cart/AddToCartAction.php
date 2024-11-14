@@ -10,17 +10,19 @@ use Illuminate\Support\Facades\Session;
 
 class AddToCartAction
 {
-    public function __construct(public readonly string $cartableType, public readonly int $cartableId, public readonly int $amount, public readonly ?string $phoneNumber = null) {}
+    public function __construct(public readonly string $cartableType, public readonly int $cartableId, public readonly int $amount, public readonly ?string $phoneNumber = null, public readonly ?string $countryCode = null) {}
 
     public function execute()
     {
         if (auth()->guest()) {
-            Session::put('altasamuh_cart_session_id', Str::random(40));
-            $cart = Cart::firstOrCreate(['checked_out' => false, 'session_id' => Session::get('altasamuh_cart_session_id')]);
+            $cart = Cart::firstOrCreate(['checked_out' => false, 'session_id' => $this->getCartSessionId()]);
         } else {
             $cart = auth()->user()->carts()->firstOrCreate(['checked_out' => false]);
         }
-        $cart->update(['phone_number' => $this->phoneNumber]);
+        $cart->update([
+            'phone_number' => $this->phoneNumber,
+            'country_code' => $this->countryCode
+        ]);
         $cartItem = $cart->items()->where([
             'cartable_type' => $this->cartableType,
             'cartable_id' => $this->cartableId
@@ -34,6 +36,17 @@ class AddToCartAction
                 'cartable_id' => $this->cartableId,
                 'amount' => $this->amount,
             ]);
+        }
+    }
+
+    public function getCartSessionId()
+    {
+        if (!Session::get('altasamuh_cart_session_id')) {
+            $sessionId = Str::random(40);
+            Session::put('altasamuh_cart_session_id', $sessionId);
+            return $sessionId;
+        } else {
+            return Session::get('altasamuh_cart_session_id');
         }
     }
 }

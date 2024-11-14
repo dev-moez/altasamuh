@@ -15,21 +15,24 @@ class CheckoutAction
 {
     public $cart;
     public ?string $phone_number;
-    public function __construct(?string $phone_number = null)
+    public function __construct()
     {
-        $this->phone_number = $phone_number;
         $this->cart = Cart::where(function ($query) {
-            $query->where('user_id', auth()->id())->orWhere('session_id', session()->get('altasamuh_cart_session_id'));
-        })->where('checked_out', false)->with('items')->first();
+            $query->where('user_id', auth()->id())
+                ->orWhere('session_id', session()->get('altasamuh_cart_session_id'));
+        })->where('checked_out', false)->with('items')->firstOrFail();
     }
 
     public function execute()
     {
         $postFields = [
-            'NotificationOption' => 'Lnk',
+            'NotificationOption' => 'LNK',
             'InvoiceValue' => $this->cart->amount,
             'CustomerName' => auth()->user()->name ?? 'فاعل خير',
-            'CustomerMobile' => auth()->user()->phone_number ?? $this->phone_number ?? null,
+            'CustomerMobile' => auth()->check() ? auth()->user()->phone_number : $this->cart->phone_number,
+            'MobileCountryCode' => auth()->check() ? auth()->user()->country_code :  $this->cart->country_code,
+            'CallBackUrl' => route('payment.success'),
+            'ErrorUrl' => route('payment.failed')
         ];
 
         $orderId = uniqid();
@@ -47,29 +50,14 @@ class CheckoutAction
                 'invoice_url' => $paymentData['invoiceURL'],
                 'order_id' => $orderId,
                 'cart_id' => $this->cart->id,
+                'phone_number' => $this->cart->phone_number,
+                'country_code' => $this->cart->country_code,
                 'affiliate_id' => Session::get('affiliate_id') ?? null
             ]);
 
             $this->cart->update(['checked_out' => true]);
         });
-        // foreach ($this->cart->items as $cartItem) {
-        //     Donation::create([
-        //         'donationable_type' => $cartItem->cartable_type,
-        //         'donationable_id' => $cartItem->cartable_id,
-        //         'user_id' => auth()->id(),
-        //         'amount' => $cartItem->amount,
-        //     ])->transaction()->create([
-        //         'user_id' => auth()->id(),
-        //         'amount' => $cartItem->amount,
-        //         'invoice_id' => $paymentData['invoiceId'],
-        //         'invoice_url' => $paymentData['invoiceURL'],
-        //         'order_id' => $orderId
-        //     ]);
-        // }
-        // $this->cart->update(['checked_out' => true]);
+        // Session::forget('altasamuh_cart_session_id');
         return redirect()->away($paymentData['invoiceURL']);
-        // if ($paymentData['invoiceURL']) {
-        //     return $paymentData['invoiceURL'];
-        // }
     }
 }

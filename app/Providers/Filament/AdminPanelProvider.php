@@ -32,7 +32,7 @@ class AdminPanelProvider extends PanelProvider
             ->profile()
             ->passwordReset()
             ->breadcrumbs(false)
-            ->brandLogo(asset("images/logo.png"))
+            ->brandLogo(asset("images/logo.png") . "?v=1")
             ->brandLogoHeight("40px")
             ->favicon(asset("images/favicon.png"))
             ->login()

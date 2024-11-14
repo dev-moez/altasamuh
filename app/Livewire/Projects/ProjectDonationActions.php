@@ -11,6 +11,7 @@ use App\Models\Transaction;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use App\Livewire\CartComponent;
+use App\Models\Country;
 
 
 class ProjectDonationActions extends Component
@@ -21,9 +22,11 @@ class ProjectDonationActions extends Component
     public $remainingAmount = 0;
     public $donationsPercentage = 0;
     public $amount;
+    public $code;
     public $minimumDonationValue;
     public $phone_number;
     public $showPhoneNumber;
+    public $countries;
 
     public function mount(Project $project, ?bool $showPhoneNumber = false)
 
@@ -37,6 +40,7 @@ class ProjectDonationActions extends Component
         $this->remainingAmount = $this->requiredDonationValue - $this->donationsAmount;
         $this->donationsPercentage = $this->requiredDonationValue != 0 ? $this->donationsAmount / $this->requiredDonationValue * 100 : 0;
         $this->minimumDonationValue = $this->project->minimum_donation_value;
+        $this->countries = Country::all();
     }
     public function render()
     {
@@ -51,6 +55,7 @@ class ProjectDonationActions extends Component
 
         if ($this->project->requires_donator_phone_number && $this->showPhoneNumber == true) {
             $rules['phone_number'] = 'required';
+            $rules['code'] = 'required';
         }
 
         $this->resetErrorBag();
@@ -60,7 +65,7 @@ class ProjectDonationActions extends Component
             cartableType: Project::class,
             cartableId: $this->project->id,
             amount: $data['amount'],
-            phoneNumber: $this->phone_number
+            phoneNumber: $this->getFullNumber()
         )->to(CartComponent::class);
 
         $this->reset('amount');
@@ -72,12 +77,19 @@ class ProjectDonationActions extends Component
             'amount' => 'required|numeric|min:' . $this->minimumDonationValue . '|max:' . $this->remainingAmount,
         ];
 
+
         if ($this->project->requires_donator_phone_number && $this->showPhoneNumber == true) {
             $rules['phone_number'] = 'required';
+            $rules['code'] = 'required';
         }
         $data = $this->validate($rules);
 
-        (new AddToCartAction(Project::class, $this->project->id, $data['amount'], $this->phone_number))->execute();
+        (new AddToCartAction(Project::class, $this->project->id, $data['amount'], $this->phone_number, $this->code))->execute();
         (new CheckoutAction())->execute();
+    }
+
+    private function getFullNumber()
+    {
+        return $this->code . $this->phone_number;
     }
 }

@@ -41,5 +41,52 @@ class Permission extends SpatiePermission
         // List for contact messages
         'VIEW_CONTACT_MESSAGE' => 'view contact messages',
         'DELETE_CONTACT_MESSAGE' => 'delete contact messages',
+        // List for misc donations
+        'VIEW_MISC_DONATION' => 'view misc donations',
+        'DELETE_MISC_DONATION' => 'delete misc donations',
+        'EDIT_MISC_DONATION' => 'edit misc donations',
+        // List misc donation values
+        'VIEW_MISC_DONATION_VALUE' => 'view misc donation values',
+        'CREATE_MISC_DONATION_VALUE' => 'create misc donation values',
+        'EDIT_MISC_DONATION_VALUE' => 'edit misc donation values',
+        'DELETE_MISC_DONATION_VALUE' => 'delete misc donation values',
+
+        // List donations
+        'VIEW_DONATION' => 'view donations',
+        // List transactions
+        'VIEW_TRANSACTION' => 'view transactions',
+        // List Project Quick Donations
+        'VIEW_PROJECT_QUICK_DONATION' => 'view project quick donations',
+        'CREATE_PROJECT_QUICK_DONATION' => 'create project quick donations',
+        'EDIT_PROJECT_QUICK_DONATION' => 'edit project quick donations',
+        'DELETE_PROJECT_QUICK_DONATION' => 'delete project quick donations',
+        // List Home slider
+        'VIEW_HOME_SLIDER' => 'view home slider',
+        'CREATE_HOME_SLIDER' => 'create home slider',
+        'EDIT_HOME_SLIDER' => 'edit home slider',
+        'DELETE_HOME_SLIDER' => 'delete home slider',
+        // List Galleries
+        'VIEW_GALLERY' => 'view galleries',
+        'CREATE_GALLERY' => 'create galleries',
+        'EDIT_GALLERY' => 'edit galleries',
+        'DELETE_GALLERY' => 'delete galleries',
+        // List Affiliate
+        'VIEW_AFFILIATE' => 'view affiliates',
+        'CREATE_AFFILIATE' => 'create affiliates',
+        'EDIT_AFFILIATE' => 'edit affiliates',
+        'DELETE_AFFILIATE' => 'delete affiliates',
+        // List Articles
+        'VIEW_ARTICLE' => 'view articles',
+        'CREATE_ARTICLE' => 'create articles',
+        'EDIT_ARTICLE' => 'edit articles',
+        'DELETE_ARTICLE' => 'delete articles',
+        // List Countries
+        'VIEW_COUNTRY' => 'view countries',
+        'CREATE_COUNTRY' => 'create countries',
+        'EDIT_COUNTRY' => 'edit countries',
+        'DELETE_COUNTRY' => 'delete countries',
+        // General Settings
+        'VIEW_GENERAL_SETTINGS' => 'view general settings',
+
     ];
 }

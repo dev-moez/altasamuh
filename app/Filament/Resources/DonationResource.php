@@ -22,6 +22,7 @@ use Filament\Tables\Filters\SelectFilter;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use pxlrbt\FilamentExcel\Exports\ExcelExport;
 use Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter;
+use App\Models\Permission;
 
 class DonationResource extends Resource
 {
@@ -100,6 +101,11 @@ class DonationResource extends Resource
             'view' => Pages\ViewDonation::route('/{record}'),
             'edit' => Pages\EditDonation::route('/{record}/edit'),
         ];
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_DONATION']);
     }
 
     public static function canCreate(): bool

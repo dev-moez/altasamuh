@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Permission;
 
 class GalleryResource extends Resource
 {
@@ -102,5 +104,25 @@ class GalleryResource extends Resource
             'create' => Pages\CreateGallery::route('/create'),
             'edit' => Pages\EditGallery::route('/{record}/edit'),
         ];
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_GALLERY']);
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['CREATE_GALLERY']);
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['EDIT_GALLERY']);
+    }
+
+    public static function canDelete(Model $record): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_GALLERY']);
     }
 }

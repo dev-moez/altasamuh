@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Donation;
 use Illuminate\Support\Facades\DB;
+use MyFatoorah\Library\API\Payment\MyFatoorahPayment;
+use MyFatoorah\Library\API\Payment\MyFatoorahPaymentStatus;
+use App\Actions\WhatsApp\SendPaymentFailedAction;
 
 class PaymentController extends Controller
 {
+
     public function callback(Request $request)
     {
         if ($request->Event == 'TransactionsStatusChanged') {
@@ -39,9 +43,16 @@ class PaymentController extends Controller
                             'affiliate_id' => $transaction->affiliate_id,
                         ]);
 
-                        $phoneNumber = $transaction->user ? $transaction->user->fullPhoneNumber() : $transaction->phone_number;
+                        $phoneNumber = $transaction->user ? $transaction->user->fullPhoneNumber() : $transaction->fullPhoneNumber();
                         if (!is_null($phoneNumber)) {
                             (new SendPaymentConfirmationAction($phoneNumber))->execute($cartItem->amount, $cartItem->cartable->title, $transaction->created_at);
+                        }
+                    }
+                } else {
+                    foreach ($transaction->cart->items as $cartItem) {
+                        $phoneNumber = $transaction->user ? $transaction->user->fullPhoneNumber() : $transaction->fullPhoneNumber();
+                        if (!is_null($phoneNumber)) {
+                            (new SendPaymentFailedAction($phoneNumber))->execute($cartItem->amount, $cartItem->cartable->title, $transaction->created_at);
                         }
                     }
                 }

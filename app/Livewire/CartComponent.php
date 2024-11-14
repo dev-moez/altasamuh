@@ -17,12 +17,10 @@ class CartComponent extends Component
 
     public function mount()
     {
-        $this->cartItems = CartItem::whereHas(
-            'cart',
-            fn($query) => $query->where([
-                'checked_out' => false
-            ])->where(['user_id' => auth()->id()])->orWhere('session_id', session()->get('altasamuh_cart_session_id'))
-        )
+        $this->cartItems = CartItem::whereHas('cart', fn($query) => $query->where([
+            'checked_out' => false
+        ])->where(['user_id' => auth()->id()])
+            ->orWhere('session_id', session()->get('altasamuh_cart_session_id')))
             ->get();
     }
     public function render()

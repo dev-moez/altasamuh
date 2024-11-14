@@ -17,6 +17,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Support\Colors\Color;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Permission;
 
 class AffiliateResource extends Resource
 {
@@ -105,5 +107,25 @@ class AffiliateResource extends Resource
             'create' => Pages\CreateAffiliate::route('/create'),
             'edit' => Pages\EditAffiliate::route('/{record}/edit'),
         ];
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_AFFILIATE']);
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['CREATE_AFFILIATE']);
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['EDIT_AFFILIATE']);
+    }
+
+    public static function canDelete(Model $record): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_AFFILIATE']);
     }
 }

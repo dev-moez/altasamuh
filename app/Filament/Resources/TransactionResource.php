@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use pxlrbt\FilamentExcel\Exports\ExcelExport;
 use Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter;
+use App\Models\Permission;
 
 class TransactionResource extends Resource
 {
@@ -112,5 +113,10 @@ class TransactionResource extends Resource
     public static function canDelete(Model $record): bool
     {
         return false;
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_TRANSACTION']);
     }
 }

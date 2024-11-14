@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Section;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Permission;
 
 class MiscDonationResource extends Resource
 {
@@ -77,5 +79,25 @@ class MiscDonationResource extends Resource
             'view' => Pages\ViewMiscDonation::route('/{record}'),
             'edit' => Pages\EditMiscDonation::route('/{record}/edit'),
         ];
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_MISC_DONATION']);
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['CREATE_MISC_DONATION']);
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['EDIT_MISC_DONATION']);
+    }
+
+    public static function canDelete(Model $record): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_MISC_DONATION']);
     }
 }

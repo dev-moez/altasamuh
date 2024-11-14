@@ -31,11 +31,11 @@ class Transaction extends Model
         'cart_id',
         'callback_response',
         'redirect_response',
-        // 'transactionable_type',
-        // 'transactionable_id',
         'status',
         'amount',
         'affiliate_id',
+        'phone_number',
+        'country_code',
     ];
 
     protected $casts = [
@@ -80,5 +80,10 @@ class Transaction extends Model
     public function affiliate(): BelongsTo
     {
         return $this->belongsTo(Affiliate::class);
+    }
+
+    public function fullPhoneNumber()
+    {
+        return $this->country_code . $this->phone_number;
     }
 }

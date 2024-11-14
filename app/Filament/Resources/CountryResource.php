@@ -15,6 +15,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Permission;
 
 class CountryResource extends Resource
 {
@@ -85,5 +87,25 @@ class CountryResource extends Resource
             'create' => Pages\CreateCountry::route('/create'),
             'edit' => Pages\EditCountry::route('/{record}/edit'),
         ];
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_COUNTRY']);
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['CREATE_COUNTRY']);
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['EDIT_COUNTRY']);
+    }
+
+    public static function canDelete(Model $record): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_COUNTRY']);
     }
 }

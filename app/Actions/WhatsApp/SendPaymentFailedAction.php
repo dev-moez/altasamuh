@@ -4,11 +4,11 @@ namespace App\Actions\WhatsApp;
 
 use Illuminate\Support\Facades\Http;
 
-class SendWhatsAppMessageAction
+class SendPaymentFailedAction
 {
     public function __construct(public readonly string $recipient) {}
 
-    public function execute(string $otp): void
+    public function execute(string $amount, string $projectName, string $date): void
     {
         Http::withToken(env('WHATSAPP_ACCESS_TOKEN'))
             ->post(
@@ -18,7 +18,7 @@ class SendWhatsAppMessageAction
                     "to" => $this->recipient,
                     "type" => "template",
                     "template" => [
-                        "name" => "verify_code_003",
+                        "name" => "payment_failed_01",
                         "language" => [
                             "code" => "ar",
                             "policy" => "deterministic"
@@ -29,18 +29,15 @@ class SendWhatsAppMessageAction
                                 "parameters" => [
                                     [
                                         "type" => "text",
-                                        "text" => $otp
-                                    ]
-                                ]
-                            ],
-                            [
-                                "type" => "button",
-                                "sub_type" => "url",
-                                "index" => "0",
-                                "parameters" => [
+                                        "text" => $amount . " د. ك"
+                                    ],
                                     [
                                         "type" => "text",
-                                        "text" => $otp
+                                        "text" => $projectName
+                                    ],
+                                    [
+                                        "type" => "text",
+                                        "text" => $date
                                     ]
                                 ]
                             ]

@@ -15,6 +15,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Section;
+use App\Models\Permission;
+use Illuminate\Database\Eloquent\Model;
 
 class HomeSliderResource extends Resource
 {
@@ -123,5 +125,25 @@ class HomeSliderResource extends Resource
             'create' => Pages\CreateHomeSlider::route('/create'),
             'edit' => Pages\EditHomeSlider::route('/{record}/edit'),
         ];
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_HOME_SLIDER']);
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['CREATE_HOME_SLIDER']);
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['EDIT_HOME_SLIDER']);
+    }
+
+    public static function canDelete(Model $record): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_HOME_SLIDER']);
     }
 }

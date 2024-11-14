@@ -64,9 +64,17 @@
 
     @if ($showPhoneNumber)
         <div>
-            <div class="flex items-center justify-between gap-4 mt-4">
+            <div class="flex flex-col items-start gap-4 mt-4">
                 <span class="font-bold text-nowrap">رقم الهاتف</span>
-                <x-text-input wire:model="phone_number" type="text" class="w-full" placeholder="رقم الهاتف" />
+                <div class="flex items-center w-full gap-2">
+                    <x-select wire:model="code">
+                        <option selected>--@lang('messages.Code')--</option>
+                        @foreach ($countries as $country)
+                            <option value="{{ $country->code }}">(+{{ $country->code }}) {{ $country->name }}</option>
+                        @endforeach
+                    </x-select>
+                    <x-text-input wire:model="phone_number" type="text" class="flex-1 flex-grow !w-full" placeholder="رقم الهاتف" />
+                </div>
             </div>
         </div>
     @endif

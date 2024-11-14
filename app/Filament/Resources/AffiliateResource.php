@@ -72,6 +72,10 @@ class AffiliateResource extends Resource
                     ->copyable(),
                 TextColumn::make('visits')
                     ->label(__('messages.Visits')),
+                TextColumn::make('donations_sum')
+                    ->label(__('messages.Donations'))
+                    ->sum('donations', 'amount')
+                    ->suffix(' د.ك'),
                 TextColumn::make('created_at')
                     ->label(__('messages.Created at'))
             ])

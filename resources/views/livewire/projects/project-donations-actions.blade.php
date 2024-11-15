@@ -33,7 +33,7 @@
 
     {{-- Make donation  --}}
     <div class="flex items-center justify-between gap-4 mt-5">
-        <div class="font-bold">أدخل المبلغ بالدينار</div>
+        <div class="font-bold text-[#979797]">أدخل المبلغ بالدينار</div>
         <!-- Input Number -->
         <div class="inline-block px-3 py-2 bg-white border border-gray-200 rounded-lg">
             <div class ="flex items-center gap-x-1.5" x-data="{ count: @entangle('amount') }">

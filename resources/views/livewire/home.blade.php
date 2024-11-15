@@ -61,7 +61,7 @@
                     @forelse($projects as $project)
                         <div class="border-2 border-gray-200 rounded-lg ">
                             <img src="{{ $project->getFirstMedia('project-cover')?->getUrl() }}" alt="" class="object-cover object-center w-full rounded-t-lg h-72">
-                            <div class="px-3 pt-4 pb-6 bg-white">
+                            <div class="px-3 pt-4 pb-6 bg-white rounded-b-lg">
                                 <div class="mb-4">
                                     <a href="{{ route('projects.view', $project) }}">
                                         <h2 class="font-bold text-md">{{ $project->title }}</h2>

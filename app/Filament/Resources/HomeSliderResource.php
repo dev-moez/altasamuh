@@ -146,4 +146,9 @@ class HomeSliderResource extends Resource
     {
         return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_HOME_SLIDER']);
     }
+
+    public static function canDeleteAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_HOME_SLIDER']);
+    }
 }

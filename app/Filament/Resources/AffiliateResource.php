@@ -132,4 +132,9 @@ class AffiliateResource extends Resource
     {
         return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_AFFILIATE']);
     }
+
+    public static function canDeleteAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_AFFILIATE']);
+    }
 }

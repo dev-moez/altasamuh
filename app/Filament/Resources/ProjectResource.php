@@ -213,4 +213,9 @@ class ProjectResource extends Resource
     {
         return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_PROJECT']);
     }
+
+    public static function canDeleteAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_PROJECT']);
+    }
 }

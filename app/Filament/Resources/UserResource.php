@@ -109,4 +109,9 @@ class UserResource extends Resource
     {
         return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_USER']);
     }
+
+    public static function canDeleteAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_USER']);
+    }
 }

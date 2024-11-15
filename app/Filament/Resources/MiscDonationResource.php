@@ -100,4 +100,9 @@ class MiscDonationResource extends Resource
     {
         return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_MISC_DONATION']);
     }
+
+    public static function canDeleteAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_MISC_DONATION']);
+    }
 }

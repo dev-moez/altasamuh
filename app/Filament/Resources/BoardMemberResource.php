@@ -120,4 +120,9 @@ class BoardMemberResource extends Resource
     {
         return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_BOARD_MEMBER']);
     }
+
+    public static function canDeleteAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_BOARD_MEMBER']);
+    }
 }

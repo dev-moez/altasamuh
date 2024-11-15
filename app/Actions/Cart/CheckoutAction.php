@@ -25,11 +25,9 @@ class CheckoutAction
 
     public function execute()
     {
-        $this->cart->load('items');
-        dd($this->cart);
         $postFields = [
             'NotificationOption' => 'LNK',
-            'InvoiceValue' => $this->cart->amount,
+            'InvoiceValue' => $this->cart->load('items')->amount,
             'CustomerName' => auth()->user()->name ?? 'فاعل خير',
             'CustomerMobile' => auth()->check() ? auth()->user()->phone_number : $this->cart->phone_number,
             'MobileCountryCode' => auth()->check() ? auth()->user()->country_code :  $this->cart->country_code,

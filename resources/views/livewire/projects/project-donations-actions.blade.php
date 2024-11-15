@@ -71,7 +71,7 @@
             <div class="flex flex-col items-start gap-4 mt-4">
                 <span class="font-bold text-nowrap text-[#979797]">رقم الهاتف</span>
                 <div class="flex items-center w-full gap-2">
-                    <x-text-input wire:model="phone_number" type="text" class="flex-1 flex-grow !w-full" placeholder="رقم الهاتف" />
+                    <x-text-input wire:model="phone_number" type="text" class="flex-1 flex-grow !w-full" placeholder=" ادخل رقم الهاتف" />
                     <select wire:model="code" class="appearance-none py-2 pe-9 flex gap-x-2 text-nowrap  min-w-[80px] cursor-pointer bg-white border border-gray-200 rounded-lg text-start focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-neutral-600">
                         <option selected>--@lang('messages.Code')--</option>
                         @foreach ($countries as $country)
@@ -84,7 +84,7 @@
     @endif
     {{-- @endif --}}
     {{-- Actions --}}
-    <div class="flex flex-col flex-grow gap-4 my-4 lg:flex-row" wire:ignore>
+    <div class="flex flex-col flex-grow gap-4 my-4 mt-6 lg:flex-row" wire:ignore>
         {{-- @role('user') --}}
         <x-primary-button wire:click.prevent="donate" class="flex-1 w-full lg:w-auto">تبرع الان</x-primary-button>
         {{-- @else

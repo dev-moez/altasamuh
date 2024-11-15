@@ -43,6 +43,7 @@ class Permission extends SpatiePermission
         'DELETE_CONTACT_MESSAGE' => 'delete contact messages',
         // List for misc donations
         'VIEW_MISC_DONATION' => 'view misc donations',
+        'CREATE_MISC_DONATION' => 'create misc donations',
         'DELETE_MISC_DONATION' => 'delete misc donations',
         'EDIT_MISC_DONATION' => 'edit misc donations',
         // List misc donation values

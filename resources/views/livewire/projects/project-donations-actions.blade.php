@@ -25,7 +25,7 @@
     <div class="my-3">
         <p class="text-end">{{ number_format($donationsPercentage, 2) }} ٪</p>
         <!-- Progress -->
-        <div class="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow="{{ $donationsPercentage }}" aria-valuemin="0" aria-valuemax="100">
+        <div class="flex w-full h-3 overflow-hidden bg-gray-200 rounded-full dark:bg-neutral-700" role="progressbar" aria-valuenow="{{ $donationsPercentage }}" aria-valuemin="0" aria-valuemax="100">
             <div class="flex flex-col justify-center overflow-hidden text-xs text-center text-white transition duration-500 bg-yellow-500 rounded-full whitespace-nowrap dark:bg-yellow-500" style="width: {{ $donationsPercentage < 1 ? 1 : $donationsPercentage }}%"></div>
         </div>
         <!-- End Progress -->

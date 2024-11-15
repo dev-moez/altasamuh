@@ -1,7 +1,7 @@
 <div>
     <div class="flex flex-wrap gap-3 mt-4">
         @forelse($miscDonations as $donation)
-            <button type="button" wire:click.prevent="$set('misc_donation_id', {{ $donation->id }} )" class="px-5 py-2 text-sm rounded-md {{ $misc_donation_id == $donation->id ? 'bg-green-500 text-white' : 'text-gray-800 bg-gray-200' }}">{{ $donation->title }}</button>
+            <button type="button" wire:click.prevent="$set('misc_donation_id', {{ $donation->id }} )" class="px-5 py-2 text-md rounded-md font-bold {{ $misc_donation_id == $donation->id ? 'bg-green-500 text-white' : 'text-gray-800 bg-gray-200' }}">{{ $donation->title }}</button>
         @empty
         @endforelse
     </div>

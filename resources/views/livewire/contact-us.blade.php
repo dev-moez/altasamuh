@@ -114,7 +114,9 @@
 
     <div class="py-10 bg-white">
         <div class="container">
-            <iframe src="{{ $generalSettings->maps_location_url }}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="border-2 border-[#0072BB] rouned-lg overflow-hidden">
+                <iframe src="{{ $generalSettings->maps_location_url }}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
 
             <div class="flex justify-around py-8">
                 <div class="font-bold text-center text-primary">

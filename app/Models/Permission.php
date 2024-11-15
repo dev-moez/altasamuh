@@ -86,7 +86,7 @@ class Permission extends SpatiePermission
         'EDIT_COUNTRY' => 'edit countries',
         'DELETE_COUNTRY' => 'delete countries',
         // General Settings
-        'VIEW_GENERAL_SETTINGS' => 'view general settings',
+        'EDIT_GENERAL_SETTINGS' => 'edit general settings',
         // Export
         'EXPORT_DONATIONS' => 'export donations',
         'EXPORT_PROJECTS' => 'export projects',

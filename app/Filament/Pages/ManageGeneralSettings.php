@@ -22,7 +22,7 @@ class ManageGeneralSettings extends SettingsPage
 
     public static function canAccess(): bool
     {
-        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_GENERAL_SETTINGS']);
+        return auth()->user()->can(Permission::PERMISSION_LIST['EDIT_GENERAL_SETTINGS']);
     }
     public static function getNavigationLabel(): string
     {

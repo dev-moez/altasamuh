@@ -42,7 +42,7 @@ class CountryResource extends Resource
                 TextInput::make('name')
                     ->label(__('messages.Name'))
                     ->required(),
-                TextInput::make('country_code')
+                TextInput::make('code')
                     ->label(__('messages.Code'))
                     ->required(),
                 Toggle::make('selected_by_default')

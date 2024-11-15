@@ -121,7 +121,7 @@
             <div class="">
                 <div class="container flex flex-col flex-wrap justify-between grid-cols-1 px-4 py-6 mx-auto lg:gap-5 lg:grid-cols-3 grow-0 lg:flex-row">
                     <div class="grow-0 lg:max-w-72">
-                        <img src="{{ asset('images/logo-white.png') }}" alt="Al Tasamoh Logo" class="w-auto h-8 mb-3">
+                        <img src="{{ asset('images/logo-white.png') }}?v=1" alt="Al Tasamoh Logo" class="w-auto h-8 mb-3">
                         <div>
                             <p class="text-md">جمعية التسامح للأعمال الخيرية لتنمية المجتمع والمساهمة في إنماء المجتمع ومساعدة المحتاجين ومشاريع الأوقاف</p>
                         </div>

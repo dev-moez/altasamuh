@@ -73,7 +73,7 @@
                         @foreach ($countries as $country)
                             <option value="{{ $country->code }}">(+{{ $country->code }})</option>
                         @endforeach
-                        <select>
+                    </select>
                 </div>
             </div>
         </div>

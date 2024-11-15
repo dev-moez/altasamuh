@@ -8,7 +8,7 @@
                     </p>
                 </div>
                 @if (session('status') == 'verification-link-sent')
-                    <div class="mb-4 text-sm font-medium text-green-600 dark:text-green-400">
+                    <div class="mb-4 text-sm font-medium text-[#07A54F] dark:text-green-400">
                         {{ __('messages.A new OTP has been sent to your WhatsApp.') }}
                     </div>
                 @endif

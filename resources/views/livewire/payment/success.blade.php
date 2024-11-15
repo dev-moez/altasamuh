@@ -2,9 +2,9 @@
     <div class="container">
         <div class="max-w-xl p-4 mx-auto my-12 bg-white shadow sm:p-8 dark:bg-gray-800 sm:rounded-lg">
             <div class="mb-5">
-                <h1 class="text-2xl font-bold text-center text-green-500">تمت عملية الدفع بنجاح</h1>
-                <p class="p-4 mt-4 text-center text-green-600 bg-green-100 rounded-lg">
-                    تمت عملية الدفع بنجاح، جزاك الله خيرا.
+                <h1 class="text-2xl font-bold text-center text-green-500">تفاصيل التبرع</h1>
+                <p class="p-4 mt-4 text-center text-[#07A54F] bg-green-100 rounded-lg">
+                    تمت عملية التبرع بنجاح
                 </p>
             </div>
             <div class="p-4">

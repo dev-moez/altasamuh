@@ -32,12 +32,12 @@
                     <h4 class="lg:text-4xl text-3xl font-bold text-[#2E3192] mb-3">
                         الزكاة والصدقات والكفارات
                     </h4>
-                    <p class="mt-2 text-gray-600">الغرض من التبرع</p>
+                    <p class="mt-4 text-gray-600">الغرض من التبرع</p>
                     <livewire:misc-donation-actions wire:key='{{ uniqid() }}' />
                 </div>
-                <div class="relative flex-1 hidden lg:block">
-                    <img src="{{ asset('images/mask-bg.png') }}" class="">
-                    <img src="{{ asset('images/misc-donations.png') }}" class="absolute top-0 opacity-35">
+                <div class="relative flex-1 hidden overflow-hidden lg:block">
+                    {{-- <img src="{{ asset('images/mask-bg.png') }}" class=""> --}}
+                    <img src="{{ asset('images/misc-donations.png') }}?v=1" class="absolute top-0 bottom-0">
 
                 </div>
             </div>
@@ -50,7 +50,7 @@
                 {{-- Tabs --}}
                 <div class="relative flex items-center justify-center px-2 py-2 mx-auto bg-white rounded-3xl gap-x-1 w-fit -top-10">
                     @forelse($categories as $category)
-                        <button wire:click.prevent="$set('currentCategoryId', {{ $category->id }} )" type="button" class="px-5 py-1 rounded-2xl {{ $currentCategoryId == $category->id ? 'bg-blue-600 text-white font-bold' : 'bg-transparent text-gray-700' }}">
+                        <button wire:click.prevent="$set('currentCategoryId', {{ $category->id }} )" type="button" class="px-6 py-2 rounded-2xl {{ $currentCategoryId == $category->id ? 'bg-[#0072BB] text-white font-bold' : 'bg-transparent text-gray-700' }}">
                             {{ $category->name }}
                         </button>
                     @empty
@@ -90,7 +90,7 @@
                     @endforelse
                 </div>
                 <div class="mt-10 text-center">
-                    <a href="{{ route('articles.list') }}" class="px-4 py-2 text-white rounded-lg text-md hover:bg-blue-600 bg-primary">
+                    <a href="{{ route('articles.list') }}" class="px-8 py-2 font-bold text-white rounded-2xl text-md hover:bg-blue-600 bg-primary">
                         المزيد من الأخبار
                     </a>
                 </div>

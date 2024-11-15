@@ -1,20 +1,20 @@
 <div>
     {{-- Donations details --}}
     <div id="donationsDetails" class="flex flex-grow gap-3">
-        <div class="flex-1 border border-blue-600 rounded-md">
-            <h5 class="px-2 py-2 text-sm font-bold text-center text-white bg-blue-600">قيمة المشروع</h5>
+        <div class="flex-1 border border-[#0072BB] rounded-md">
+            <h5 class="px-2 py-2 text-sm font-bold text-center text-white bg-[#0072BB]">قيمة المشروع</h5>
             <div class="p-2 text-center">
                 <span>{{ number_format($requiredDonationValue, 0, ',', ',') }} د.ك</span>
             </div>
         </div>
-        <div class="flex-1 border border-green-600 rounded-md">
-            <h5 class="px-2 py-2 text-sm font-bold text-center text-white bg-green-600">المدفوع</h5>
+        <div class="flex-1 border border-[#07A54F] rounded-md">
+            <h5 class="px-2 py-2 text-sm font-bold text-center text-white bg-[#07A54F]">المدفوع</h5>
             <div class="p-2 text-center">
                 <span>{{ number_format($donationsAmount, 0, ',', ',') }} د.ك</span>
             </div>
         </div>
-        <div class="flex-1 border border-red-600 rounded-md">
-            <h5 class="px-2 py-2 text-sm font-bold text-center text-white bg-red-600">المتبقي</h5>
+        <div class="flex-1 border border-[#FF3C38] rounded-md">
+            <h5 class="px-2 py-2 text-sm font-bold text-center text-white bg-[#FF3C38]">المتبقي</h5>
             <div class="p-2 text-center">
                 <span>{{ number_format($remainingAmount, 0, ',', ',') }} د.ك</span>
             </div>
@@ -90,7 +90,12 @@
                 <x-primary-button href="{{ route('projects.view', $project) }}" class="flex-1 w-full lg:w-auto">تبرع الان</x-primary-button>
             @endif
         @endrole --}}
-        <x-primary-button wire:click.prevent="addToCart" class="flex-1 w-full lg:w-auto">أضف إلي السلة</x-primary-button>
+        <x-primary-button wire:click.prevent="addToCart" class="flex-1 w-full lg:w-auto bg-[#DCDCDC] gap-x-2 hover:bg-gray-400">
+            <span class="text-[#3F3F3F]">أضف للسلة</span>
+            <svg width="20" height="18" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.699385 -0.000201416C0.422627 -0.000201416 0.199219 0.234299 0.199219 0.524799C0.199219 0.815299 0.422627 1.0498 0.699385 1.0498H2.29325L4.01216 9.5653C4.08051 9.88555 4.28058 10.1533 4.534 10.1498H12.8701C13.1335 10.1533 13.3769 9.90305 13.3769 9.6248C13.3769 9.34655 13.1335 9.0963 12.8701 9.0998H4.9408L4.72739 8.0498H13.537C13.7604 8.04805 13.9721 7.86955 14.0222 7.6403L15.1892 2.3903C15.2542 2.0858 15.0025 1.7533 14.7041 1.7498H3.46031L3.18855 0.414548C3.14187 0.181798 2.92513 -0.00195312 2.69839 -0.00195312H0.699385V-0.000201416ZM3.66871 2.7998H14.0738L13.1419 6.9998H4.51899L3.66871 2.7998ZM6.20122 10.4998C5.28591 10.4998 4.534 11.289 4.534 12.2498C4.534 13.2105 5.28591 13.9998 6.20122 13.9998C7.11652 13.9998 7.86844 13.2105 7.86844 12.2498C7.86844 11.289 7.11652 10.4998 6.20122 10.4998ZM11.2029 10.4998C10.2876 10.4998 9.53566 11.289 9.53566 12.2498C9.53566 13.2105 10.2876 13.9998 11.2029 13.9998C12.1182 13.9998 12.8701 13.2105 12.8701 12.2498C12.8701 11.289 12.1182 10.4998 11.2029 10.4998ZM6.20122 11.5498C6.57468 11.5498 6.86811 11.8578 6.86811 12.2498C6.86811 12.6418 6.57468 12.9498 6.20122 12.9498C5.82776 12.9498 5.53433 12.6418 5.53433 12.2498C5.53433 11.8578 5.82776 11.5498 6.20122 11.5498ZM11.2029 11.5498C11.5763 11.5498 11.8698 11.8578 11.8698 12.2498C11.8698 12.6418 11.5763 12.9498 11.2029 12.9498C10.8294 12.9498 10.536 12.6418 10.536 12.2498C10.536 11.8578 10.8294 11.5498 11.2029 11.5498Z" fill="#3F3F3F" />
+            </svg>
+        </x-primary-button>
     </div>
     <div>
         <x-input-error class="mt-2" :messages="$errors->get('amount')" />

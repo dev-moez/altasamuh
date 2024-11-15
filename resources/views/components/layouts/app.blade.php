@@ -111,10 +111,15 @@
             </main>
         @endif
 
-        <footer class="text-white" style="background: linear-gradient(270deg, #0071BC 43.5%, #1751A5 100%);">
+        <footer class="relative text-white" style="background: linear-gradient(270deg, #0071BC 43.5%, #1751A5 100%);">
+            <div class="absolute z-0 hidden -translate-x-1/3 left-1/2 lg:block">
+                <svg width="580" height="201" viewBox="0 0 580 201" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.2" d="M587 -70.1253V0.348083C542.895 19.8664 496.599 33.5252 449.186 44.7754C284.126 83.9517 143.604 160.773 53.1184 311.035C32.3531 345.519 16.4523 382.272 7.48156 421.757C7.04749 423.692 6.07958 425.507 4.56783 428.754C4.12378 429.701 3.63483 430.768 3.10098 432C2.95629 430.918 2.8166 429.836 2.68188 428.754C-7.74069 345.419 12.7402 272.004 54.9894 204.687C73.0405 175.928 98.1615 151.692 118.807 124.449C171.369 55.0881 216.796 -18.2926 242.376 -102.4C243.01 -104.469 244.247 -106.359 247.191 -108C254.096 -40.2544 234.254 24.5739 224.096 92.883C259.694 65.9344 298.221 48.715 336.354 30.6828C393.721 3.56457 454.64 -14.2084 513.553 -37.2075C538.784 -47.0614 563.306 -57.9825 587 -70.1253Z" fill="white" />
+                </svg>
 
+            </div>
             <div class="">
-                <div class="container flex flex-wrap justify-between grid-cols-1 px-4 py-8 mx-auto lg:gap-5 lg:grid-cols-3 grow-0">
+                <div class="container flex flex-col flex-wrap justify-between grid-cols-1 px-4 py-6 mx-auto lg:gap-5 lg:grid-cols-3 grow-0 lg:flex-row">
                     <div class="grow-0 lg:max-w-72">
                         <img src="{{ asset('images/logo-white.png') }}" alt="Al Tasamoh Logo" class="w-auto h-8 mb-3">
                         <div>
@@ -122,7 +127,7 @@
                         </div>
                     </div>
 
-                    <nav class="flex flex-col gap-2">
+                    <nav class="flex flex-col gap-2 mt-6 lg:mt-0">
                         <h5 class="font-bold">روابط هامة</h5>
                         <a href="{{ route('home') }}" class="hover:underline">الرئيسية</a>
                         <a href="{{ route('about') }}" class="hover:underline">من نحن</a>
@@ -130,7 +135,7 @@
                         <a href="{{ route('contact') }}" class="hover:underline">تواصل معنا</a>
                     </nav>
 
-                    <div class="flex flex-col items-center md:items-start">
+                    <div class="flex flex-col mt-6 lg:mt-0 lg:items-center md:items-start">
                         <h3 class="mb-4 text-lg font-semibold">تواصل معنا</h3>
                         <div class="flex space-x-3 space-x-reverse">
                             @if (app(GeneralSettings::class)->whatsapp_number)
@@ -203,7 +208,7 @@
                 </div>
                 <div class="py-2 subfooter">
                     <p class="text-center text-white">
-                        جميع الحقوق محفوظة لـ جمعية التسامح للاعمال الخيرية © {{ date('Y') }} . تمت البرمجة بواسطة شركة بداية
+                        جميع الحقوق محفوظة لـ جمعية التسامح للاعمال الخيرية © {{ date('Y') }} . تمت البرمجة بواسطة <strong>شركة بداية</strong>
                     </p>
                 </div>
         </footer>

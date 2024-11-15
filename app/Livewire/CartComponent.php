@@ -12,16 +12,17 @@ use Illuminate\Support\Facades\Auth;
 
 class CartComponent extends Component
 {
-
     public $cartItems;
 
     public function mount()
     {
-        $this->cartItems = CartItem::whereHas('cart', fn($query) => $query->where([
-            'checked_out' => false
-        ])->where(['user_id' => auth()->id()])
-            ->orWhere('session_id', session()->get('altasamuh_cart_session_id')))
-            ->get();
+        $this->cartItems = CartItem::with('cartable')->whereHas('cart', function ($query) {
+            $query->where(['checked_out' => false])
+                ->where(function ($query) {
+                    $query->where('user_id', auth()->id())
+                        ->orWhere('session_id', session()->get('altasamuh_cart_session_id'));
+                });
+        })->get();
     }
     public function render()
     {
@@ -64,6 +65,12 @@ class CartComponent extends Component
     #[On('refreshCart')]
     public function refreshCart()
     {
-        $this->cartItems = CartItem::whereHas('cart', fn($query) => $query->where('user_id', auth()->id()))->get();
+        $this->cartItems = CartItem::whereHas('cart', function ($query) {
+            $query->where('checked_out', false)
+                ->where(function ($query) {
+                    $query->where('user_id', auth()->id())
+                        ->orWhere('session_id', session()->get('altasamuh_cart_session_id'));
+                });
+        })->get();
     }
 }

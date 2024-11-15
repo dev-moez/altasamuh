@@ -81,15 +81,15 @@
     {{-- @endif --}}
     {{-- Actions --}}
     <div class="flex flex-col flex-grow gap-4 my-4 lg:flex-row" wire:ignore>
-        @role('user')
-            <x-primary-button wire:click.prevent="donate" class="flex-1 w-full lg:w-auto">تبرع الان</x-primary-button>
-        @else
+        {{-- @role('user') --}}
+        <x-primary-button wire:click.prevent="donate" class="flex-1 w-full lg:w-auto">تبرع الان</x-primary-button>
+        {{-- @else
             @if (request()->routeIs('projects.view'))
                 <x-primary-button wire:click.prevent="donate" class="flex-1 w-full lg:w-auto">تبرع الان</x-primary-button>
             @else
                 <x-primary-button href="{{ route('projects.view', $project) }}" class="flex-1 w-full lg:w-auto">تبرع الان</x-primary-button>
             @endif
-        @endrole
+        @endrole --}}
         <x-primary-button wire:click.prevent="addToCart" class="flex-1 w-full lg:w-auto">أضف إلي السلة</x-primary-button>
     </div>
     <div>

@@ -11,13 +11,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Models\Project;
 use App\Models\CategoryProject;
 use Illuminate\Database\Eloquent\Builder;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Category extends Model
+class Category extends Model implements HasMedia
 {
+    use InteractsWithMedia;
     use HasFactory;
+
+    const MEDIA_CATEGORY = 'category';
 
     protected $fillable = [
         'name',
+        'description',
         'parent_id',
         'display_on_navbar',
         'display_on_homepage'

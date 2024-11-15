@@ -38,7 +38,7 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             backgroundImage: {
-                'page-header': 'url("https://altasamuh.test/images/page-header-bg.png"), radial-gradient(50% 50% at 50% 50%, #0072BB 44.5%, #2E3192 100%)',
+                'page-header': 'url("https://altasamuhkh.org/images/page-header-bg.png"), radial-gradient(50% 50% at 50% 50%, #0072BB 44.5%, #2E3192 100%)',
                 'about-page-section-1': 'linear-gradient(270deg, #0072BB 0%, #2E3192 100%)',
             }
         },

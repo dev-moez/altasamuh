@@ -123,7 +123,7 @@
                     هل لديــــك أي استفســار؟
                 </div>
                 <div>
-                    <a href="{{ $generalSettings->contact_contact_us_link }}" class="flex py-2 min-w-[240px] font-bold border-2 rounded-lg px-14 text-primary border-primary gap-x-3 items-center text-center justify-center">
+                    <a href="tel:{{ $generalSettings->contact_contact_us_link }}" class="flex py-2 min-w-[240px] font-bold border-2 rounded-lg px-14 text-primary border-primary gap-x-3 items-center text-center justify-center">
                         <span>اتصل بنا</span>
                         <svg class="inline" width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.0981 23.6496L14.1159 24.2881C12.8336 24.7404 7.93271 24.3203 3.31909 15.1271C-1.12891 6.25854 1.59866 2.71335 2.64424 2.01594L4.41653 0.955054C4.83124 0.760797 5.32257 0.936042 5.52829 1.34394L8.25193 6.6269C8.3142 6.75922 8.34191 6.90774 8.33604 7.04892C8.32007 7.31677 8.17401 7.56976 7.89753 7.69926L5.95538 8.42114C5.14715 8.88213 5.48198 10.0271 5.92896 11.1526L8.24441 15.6578C9.40964 17.4388 10.0614 18.297 10.8859 18.0261L12.6129 16.8909C13.0224 16.7057 13.5189 16.8719 13.7246 17.2798L16.4483 22.5627C16.6445 22.9652 16.5223 23.4608 16.0981 23.6496Z" fill="#0072BB" />

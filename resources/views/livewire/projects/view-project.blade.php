@@ -1,6 +1,6 @@
 @use('App\Models\Project', 'Project')
 <div>
-    <div class="py-12">
+    <div class="pt-4 pb-12">
         <div class="container">
             <div class="p-3 mb-4 bg-white rounded-md">
                 <a href="{{ route('home') }}">الرئيسية</a> / <a href="{{ route('projects.list', $project->categories->first()) }}">المشاريع</a> / {{ $project->title }}

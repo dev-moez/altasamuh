@@ -9,7 +9,7 @@
                     <div class="relative flex items-center justify-center text-center text-white bg-blue-500 h-[500px] swiper-slide">
                         <img src="{{ $slide['image'] }}" alt="" class="object-cover w-full h-[500px]">
                         <div class="absolute transform -translate-x-1/2 -translate-y-2/3 top-2/3 left-1/2">
-                            <h2 class="text-3xl font-bold">{{ $slide['heading'] }}</h2>
+                            <h2 class="mb-4 text-3xl font-bold">{{ $slide['heading'] }}</h2>
                             <p class="text-lg">{{ $slide['sub_heading'] }}</p>
                         </div>
 
@@ -20,8 +20,8 @@
             <div class="swiper-pagination"></div>
 
             <!-- Navigation buttons -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next !text-white"></div>
+            <div class="swiper-button-prev !text-white"></div>
         </div>
     </div>
 

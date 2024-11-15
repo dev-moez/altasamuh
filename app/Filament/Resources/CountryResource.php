@@ -62,6 +62,7 @@ class CountryResource extends Resource
                     ->label(__('messages.Code'))
                     ->searchable(),
                 IconColumn::make('selected_by_default')
+                    ->label(__('messages.Selected by default'))
                     ->boolean(),
                 TextColumn::make('created_at')
                     ->label(__('messages.Created at'))

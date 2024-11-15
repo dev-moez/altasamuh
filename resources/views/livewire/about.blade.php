@@ -3,9 +3,12 @@
         @lang('messages.About')
     </x-page-header>
 
-    <div class="py-8">
+    <div class="pt-4 pb-8">
         <div class="container px-4 mx-auto lg:px-0">
-            <div class="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-x-5">
+            <x-section-header class="text-primary">
+                نبذة عن جمعية التسامح
+            </x-section-header>
+            <div class="grid grid-cols-1 mt-3 lg:grid-cols-2 md:grid-cols-2 gap-x-5">
                 <div>
                     <div class="text-lg leading-10">
                         {!! $generalSettings->about_text !!}

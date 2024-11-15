@@ -92,6 +92,8 @@ class Permission extends SpatiePermission
         'EXPORT_PROJECTS' => 'export projects',
         'EXPORT_USERS' => 'export users',
         'EXPORT_TRANSACTIONS' => 'export transactions',
+        // StatsOverview
+        'VIEW_INSIGHTS' => 'view insights'
 
     ];
 }

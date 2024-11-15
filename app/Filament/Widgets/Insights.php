@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Project;
 use App\Models\Transaction;
 use App\Models\Donation;
+use App\Models\Permission;
 
 class Insights extends BaseWidget
 {
@@ -30,5 +31,10 @@ class Insights extends BaseWidget
             Stat::make('عدد المستخدمين', $usersCount),
             Stat::make('عدد عمليات التبرعات', $donationsCount),
         ];
+    }
+
+    public static function canView(): bool
+    {
+        return auth('admin')->user()->can(Permission::PERMISSION_LIST['VIEW_INSIGHTS']);
     }
 }

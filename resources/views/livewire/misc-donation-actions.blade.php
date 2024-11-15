@@ -7,7 +7,11 @@
     </div>
     {{-- Make donation  --}}
     <div class="mt-5">
-        <div class="font-bold text-[#979797]">أدخل المبلغ بالدينار</div>
+        <div class="font-bold">
+            <span class="text-[#979797]">
+                أدخل المبلغ بالدينار
+            </span>
+        </div>
         <div class="flex items-center justify-between w-full gap-4 mt-5">
             <div class="grid w-full grid-cols-2 gap-x-4">
                 <div class="flex flex-wrap items-center gap-3">

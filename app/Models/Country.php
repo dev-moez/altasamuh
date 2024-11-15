@@ -13,6 +13,7 @@ class Country extends Model
     protected $fillable = [
         'name',
         'code',
+        'selected_by_default',
     ];
 
     protected $casts = [

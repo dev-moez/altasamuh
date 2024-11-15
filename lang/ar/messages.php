@@ -118,4 +118,5 @@ return [
     'Whatsapp URL' => 'رابط WhatsApp',
     'Google Maps location url' => 'رابط موقع Google Maps',
     'Permissions' => 'الصلاحيات',
+    'Selected by default' => 'محدد بشكل افتراضي',
 ];

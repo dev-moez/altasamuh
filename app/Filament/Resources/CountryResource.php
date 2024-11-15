@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Permission;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Forms\Components\Toggle;
 
 class CountryResource extends Resource
 {
@@ -43,6 +45,9 @@ class CountryResource extends Resource
                 TextInput::make('country_code')
                     ->label(__('messages.Code'))
                     ->required(),
+                Toggle::make('selected_by_default')
+                    ->label(__('messages.Selected by default'))
+                    ->required(),
             ]);
     }
 
@@ -56,6 +61,8 @@ class CountryResource extends Resource
                 TextColumn::make('code')
                     ->label(__('messages.Code'))
                     ->searchable(),
+                IconColumn::make('selected_by_default')
+                    ->boolean(),
                 TextColumn::make('created_at')
                     ->label(__('messages.Created at'))
             ])

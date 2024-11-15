@@ -41,6 +41,7 @@ class ProjectDonationActions extends Component
         $this->donationsPercentage = $this->requiredDonationValue != 0 ? $this->donationsAmount / $this->requiredDonationValue * 100 : 0;
         $this->minimumDonationValue = $this->project->minimum_donation_value;
         $this->countries = Country::all();
+        $this->code = Country::where('selected_by_default', true)->first()?->code;
     }
     public function render()
     {

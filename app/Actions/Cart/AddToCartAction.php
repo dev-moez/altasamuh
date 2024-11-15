@@ -41,12 +41,6 @@ class AddToCartAction
 
     public function getCartSessionId()
     {
-        if (!Session::get('altasamuh_cart_session_id')) {
-            $sessionId = Str::random(40);
-            Session::put('altasamuh_cart_session_id', $sessionId);
-            return $sessionId;
-        } else {
-            return Session::get('altasamuh_cart_session_id');
-        }
+        return Session::get('altasamuh_cart_session_id');
     }
 }

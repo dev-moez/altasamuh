@@ -47,7 +47,7 @@
                         @foreach (Category::navbarCategories()->get() as $category)
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
-                                    <button class="inline-flex items-center px-3 py-2 font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md text-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
+                                    <button class="inline-flex items-center px-3 py-2 font-bold leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md text-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
                                         <div class="flex items-center text-md text-nowrap gap-x-3">
                                             {{ $category->name }}
                                             <svg fill="#000000" class="w-4 h-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

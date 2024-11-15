@@ -208,7 +208,7 @@
                 </div>
                 <div class="py-2 subfooter">
                     <p class="text-center text-white">
-                        جميع الحقوق محفوظة لـ جمعية التسامح للاعمال الخيرية © {{ date('Y') }} . تمت البرمجة بواسطة <strong>شركة بداية</strong>
+                        جميع الحقوق محفوظة لـ جمعية التسامح للاعمال الخيرية © {{ date('Y') }} . تمت البرمجة بواسطة <strong><a href="https://badayh-agency.com/">شركة بداية</a></strong>
                     </p>
                 </div>
         </footer>

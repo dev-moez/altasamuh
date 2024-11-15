@@ -35,6 +35,6 @@ class Insights extends BaseWidget
 
     public static function canView(): bool
     {
-        return auth('admin')->user()->can(Permission::PERMISSION_LIST['VIEW_INSIGHTS']);
+        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_INSIGHTS']);
     }
 }

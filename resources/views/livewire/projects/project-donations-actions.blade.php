@@ -39,14 +39,14 @@
             </span>
         </div>
         <!-- Input Number -->
-        <div class="inline-block px-3 py-2 bg-white border border-gray-200 rounded-lg">
-            <div class ="flex items-center gap-x-1.5" x-data="{ count: @entangle('amount') }">
+        <div class="flex-grow inline-block px-3 py-2 bg-white border border-gray-200 rounded-lg">
+            <div class ="flex justify-between gap-x-1.5" x-data="{ count: @entangle('amount') }">
                 <button @click="count--" type="button" class="inline-flex items-center justify-center text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-md shadow-sm size-6 gap-x-2 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" tabindex="-1" aria-label="Decrease">
                     <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14"></path>
                     </svg>
                 </button>
-                <input type="number" @entangle('amount') x-model="count" wire:model.live="amount" min="1" class="min-w-24 p-0 w-6 bg-transparent border-0 text-gray-800 text-center focus:ring-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none --prevent-on-load-init" style="-moz-appearance: textfield;" type="number" aria-roledescription="Number field" value="0">
+                <input type="number" @entangle('amount') x-model="count" wire:model.live="amount" min="1" class="min-w-24 p-0 w-full bg-transparent border-0 text-gray-800 text-center focus:ring-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none --prevent-on-load-init" style="-moz-appearance: textfield;" type="number" aria-roledescription="Number field" value="0">
                 <button @click.prevent="count++" type="button" class="inline-flex items-center justify-center text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-md shadow-sm size-6 gap-x-2 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" tabindex="-1" aria-label="Increase">
                     <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14"></path>
@@ -69,7 +69,7 @@
     @if ($showPhoneNumber)
         <div>
             <div class="flex flex-col items-start gap-4 mt-4">
-                <span class="font-bold text-nowrap">رقم الهاتف</span>
+                <span class="font-bold text-nowrap text-[#979797]">رقم الهاتف</span>
                 <div class="flex items-center w-full gap-2">
                     <x-text-input wire:model="phone_number" type="text" class="flex-1 flex-grow !w-full" placeholder="رقم الهاتف" />
                     <select wire:model="code" class="appearance-none py-2 pe-9 flex gap-x-2 text-nowrap  min-w-[80px] cursor-pointer bg-white border border-gray-200 rounded-lg text-start focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-neutral-600">

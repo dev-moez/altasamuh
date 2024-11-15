@@ -173,7 +173,7 @@ class ProjectResource extends Resource
                 ExportAction::make()->exports([
                     ExcelExport::make('table')->fromTable()
                         ->except(['index']),
-                ])
+                ])->visible(auth()->user()->can(Permission::PERMISSION_LIST['EXPORT_PROJECTS']))
             ]);
     }
 

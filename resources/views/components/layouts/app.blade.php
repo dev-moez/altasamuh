@@ -228,6 +228,21 @@
 
             setInterval(updateHijriClock, 1000);
         </script>
+        <script>
+            window.whatsappWidgetSetting = {
+                header: "جمعية التسامح للاعمال الخيرية",
+                subHeader: "",
+                color: "#000",
+                whatsappButtonText: "Send Message",
+                widgetPosition: "bottom-right",
+                widgetBubbleType: "expanded_bubble",
+                message: "السلام عليكم",
+                whatsappNumber: "+96550727495"
+            };
+
+            // Dynamically load the WhatsApp SDK from the server
+        </script>
+        <script src='https://social.social-bot.io/packs/js/whatsappsdk.js' defer></script>
 </body>
 
 </html>

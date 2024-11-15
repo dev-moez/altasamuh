@@ -82,7 +82,7 @@ class DonationResource extends Resource
                 ExportAction::make('export')
                     ->exports([
                         ExcelExport::make('table')->fromTable()->queue(),
-                    ]),
+                    ])->visible(auth()->user()->can(Permission::PERMISSION_LIST['EXPORT_DONATIONS'])),
             ]);
     }
 

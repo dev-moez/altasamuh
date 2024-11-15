@@ -21,7 +21,7 @@ class ProjectDonationActions extends Component
     public $requiredDonationValue = 0;
     public $remainingAmount = 0;
     public $donationsPercentage = 0;
-    public $amount;
+    public $amount = 0;
     public $code;
     public $minimumDonationValue;
     public $phone_number;

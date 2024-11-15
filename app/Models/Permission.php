@@ -57,10 +57,10 @@ class Permission extends SpatiePermission
         // List transactions
         'VIEW_TRANSACTION' => 'view transactions',
         // List Project Quick Donations
-        'VIEW_PROJECT_QUICK_DONATION' => 'view project quick donations',
-        'CREATE_PROJECT_QUICK_DONATION' => 'create project quick donations',
-        'EDIT_PROJECT_QUICK_DONATION' => 'edit project quick donations',
-        'DELETE_PROJECT_QUICK_DONATION' => 'delete project quick donations',
+        // 'VIEW_PROJECT_QUICK_DONATION' => 'view project quick donations',
+        // 'CREATE_PROJECT_QUICK_DONATION' => 'create project quick donations',
+        // 'EDIT_PROJECT_QUICK_DONATION' => 'edit project quick donations',
+        // 'DELETE_PROJECT_QUICK_DONATION' => 'delete project quick donations',
         // List Home slider
         'VIEW_HOME_SLIDER' => 'view home slider',
         'CREATE_HOME_SLIDER' => 'create home slider',

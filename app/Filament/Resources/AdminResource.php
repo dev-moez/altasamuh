@@ -141,4 +141,9 @@ class AdminResource extends Resource
     {
         return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_ADMIN']);
     }
+
+    public static function canDeleteAny(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_ADMIN']);
+    }
 }

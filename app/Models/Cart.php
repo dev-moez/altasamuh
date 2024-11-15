@@ -39,6 +39,6 @@ class Cart extends Model
 
     public function getAmountAttribute(): float
     {
-        return $this->items()->sum('amount');
+        return $this->items->sum(fn($item) => $item->amount);
     }
 }

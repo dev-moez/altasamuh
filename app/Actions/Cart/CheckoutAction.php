@@ -25,6 +25,7 @@ class CheckoutAction
 
     public function execute()
     {
+        $this->cart->load('items');
         $postFields = [
             'NotificationOption' => 'LNK',
             'InvoiceValue' => $this->cart->amount,

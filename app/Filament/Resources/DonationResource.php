@@ -110,7 +110,7 @@ class DonationResource extends Resource
 
     public static function canCreate(): bool
     {
-        return true;
+        return auth()->user()->can(Permission::PERMISSION_LIST['CREATE_DONATION']);
     }
 
     public static function canEdit(Model $record): bool

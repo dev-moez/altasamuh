@@ -53,6 +53,7 @@ class Permission extends SpatiePermission
 
         // List donations
         'VIEW_DONATION' => 'view donations',
+        'CREATE_DONATION' => 'create donations',
         // List transactions
         'VIEW_TRANSACTION' => 'view transactions',
         // List Project Quick Donations

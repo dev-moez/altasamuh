@@ -36,18 +36,9 @@ class CategoryResource extends Resource
             ->schema([
                 Section::make()
                     ->schema([
-                        SpatieMediaLibraryFileUpload::make(Category::MEDIA_CATEGORY)
-                            ->collection(Category::MEDIA_CATEGORY)
-                            ->image()
-                            ->maxSize(2048)
-                            ->label(__('messages.Image'))
-                            ->helperText(__('messages.Only jpeg, png, jpg, gif, svg images are allowed. Maximum size: 2MB')),
                         Forms\Components\TextInput::make('name')
                             ->label(__('messages.Name'))
                             ->required()
-                            ->maxLength(255),
-                        Forms\Components\Textarea::make('description')
-                            ->label(__('messages.Description'))
                             ->maxLength(255),
                         Forms\Components\Toggle::make('display_on_navbar')
                             ->label(__('messages.Display on navbar'))

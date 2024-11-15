@@ -17,6 +17,7 @@ class Country extends Model
     ];
 
     protected $casts = [
-        'created_at' => ArabicDateCast::class
+        'created_at' => ArabicDateCast::class,
+        'selected_by_default' => 'boolean',
     ];
 }

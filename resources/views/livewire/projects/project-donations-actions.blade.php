@@ -68,12 +68,12 @@
                 <span class="font-bold text-nowrap">رقم الهاتف</span>
                 <div class="flex items-center w-full gap-2">
                     <x-text-input wire:model="phone_number" type="text" class="flex-1 flex-grow !w-full" placeholder="رقم الهاتف" />
-                    <x-select wire:model="code">
+                    <select wire:model="code" class="appearance-none py-2 pe-9 flex gap-x-2 text-nowrap  min-w-[80px] cursor-pointer bg-white border border-gray-200 rounded-lg text-start focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-neutral-600">
                         <option selected>--@lang('messages.Code')--</option>
                         @foreach ($countries as $country)
-                            <option value="{{ $country->code }}">(+{{ $country->code }}) {{ $country->name }}</option>
+                            <option value="{{ $country->code }}">(+{{ $country->code }})</option>
                         @endforeach
-                    </x-select>
+                        <select>
                 </div>
             </div>
         </div>

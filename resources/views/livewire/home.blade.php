@@ -45,7 +45,7 @@
     </section>
     <section class="pt-20 pb-12">
         <div class="container">
-            <div class="p-4 border-[#0072BB] border-2 rounded-md">
+            <div class="p-4 border-[#0072BB] border-2 rounded-xl">
                 {{-- <div class="px-6 pb-5 mt-8 border border-blue-600 rounded-xl"> --}}
                 {{-- Tabs --}}
                 <div class="relative flex items-center justify-center px-2 py-2 mx-auto bg-white rounded-3xl gap-x-1 w-fit -top-10">
@@ -57,7 +57,7 @@
                     @endforelse
                 </div>
                 {{-- </div> --}}
-                <div class="grid grid-cols-1 gap-4 mt-8 lg:grid-cols-3">
+                <div class="grid grid-cols-1 gap-4 lg:gap-0 lg:gap-x-2 lg:grid-cols-3">
                     @forelse($projects as $project)
                         <div class="border-2 border-gray-200 rounded-lg ">
                             <img src="{{ $project->getFirstMedia('project-cover')?->getUrl() }}" alt="" class="object-cover object-center w-full h-72">

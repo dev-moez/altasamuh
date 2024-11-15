@@ -32,7 +32,7 @@
                     <h4 class="lg:text-4xl text-3xl font-bold text-[#2E3192] mb-3">
                         الزكاة والصدقات والكفارات
                     </h4>
-                    <p class="mt-4 text-gray-600 fond-bold">الغرض من التبرع</p>
+                    <p class="mt-4 font-bold text-gray-600">الغرض من التبرع</p>
                     <livewire:misc-donation-actions wire:key='{{ uniqid() }}' />
                 </div>
                 <div class="relative flex-1 hidden overflow-hidden lg:block">

@@ -83,26 +83,26 @@ class MiscDonationResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_MISC_DONATION']);
+        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_MISC_DONATION_VALUE']);
     }
 
     public static function canCreate(): bool
     {
-        return auth()->user()->can(Permission::PERMISSION_LIST['CREATE_MISC_DONATION']);
+        return auth()->user()->can(Permission::PERMISSION_LIST['CREATE_MISC_DONATION_VALUE']);
     }
 
     public static function canEdit(Model $record): bool
     {
-        return auth()->user()->can(Permission::PERMISSION_LIST['EDIT_MISC_DONATION']);
+        return auth()->user()->can(Permission::PERMISSION_LIST['EDIT_MISC_DONATION_VALUE']);
     }
 
     public static function canDelete(Model $record): bool
     {
-        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_MISC_DONATION']);
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_MISC_DONATION_VALUE']);
     }
 
     public static function canDeleteAny(): bool
     {
-        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_MISC_DONATION']);
+        return auth()->user()->can(Permission::PERMISSION_LIST['DELETE_MISC_DONATION_VALUE']);
     }
 }

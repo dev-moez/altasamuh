@@ -6,6 +6,7 @@ use Leandrocfe\FilamentApexCharts\Widgets\ApexChartWidget;
 use App\Models\Donation;
 use Filament\Forms\Components\DatePicker;
 use Carbon\Carbon;
+use App\Models\Permission;
 
 class DonationsPerDay extends ApexChartWidget
 {
@@ -114,5 +115,10 @@ class DonationsPerDay extends ApexChartWidget
                 ->default(Carbon::now()->format('Y-m-d')),
 
         ];
+    }
+
+    public static function canView(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_INSIGHTS']);
     }
 }

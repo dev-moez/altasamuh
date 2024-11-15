@@ -7,6 +7,7 @@ use App\Models\Donation;
 use Filament\Forms\Components\DatePicker;
 use Carbon\Carbon;
 use App\Models\Project;
+use App\Models\Permission;
 
 class DonationsPerDayPerProject extends ApexChartWidget
 {
@@ -143,5 +144,10 @@ class DonationsPerDayPerProject extends ApexChartWidget
                 ->label('الى تاريخ')
                 ->default(Carbon::now()),
         ];
+    }
+
+    public static function canView(): bool
+    {
+        return auth()->user()->can(Permission::PERMISSION_LIST['VIEW_INSIGHTS']);
     }
 }

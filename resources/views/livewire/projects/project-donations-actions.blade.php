@@ -2,7 +2,14 @@
     {{-- Donations details --}}
     <div id="donationsDetails" class="flex flex-grow gap-3">
         <div class="flex-1 border border-[#0072BB] rounded-md">
-            <h5 class="px-2 py-2 text-xs font-black text-center text-white bg-[#0072BB]">قيمة المشروع</h5>
+            <h5 class="px-2 py-2 text-xs font-black text-center text-white bg-[#0072BB]">
+                <span class="hidden lg:inline-block">
+                    القيمة المشروع
+                </span>
+                <span class="inline-block lg:hidden">
+                    الهدف
+                </span>
+            </h5>
             <div class="p-2 text-center">
                 <span>{{ number_format($requiredDonationValue, 0, ',', ',') }} د.ك</span>
             </div>

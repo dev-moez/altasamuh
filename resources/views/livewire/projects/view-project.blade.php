@@ -7,15 +7,15 @@
             </div>
             <div class="grid grid-cols-1 gap-5 p-5 bg-white rounded-md lg:grid-cols-2">
                 <div>
+                    <h1 class="block mb-3 text-2xl font-bold lg:hidden">{{ $project->title }}</h1>
                     <img src="{{ $project->getFirstMedia(Project::MEDIA_COLLECTION)?->getUrl() }}" alt="" class="w-full rounded-md">
-                    <div class="mt-5">
+                    <div class="hidden mt-5 lg:block">
                         <h6 class="mb-3 text-lg font-bold">وصف المشروع</h6>
-
                         {!! $project->description !!}
                     </div>
                 </div>
                 <div>
-                    <h1 class="mb-3 text-2xl font-bold">{{ $project->title }}</h1>
+                    <h1 class="hidden mb-3 text-2xl font-bold lg:block">{{ $project->title }}</h1>
                     <div class="flex justify-between gap-4">
                         <div class="flex items-center gap-x-4">
                             عدد المتبرعين: <span class="font-bold text-green-500">{{ $project->donations()->paid()->count() }}</span>
@@ -38,6 +38,10 @@
                     </div>
                     <div class="p-5 mt-8 border border-[#0072BB] rounded-md text-start items-start">
                         <livewire:projects.project-donation-actions :project="$project" showPhoneNumber="true" />
+                    </div>
+                    <div class="block mt-5 lg:hidden">
+                        <h6 class="mb-3 text-lg font-bold">وصف المشروع</h6>
+                        {!! $project->description !!}
                     </div>
                     <div class=mt-4>
                         <h6 class="mb-3 text-lg font-bold">تفاصيل المشروع</h6>

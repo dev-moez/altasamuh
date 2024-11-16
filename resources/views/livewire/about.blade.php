@@ -9,12 +9,12 @@
                 نبذة عن جمعية التسامح
             </x-section-header>
             <div class="grid grid-cols-1 mt-3 lg:grid-cols-2 md:grid-cols-2 gap-x-5">
-                <div>
+                <div class="order-2 lg:order-1">
                     <div class="text-lg leading-10">
                         {!! $generalSettings->about_text !!}
                     </div>
                 </div>
-                <div>
+                <div class="order-1 lg:order-2">
                     <img src="{{ asset('images/about.png') }}" alt="" class="mx-auto max-h-[364px]">
                 </div>
             </div>
@@ -162,7 +162,7 @@
                 <x-section-header class="text-white">
                     ماذا نستقبل
                 </x-section-header>
-                <div class="grid grid-cols-1 text-center lg:grid-cols-5">
+                <div class="grid grid-cols-2 text-center gap-y-4 lg:grid-cols-5">
                     <div>
                         <div class="inline-block bg-white rounded-full w-54 h-54">
                             <div class="flex items-center p-5 mx-auto bg-white rounded-full size-24">

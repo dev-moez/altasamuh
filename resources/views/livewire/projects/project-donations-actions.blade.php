@@ -2,19 +2,19 @@
     {{-- Donations details --}}
     <div id="donationsDetails" class="flex flex-grow gap-3">
         <div class="flex-1 border border-[#0072BB] rounded-md">
-            <h5 class="px-2 py-2 text-sm font-bold text-center text-white bg-[#0072BB]">قيمة المشروع</h5>
+            <h5 class="px-2 py-2 text-xs font-black text-center text-white bg-[#0072BB]">قيمة المشروع</h5>
             <div class="p-2 text-center">
                 <span>{{ number_format($requiredDonationValue, 0, ',', ',') }} د.ك</span>
             </div>
         </div>
         <div class="flex-1 border border-[#07A54F] rounded-md">
-            <h5 class="px-2 py-2 text-sm font-bold text-center text-white bg-[#07A54F]">المدفوع</h5>
+            <h5 class="px-2 py-2 text-xs font-black text-center text-white bg-[#07A54F]">المدفوع</h5>
             <div class="p-2 text-center">
                 <span>{{ number_format($donationsAmount, 0, ',', ',') }} د.ك</span>
             </div>
         </div>
         <div class="flex-1 border border-[#FF3C38] rounded-md">
-            <h5 class="px-2 py-2 text-sm font-bold text-center text-white bg-[#FF3C38]">المتبقي</h5>
+            <h5 class="px-2 py-2 text-xs font-black text-center text-white bg-[#FF3C38]">المتبقي</h5>
             <div class="p-2 text-center">
                 <span>{{ number_format($remainingAmount, 0, ',', ',') }} د.ك</span>
             </div>

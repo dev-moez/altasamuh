@@ -6,18 +6,18 @@
             <div class="swiper-wrapper">
                 <!-- Slides -->
                 @foreach ($slides as $slide)
-                    <div class="relative flex items-center justify-center text-center text-white bg-blue-500 h-[500px] swiper-slide">
-                        <img src="{{ $slide['image'] }}" alt="" class="object-cover w-full h-[500px]">
-                        <div class="absolute transform -translate-x-1/2 -translate-y-2/3 top-2/3 left-1/2">
-                            <h2 class="mb-4 text-3xl font-bold">{{ $slide['heading'] }}</h2>
-                            <p class="text-lg">{{ $slide['sub_heading'] }}</p>
+                    <div class="relative flex items-center justify-center text-center text-white bg-blue-500 lg:h-[500px] h-[320px] swiper-slide">
+                        <img src="{{ $slide['image'] }}" alt="" class="object-cover w-full lg:h-[500px] h-[320px]">
+                        <div class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-w-[80%] w-[80%]">
+                            <h2 class="mb-4 text-xl font-bold lg:text-3xl">{{ $slide['heading'] }}</h2>
+                            <p class="lg:text-lg text-md">{{ $slide['sub_heading'] }}</p>
                         </div>
 
                     </div>
                 @endforeach
             </div>
             <!-- Pagination (Bullets) -->
-            <div class="swiper-pagination"></div>
+            <div class="!-bottom-4 swiper-pagination"></div>
 
             <!-- Navigation buttons -->
             <div class="swiper-button-next !text-white"></div>
@@ -48,7 +48,7 @@
             <div class="p-4 border-[#0072BB] border-2 rounded-xl">
                 {{-- <div class="px-6 pb-5 mt-8 border border-blue-600 rounded-xl"> --}}
                 {{-- Tabs --}}
-                <div class="relative flex flex-wrap items-center justify-center px-2 py-2 mx-auto overflow-scroll bg-white rounded-3xl gap-x-1 w-fit -top-10">
+                <div class="relative flex flex-wrap items-center justify-center px-2 py-2 mx-auto bg-white rounded-3xl gap-x-1 w-fit -top-10">
                     @forelse($categories as $category)
                         <button wire:click.prevent="$set('currentCategoryId', {{ $category->id }} )" type="button" class="px-6 py-2 rounded-2xl {{ $currentCategoryId == $category->id ? 'bg-[#0072BB] text-white font-bold' : 'bg-transparent text-gray-700' }}">
                             {{ $category->name }}

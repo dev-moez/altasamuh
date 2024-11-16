@@ -118,7 +118,7 @@
                 <iframe src="{{ $generalSettings->maps_location_url }}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
-            <div class="flex justify-around py-8">
+            <div class="flex flex-col items-center justify-around py-8 lg:flex-row gap-y-3">
                 <div class="text-xl font-bold text-center text-primary">
                     هل لديــــك أي استفســار؟
                 </div>

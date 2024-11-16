@@ -45,7 +45,7 @@
     </section>
     <section class="pt-20 pb-12">
         <div class="container">
-            <div class="p-4 border-[#0072BB] border-2 rounded-xl lg:max-w-screen-lg sm:max-w-screen-sm">
+            <div class="p-4 border-[#0072BB] border-2 rounded-xl">
                 {{-- <div class="px-6 pb-5 mt-8 border border-blue-600 rounded-xl"> --}}
                 {{-- Tabs --}}
                 <div class="relative flex flex-wrap items-center justify-center px-2 py-2 mx-auto overflow-scroll bg-white rounded-3xl gap-x-1 w-fit -top-10">

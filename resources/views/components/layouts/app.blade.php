@@ -137,7 +137,7 @@
 
                     <div class="flex flex-col gap-2 pt-2 mt-6 text-center border-t lg:mt-0 lg:items-center md:items-start lg:border-t-0 lg:text-start border-t-blue-500">
                         <h3 class="mb-4 text-lg font-semibold">تواصل معنا</h3>
-                        <div class="flex space-x-3 space-x-reverse">
+                        <div class="flex justify-center w-full space-x-3 space-x-reverse">
                             @if (app(GeneralSettings::class)->whatsapp_number)
                                 <a href="https://api.whatsapp.com/send?phone={{ app(GeneralSettings::class)->whatsapp_number }}" target="_blank" class="text-white hover:text-gray-400">
                                     <!-- WhatsApp Icon -->

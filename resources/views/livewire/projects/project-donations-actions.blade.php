@@ -46,7 +46,7 @@
             </span>
         </div>
         <!-- Input Number -->
-        <div class="flex-grow inline-block px-3 py-2 bg-white border border-gray-200 rounded-lg">
+        <div class="flex-grow inline-block w-full px-3 py-2 bg-white border border-gray-200 rounded-lg">
             <div class ="flex justify-between gap-x-1.5" x-data="{ count: @entangle('amount') }">
                 <button @click="count--" type="button" class="inline-flex items-center justify-center text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-md shadow-sm size-6 gap-x-2 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" tabindex="-1" aria-label="Decrease">
                     <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

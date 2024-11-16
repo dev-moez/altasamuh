@@ -1,6 +1,6 @@
 <div>
     <div class="text-center max-w-[70%] mx-auto">
-        <h2 {{ $attributes->merge(['class' => "inline-flex relative text-center text-2xl font-bold my-8 before:content-[''] after:content-[''] before:absolute after:absolute before:top-1/2 after:top-1/2 before:w-[45px] after:w-[45px] before:h-[2px] after:h-[2px] before:bg-[#1F9E46] after:bg-[#1F9E46] before:-left-[60px] after:-right-[60px]"]) }}>
+        <h2 {{ $attributes->merge(['class' => "inline-flex relative text-center text-2xl font-bold my-8 lg:before:content-[''] after:content-[''] lg:before:absolute lg:after:absolute lg:before:top-1/2 lg:after:top-1/2 lg:before:w-[45px] lg:after:w-[45px] lg:before:h-[2px] lg:after:h-[2px] lg:before:bg-[#1F9E46] lg:after:bg-[#1F9E46] lg:before:-left-[60px] lg:after:-right-[60px]"]) }}>
             {{ $slot ?? '' }}
         </h2>
     </div>

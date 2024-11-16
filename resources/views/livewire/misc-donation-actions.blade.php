@@ -14,7 +14,7 @@
         </div>
         <div class="flex items-center justify-between w-full gap-4 mt-3">
             <div class="grid w-full grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-2">
-                <div class="flex flex-wrap items-center order-2 gap-3 lg:order-1">
+                <div class="flex flex-wrap items-center justify-center order-2 gap-3 lg:justify-start lg:order-1">
                     @forelse($quickDonations as $quickDonation)
                         <button type="button" wire:click.prevent="$set('amount', {{ $quickDonation->value }})" class="inline-flex px-4 py-1 border border-gray-400 rounded-3xl {{ $amount == $quickDonation->value ? 'bg-green-500 border-green-500 text-white' : '' }}" wire:click="$set('amount', {{ $quickDonation->value }}}">{{ $quickDonation->value }}</button>
                     @empty

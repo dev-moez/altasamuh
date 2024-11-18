@@ -121,4 +121,5 @@ return [
     'Selected by default' => 'محدد بشكل افتراضي',
     'Heading' => 'العنوان',
     'Sub heading' => 'العنوان الفرعي',
+    'Privacy policy' => 'سياسة الخصوصية',
 ];

@@ -11,6 +11,8 @@
     left: 0 !important;
 }
 
-.fi-icon-btn-badge-ctn {
-    background-color: red;
+.fi-topbar .fi-icon-btn-badge-ctn,
+.fi-topbar .fi-icon-btn-badge-ctn span {
+    background-color: red !important;
+    color: white !important;
 }

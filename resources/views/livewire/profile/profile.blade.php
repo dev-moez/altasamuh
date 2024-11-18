@@ -18,7 +18,7 @@
                 <x-input-label class="w-32" for="name" value="رقم الهاتف" />
                 <div class="flex-grow">
                     <div class="flex gap-x-4">
-                        <x-select wire:model="country_code" class="w-1/3">
+                        <x-select wire:model="country_code" class="w-1/3 --prevent-on-load-init">
                             <option selected>--@lang('messages.Country')--</option>
                             @foreach ($countries as $country)
                                 <option value="{{ $country->code }}">(+{{ $country->code }}) {{ $country->name }}</option>

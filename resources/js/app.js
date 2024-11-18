@@ -2,8 +2,12 @@ import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { HSStaticMethods } from "preline/preline";
+import { HSSelect } from "preline/preline";
 
 window.HSStaticMethods.autoInit();
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-hs-select].--prevent-on-load-init').forEach((el) => new HSSelect(el));
+});
 
 
 Notify.init({

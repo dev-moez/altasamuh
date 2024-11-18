@@ -17,6 +17,7 @@ class About extends Component
     {
         $this->boardMembers = BoardMember::orderBy('position')->get();
     }
+
     public function render()
     {
         $generalSettings = app(GeneralSettings::class);

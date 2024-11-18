@@ -2,12 +2,8 @@ import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { HSStaticMethods } from "preline/preline";
-import HSInputNumber from '@preline/input-number';
 
 window.HSStaticMethods.autoInit();
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('[data-hs-input-number-input]').forEach((el) => new HSInputNumber(el));
-});
 
 
 Notify.init({

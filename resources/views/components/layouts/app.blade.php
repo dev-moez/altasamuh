@@ -121,7 +121,9 @@
             <div class="">
                 <div class="container flex flex-col flex-wrap justify-between grid-cols-1 px-4 py-6 mx-auto lg:gap-5 lg:grid-cols-3 grow-0 lg:flex-row">
                     <div class="grow-0 lg:max-w-72">
-                        <img src="{{ asset('images/logo-white.png') }}?v=1" alt="Al Tasamoh Logo" class="w-auto h-8 mb-3">
+                        <div class="text-center">
+                            <a class="inline-block mx-auto" href="{{ route('home') }}"><img src="{{ asset('images/logo-white.png') }}?v=1" alt="Al Tasamoh Logo" class="w-auto h-8 mb-3"></a>
+                        </div>
                         <div>
                             <p class="text-md">جمعية التسامح للأعمال الخيرية لتنمية المجتمع والمساهمة في إنماء المجتمع ومساعدة المحتاجين ومشاريع الأوقاف</p>
                         </div>
@@ -129,7 +131,7 @@
 
                     <nav class="flex flex-col gap-2 pt-2 mt-6 text-center border-t lg:border-t-0 lg:mt-0 lg:text-start border-t-blue-500">
                         <h5 class="font-bold">روابط هامة</h5>
-                        <a href="{{ route('home') }}" class="hover:underline">الرئيسية</a>
+                        <a href="{{ route('privacy-policy') }}" class="hover:underline">سياسة الخصوصية</a>
                         <a href="{{ route('about') }}" class="hover:underline">من نحن</a>
                         <a href="{{ route('galleries.list') }}" class="hover:underline">المركز الإعلامي</a>
                         <a href="{{ route('contact') }}" class="hover:underline">تواصل معنا</a>
@@ -238,9 +240,9 @@
                 header: "جمعية التسامح للاعمال الخيرية",
                 subHeader: "",
                 color: "#000",
-                whatsappButtonText: "Send Message",
+                whatsappButtonText: "ارسال",
                 widgetPosition: "bottom-right",
-                widgetBubbleType: "expanded_bubble",
+                widgetBubbleType: "standard",
                 message: "السلام عليكم",
                 whatsappNumber: "+96550727495"
             };

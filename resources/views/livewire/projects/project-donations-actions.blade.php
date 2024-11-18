@@ -4,7 +4,7 @@
         <div class="flex-1 border border-[#0072BB] rounded-md">
             <h5 class="px-2 py-2 text-xs font-black text-center text-white bg-[#0072BB]">
                 <span class="hidden lg:inline-block">
-                    القيمة المشروع
+                    قيمة المشروع
                 </span>
                 <span class="inline-block lg:hidden">
                     الهدف

@@ -30,7 +30,9 @@ use Filament\Tables\Filters\SelectFilter;
 use pxlrbt\FilamentExcel\Exports\ExcelExport;
 use Filament\Tables\Actions\Action;
 use App\Models\Permission;
+use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Model;
+use Malzariey\FilamentDaterangepickerFilter\Filters\DateRangeFilter;
 
 class ProjectResource extends Resource
 {
@@ -74,7 +76,7 @@ class ProjectResource extends Resource
                                     ->label(__('messages.Key'))
                                     ->required(),
                                 TextInput::make('value')
-                                    ->label(__('messages.Value'))
+                                    ->label(__('messages.Details'))
                                     ->required(),
                             ])
                             ->reorderable()
@@ -145,12 +147,13 @@ class ProjectResource extends Resource
                     ->badge(),
                 TextColumn::make('views')
                     ->label(__('messages.Views')),
-                IconColumn::make('is_published')
+                ToggleColumn::make('is_published')
                     ->label(__('messages.Published')),
                 TextColumn::make('created_at')
                     ->label(__('messages.Created at')),
             ])
             ->filters([
+                DateRangeFilter::make('created_at')->label(__('messages.Created at')),
                 SelectFilter::make(__('messages.Category'))
                     ->label(__('messages.Categories'))
                     ->relationship('categories', 'name')

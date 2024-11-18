@@ -72,8 +72,8 @@ return [
     'Already have an account?' => 'هل لديك حساب بالفعل؟',
     'Create account' => 'انشاء حساب',
     'Contact us' => 'تواصل معنا',
-    'Donation officer name' => 'اسم موظف التبرع',
-    'Donation officer number' => 'رقم موظف التبرع',
+    'Donation officer name' => 'اسم المتبرع',
+    'Donation officer number' => 'رقم المتبرع',
     'Project cover' => 'صورة المشروع',
     'Required donation value' => 'المبلغ المطلوب للتبرع',
     'Quick donation values' => 'قيم التبرع السريعة',
@@ -119,4 +119,6 @@ return [
     'Google Maps location url' => 'رابط موقع Google Maps',
     'Permissions' => 'الصلاحيات',
     'Selected by default' => 'محدد بشكل افتراضي',
+    'Heading' => 'العنوان',
+    'Sub heading' => 'العنوان الفرعي',
 ];

@@ -4,7 +4,7 @@ namespace App\Livewire\Profile;
 
 use Livewire\Attributes\Computed;
 use Livewire\Component;
-use Lwwcas\LaravelCountries\Models\Country;
+use App\Models\Country;
 
 class Profile extends Component
 {

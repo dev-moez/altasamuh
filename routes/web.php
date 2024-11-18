@@ -20,9 +20,11 @@ use App\Livewire\Profile\Donations;
 use App\Http\Middleware\AffiliateMiddleware;
 use App\Livewire\Payment\Success;
 use App\Livewire\Payment\Failed;
+use App\Livewire\PrivacyPolicy;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/about', About::class)->name('about');
+Route::get('/privacy-policy', PrivacyPolicy::class)->name('privacy-policy');
 Route::group([
     'prefix' => 'galleries',
     'as' => 'galleries.',

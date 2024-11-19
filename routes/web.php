@@ -50,7 +50,7 @@ Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {
     Route::get('/{article}', ViewArticle::class)->name('view');
 });
 
-Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
+Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => 'auth'], function () {
     Route::get('/edit', Profile::class)->name('edit');
     Route::get('/donations', Donations::class)->name('donations');
     Route::get('/change-password', ChangePassword::class)->name('change-password');

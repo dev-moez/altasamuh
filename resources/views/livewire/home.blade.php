@@ -36,9 +36,7 @@
                     <livewire:misc-donation-actions wire:key='{{ uniqid() }}' />
                 </div>
                 <div class="relative flex-1 hidden overflow-hidden lg:block">
-                    {{-- <img src="{{ asset('images/mask-bg.png') }}" class=""> --}}
-                    <img src="{{ asset('images/misc-donations.png') }}?v=1" class="absolute top-0 bottom-0">
-
+                    <img src="{{ asset('images/misc-donations.png') }}?v=1" class="absolute top-0 left-0 object-cover object-left h-full">
                 </div>
             </div>
         </div>

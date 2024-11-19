@@ -15,6 +15,7 @@ class MiscDonationActions extends Component
     public $amount = 0;
     public $misc_donation_id;
     public $quickDonations;
+    public $paymentMethodId;
     public function mount()
     {
         $this->miscDonations = MiscDonation::all();
@@ -28,9 +29,15 @@ class MiscDonationActions extends Component
     public function addToCart()
     {
         $this->resetErrorBag();
+
         $data = $this->validate([
             'misc_donation_id' => 'required|exists:misc_donations,id',
             'amount' => 'required|numeric|min:1',
+        ], [
+            'amount.required' => 'يرجى ادخال المبلغ المراد تبرعه',
+            'amount.min' => 'يرجى ادخال المبلغ المراد تبرعه لا يقل عن 1',
+            'amount.numeric' => 'يرجى ادخال المبلغ المراد تبرعه بطريقة صحيحة',
+            'misc_donation_id.required' => 'يرجى اختيار الغرض من التبرع',
         ]);
         $this->dispatch(
             'addToCart',
@@ -47,9 +54,16 @@ class MiscDonationActions extends Component
         $data = $this->validate([
             'misc_donation_id' => 'required|exists:misc_donations,id',
             'amount' => 'required|numeric|min:1',
+            'paymentMethodId' => 'required',
+        ], [
+            'paymentMethodId.required' => 'يرجى اختيار طريقة الدفع',
+            'amount.required' => 'يرجى ادخال المبلغ المراد تبرعه',
+            'amount.min' => 'يرجى ادخال المبلغ المراد تبرعه لا يقل عن 1',
+            'amount.numeric' => 'يرجى ادخال المبلغ المراد تبرعه بطريقة صحيحة',
+            'misc_donation_id.required' => 'يرجى اختيار الغرض من التبرع',
         ]);
 
         (new AddToCartAction(MiscDonation::class, $this->misc_donation_id, $data['amount']))->execute();
-        (new CheckoutAction())->execute();
+        (new CheckoutAction($this->paymentMethodId))->execute();
     }
 }

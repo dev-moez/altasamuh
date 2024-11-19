@@ -15,7 +15,8 @@ class CheckoutAction
 {
     public $cart;
     public ?string $phone_number;
-    public function __construct()
+
+    public function __construct(public readonly ?int $paymentMethodId = 2)
     {
         $this->cart = Cart::where(function ($query) {
             $query->where('user_id', auth()->id())
@@ -34,7 +35,6 @@ class CheckoutAction
             'MobileCountryCode' => auth()->check() ? auth()->user()->country_code :  $this->cart->country_code,
             'CallBackUrl' => route('payment.success'),
             'ErrorUrl' => route('payment.failed'),
-            'PaymentMethodId' => 2
         ];
 
         $mfPayment = new MyFatoorahPayment([
@@ -42,7 +42,7 @@ class CheckoutAction
             'countryCode' => config('myfatoorah.country_iso'),
             'isTest' => config('myfatoorah.test_mode'),
         ]);
-        $paymentData = $mfPayment->getInvoiceURL(curlData: $postFields, orderId: $orderId);
+        $paymentData = $mfPayment->getInvoiceURL($postFields, $this->paymentMethodId, $orderId);
         DB::transaction(function () use ($paymentData, $orderId) {
             Transaction::create([
                 'user_id' => auth()->id(),

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class CartComponent extends Component
 {
     public $cartItems;
+    public $paymentMethodId;
 
     public function mount()
     {
@@ -44,7 +45,13 @@ class CartComponent extends Component
 
     public function checkout()
     {
-        (new CheckoutAction())->execute();
+        $this->validate([
+            'paymentMethodId' => 'required',
+        ], [
+            'paymentMethodId.required' => 'يرجى اختيار طريقة الدفع',
+        ]);
+
+        (new CheckoutAction($this->paymentMethodId))->execute();
     }
 
     public function removeFromCart($itemId)

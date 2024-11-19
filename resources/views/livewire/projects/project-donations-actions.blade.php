@@ -1,3 +1,4 @@
+@use('App\Enums\PaymentMethodEnum', 'PaymentMethodEnum')
 <div>
     {{-- Donations details --}}
     <div id="donationsDetails" class="flex flex-grow gap-3">
@@ -68,7 +69,7 @@
     {{-- Quick donation --}}
     <div class="flex flex-wrap items-center justify-center w-full gap-3 mt-4">
         @forelse($project->quickDonationValues as $quickDonation)
-            <button type="button" wire:click.prevent="$set('amount', {{ $quickDonation->amount }})" class="inline-flex px-4 py-1 border border-gray-400 rounded-3xl {{ $amount == $quickDonation->amount ? 'bg-green-500 border-green-500 text-white' : '' }}" wire:click="$set('amount', {{ $quickDonation->amount }}}">{{ $quickDonation->amount }}</button>
+            <button wire:loading.attr="disabled" type="button" wire:click.prevent="$set('amount', {{ $quickDonation->amount }})" class="inline-flex px-4 py-1 border border-gray-400 rounded-3xl {{ $amount == $quickDonation->amount ? 'bg-green-500 border-green-500 text-white' : '' }}" wire:click="$set('amount', {{ $quickDonation->amount }}}">{{ $quickDonation->amount }}</button>
         @empty
         @endforelse
     </div>
@@ -93,7 +94,7 @@
     {{-- Actions --}}
     <div class="flex flex-col flex-grow gap-4 my-4 mt-6 lg:flex-row" wire:ignore>
         {{-- @role('user') --}}
-        <x-primary-button wire:click.prevent="donate" class="flex-1 w-full lg:w-auto">تبرع الان</x-primary-button>
+        <x-primary-button wire:loading.attr="disabled" wire:click.prevent="donate" class="flex-1 w-full lg:w-auto">تبرع الان</x-primary-button>
         {{-- @else
             @if (request()->routeIs('projects.view'))
                 <x-primary-button wire:click.prevent="donate" class="flex-1 w-full lg:w-auto">تبرع الان</x-primary-button>
@@ -101,16 +102,30 @@
                 <x-primary-button href="{{ route('projects.view', $project) }}" class="flex-1 w-full lg:w-auto">تبرع الان</x-primary-button>
             @endif
         @endrole --}}
-        <x-primary-button wire:click.prevent="addToCart" class="flex-1 w-full lg:w-auto bg-[#DCDCDC] gap-x-2 hover:bg-gray-400">
+        <x-primary-button wire:loading.attr="disabled" wire:click.prevent="addToCart" class="flex-1 w-full lg:w-auto bg-[#DCDCDC] text-[#3F3F3F] gap-x-2 hover:!bg-gray-400 hover:!text-white">
             <span class="text-[#3F3F3F]">أضف للسلة</span>
             <svg width="20" height="18" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0.699385 -0.000201416C0.422627 -0.000201416 0.199219 0.234299 0.199219 0.524799C0.199219 0.815299 0.422627 1.0498 0.699385 1.0498H2.29325L4.01216 9.5653C4.08051 9.88555 4.28058 10.1533 4.534 10.1498H12.8701C13.1335 10.1533 13.3769 9.90305 13.3769 9.6248C13.3769 9.34655 13.1335 9.0963 12.8701 9.0998H4.9408L4.72739 8.0498H13.537C13.7604 8.04805 13.9721 7.86955 14.0222 7.6403L15.1892 2.3903C15.2542 2.0858 15.0025 1.7533 14.7041 1.7498H3.46031L3.18855 0.414548C3.14187 0.181798 2.92513 -0.00195312 2.69839 -0.00195312H0.699385V-0.000201416ZM3.66871 2.7998H14.0738L13.1419 6.9998H4.51899L3.66871 2.7998ZM6.20122 10.4998C5.28591 10.4998 4.534 11.289 4.534 12.2498C4.534 13.2105 5.28591 13.9998 6.20122 13.9998C7.11652 13.9998 7.86844 13.2105 7.86844 12.2498C7.86844 11.289 7.11652 10.4998 6.20122 10.4998ZM11.2029 10.4998C10.2876 10.4998 9.53566 11.289 9.53566 12.2498C9.53566 13.2105 10.2876 13.9998 11.2029 13.9998C12.1182 13.9998 12.8701 13.2105 12.8701 12.2498C12.8701 11.289 12.1182 10.4998 11.2029 10.4998ZM6.20122 11.5498C6.57468 11.5498 6.86811 11.8578 6.86811 12.2498C6.86811 12.6418 6.57468 12.9498 6.20122 12.9498C5.82776 12.9498 5.53433 12.6418 5.53433 12.2498C5.53433 11.8578 5.82776 11.5498 6.20122 11.5498ZM11.2029 11.5498C11.5763 11.5498 11.8698 11.8578 11.8698 12.2498C11.8698 12.6418 11.5763 12.9498 11.2029 12.9498C10.8294 12.9498 10.536 12.6418 10.536 12.2498C10.536 11.8578 10.8294 11.5498 11.2029 11.5498Z" fill="#3F3F3F" />
             </svg>
         </x-primary-button>
     </div>
+    @if ($showPhoneNumber)
+        <div class="flex items-center justify-center w-full mx-auto gap-x-3">
+            <button wire:loading.attr="disabled" wire:click.prevent="$set('paymentMethodId', {{ PaymentMethodEnum::KNET->value }})" class="flex items-center w-16 h-10 {{ $paymentMethodId == PaymentMethodEnum::KNET->value ? 'border-[3px] border-[#0072BB]' : 'border border-gray-300' }} rounded-md">
+                <img src="{{ asset('images/knet.png') }}" alt="" class="block w-10 max-w-full mx-auto max-h-8">
+            </button>
+            <button wire:loading.attr="disabled" wire:click.prevent="$set('paymentMethodId', {{ PaymentMethodEnum::VISA_MASTER_CARD->value }})" class="flex items-center w-16 h-10 {{ $paymentMethodId == PaymentMethodEnum::VISA_MASTER_CARD->value ? 'border-[3px] border-[#0072BB]' : 'border border-gray-300' }} rounded-md">
+                <img src="{{ asset('images/visa-master-card.png') }}" alt="" class="block w-8 max-w-full mx-auto max-h-6">
+            </button>
+            <button wire:loading.attr="disabled" wire:click.prevent="$set('paymentMethodId', {{ PaymentMethodEnum::APPLE_PAY->value }})" class="flex items-center w-16 h-10 {{ $paymentMethodId == PaymentMethodEnum::APPLE_PAY->value ? 'border-[3px] border-[#0072BB]' : 'border border-gray-300' }} rounded-md">
+                <img src="{{ asset('images/apple-pay.png') }}" alt="" class="block w-8 max-w-full mx-auto max-h-8">
+            </button>
+        </div>
+    @endif
     <div>
         <x-input-error class="mt-2" :messages="$errors->get('amount')" />
         <x-input-error class="mt-2" :messages="$errors->get('phone_number')" />
+        <x-input-error :messages="$errors->get('paymentMethodId')" class="mt-2" />
     </div>
 
 </div>

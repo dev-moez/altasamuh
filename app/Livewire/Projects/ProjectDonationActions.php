@@ -27,6 +27,7 @@ class ProjectDonationActions extends Component
     public $phone_number;
     public $showPhoneNumber;
     public $countries;
+    public $paymentMethodId;
 
     public function mount(Project $project, ?bool $showPhoneNumber = false)
 
@@ -59,8 +60,17 @@ class ProjectDonationActions extends Component
             $rules['code'] = 'required';
         }
 
+        $messages = [
+            'paymentMethodId.required' => 'يرجى اختيار طريقة الدفع',
+            'amount.required' => 'يرجى ادخال المبلغ المراد تبرعه',
+            'amount.numeric' => 'يرجى ادخال المبلغ المراد تبرعه بطريقة صحيحة',
+            'amount.min' => 'يرجى ادخال المبلغ المراد تبرعه لا يقل عن ' . $this->minimumDonationValue,
+            'amount.max' => 'يرجى ادخال المبلغ المراد تبرعه لا يزيد عن ' . $this->remainingAmount,
+            'phone_number.required' => 'يرجى ادخال رقم الهاتف',
+            'code.required' => 'يرجى ادخال كود الدولة',
+        ];
         $this->resetErrorBag();
-        $data = $this->validate($rules);
+        $data = $this->validate($rules, $messages);
         $this->dispatch(
             'addToCart',
             cartableType: Project::class,
@@ -69,13 +79,22 @@ class ProjectDonationActions extends Component
             phoneNumber: $this->getFullNumber()
         )->to(CartComponent::class);
 
-        $this->reset('amount');
+        $this->reset('amount', 'paymentMethodId', 'phone_number', 'code');
     }
     public function donate()
     {
         $this->resetErrorBag();
         $rules = [
             'amount' => 'required|numeric|min:' . $this->minimumDonationValue . '|max:' . $this->remainingAmount,
+            'paymentMethodId' => 'required',
+        ];
+
+        $messages = [
+            'paymentMethodId.required' => 'يرجى اختيار طريقة الدفع',
+            'amount.required' => 'يرجى ادخال المبلغ المراد تبرعه',
+            'amount.numeric' => 'يرجى ادخال المبلغ المراد تبرعه بطريقة صحيحة',
+            'amount.min' => 'يرجى ادخال المبلغ المراد تبرعه لا يقل عن ' . $this->minimumDonationValue,
+            'amount.max' => 'يرجى ادخال المبلغ المراد تبرعه لا يزيد عن ' . $this->remainingAmount,
         ];
 
 
@@ -83,10 +102,10 @@ class ProjectDonationActions extends Component
             $rules['phone_number'] = 'required';
             $rules['code'] = 'required';
         }
-        $data = $this->validate($rules);
+        $data = $this->validate($rules, $messages);
 
         (new AddToCartAction(Project::class, $this->project->id, $data['amount'], $this->phone_number, $this->code))->execute();
-        (new CheckoutAction())->execute();
+        (new CheckoutAction($this->paymentMethodId))->execute();
     }
 
     private function getFullNumber()

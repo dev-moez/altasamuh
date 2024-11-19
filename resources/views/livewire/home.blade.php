@@ -17,7 +17,7 @@
                 @endforeach
             </div>
             <!-- Pagination (Bullets) -->
-            <div class="!bottom-6 swiper-pagination"></div>
+            <div class="!bottom-6 swiper-pagination !text-yellow-400"></div>
 
             <!-- Navigation buttons -->
             <div class="swiper-button-next !text-white"></div>

@@ -36,3 +36,12 @@ button {
     font-size: 16px !important;
     font-weight: 900 !important;
 }
+
+.swiper-pagination-bullet {
+    @apply !bg-white;
+    @apply !opacity-100;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    @apply !bg-yellow-400;
+}

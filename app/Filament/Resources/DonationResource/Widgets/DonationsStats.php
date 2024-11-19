@@ -19,8 +19,10 @@ class DonationsStats extends BaseWidget
     {
         $date_start = $this->filters['date_start'] ?? now()->subWeek();
         $date_end = $this->filters['date_end'] ?? now();
-        $donationsSum = Donation::whereBetween('created_at', [$date_start, $date_end])->sum('amount');
-        $donationsCount = Donation::whereBetween('created_at', [$date_start, $date_end])->count();
+        // $donationsSum = Donation::whereBetween('created_at', [$date_start, $date_end])->sum('amount');
+        // $donationsCount = Donation::whereBetween('created_at', [$date_start, $date_end])->count();
+        $donationsSum = Donation::sum('amount');
+        $donationsCount = Donation::count();
         return [
             Stat::make(__('messages.Donations count'), $donationsCount),
             Stat::make(__('messages.Donations sum'), number_format($donationsSum, 0, ',', ',') . ' د.ك'),

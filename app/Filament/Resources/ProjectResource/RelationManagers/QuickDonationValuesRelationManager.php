@@ -31,6 +31,7 @@ class QuickDonationValuesRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\TextInput::make('amount')
+                    ->label(__('messages.Amount'))
                     ->unique(ignoreRecord: true, modifyRuleUsing: function (Unique $rule) {
                         return $rule->where('project_id', $this->ownerRecord->getKey());
                     })

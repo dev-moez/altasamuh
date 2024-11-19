@@ -67,10 +67,10 @@ class Permission extends SpatiePermission
         'EDIT_GALLERY' => 'تعديل معرض',
         'DELETE_GALLERY' => 'حذف معرض',
         // List Affiliate
-        'VIEW_AFFILIATE' => 'عرض الشركاء',
-        'CREATE_AFFILIATE' => 'اضافة شريك',
-        'EDIT_AFFILIATE' => 'تعديل شريك',
-        'DELETE_AFFILIATE' => 'حذف شريك',
+        'VIEW_AFFILIATE' => 'عرض روابط الإعلانات',
+        'CREATE_AFFILIATE' => 'اضافة رابط اعلان',
+        'EDIT_AFFILIATE' => 'تعديل رابط اعلان',
+        'DELETE_AFFILIATE' => 'حذف رابط اعلان',
         // List Articles
         'VIEW_ARTICLE' => 'عرض المقالات',
         'CREATE_ARTICLE' => 'اضافة مقالة',

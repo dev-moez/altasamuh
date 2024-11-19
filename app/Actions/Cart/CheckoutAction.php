@@ -25,6 +25,7 @@ class CheckoutAction
 
     public function execute()
     {
+        $orderId = uniqid();
         $postFields = [
             'NotificationOption' => 'LNK',
             'InvoiceValue' => $this->cart->load('items')->amount,
@@ -32,10 +33,10 @@ class CheckoutAction
             'CustomerMobile' => auth()->check() ? auth()->user()->phone_number : $this->cart->phone_number,
             'MobileCountryCode' => auth()->check() ? auth()->user()->country_code :  $this->cart->country_code,
             'CallBackUrl' => route('payment.success'),
-            'ErrorUrl' => route('payment.failed')
+            'ErrorUrl' => route('payment.failed'),
+            'PaymentMethodId' => 2
         ];
 
-        $orderId = uniqid();
         $mfPayment = new MyFatoorahPayment([
             'apiKey' => config('myfatoorah.api_key'),
             'countryCode' => config('myfatoorah.country_iso'),

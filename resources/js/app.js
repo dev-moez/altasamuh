@@ -1,5 +1,5 @@
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { HSStaticMethods } from "preline/preline";
 import { HSSelect } from "preline/preline";
@@ -53,14 +53,14 @@ function displayHijriDate() {
     document.getElementById("datetime").innerHTML = formattedDate;
 }
 
-Swiper.use([Navigation, Pagination]);
+Swiper.use([Navigation, Pagination, Autoplay]);
 
 
 const swiper = new Swiper('.swiper-container', {
     // Optional parameters
     loop: true,
     autoplay: {
-        delay: 3000,
+        delay: 5000,
         disableOnInteraction: false,
     },
     pagination: {

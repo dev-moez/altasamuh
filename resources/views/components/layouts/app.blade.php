@@ -50,7 +50,7 @@
     {{-- <div class="py-3 font-bold text-center text-white bg-orange-500 w-100">
         @lang('messages.You have not verified your phone number yet. Please verify your phone number.')
     </div> --}}
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 
         @if (Request::is('profile*'))
@@ -98,7 +98,7 @@
         @else
             <!-- Page Heading -->
             @isset($header)
-                <header class="bg-white shadow dark:bg-gray-800">
+                <header class="bg-white shadow">
                     <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>

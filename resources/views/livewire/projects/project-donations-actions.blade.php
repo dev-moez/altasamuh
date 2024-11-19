@@ -32,8 +32,8 @@
     <div class="my-3">
         <p class="text-end">{{ number_format($donationsPercentage, 2) }} ٪</p>
         <!-- Progress -->
-        <div class="flex w-full h-3 overflow-hidden bg-gray-200 rounded-full dark:bg-neutral-700" role="progressbar" aria-valuenow="{{ $donationsPercentage }}" aria-valuemin="0" aria-valuemax="100">
-            <div class="flex flex-col justify-center overflow-hidden text-xs text-center text-white transition duration-500 bg-yellow-500 rounded-full whitespace-nowrap dark:bg-yellow-500" style="width: {{ $donationsPercentage < 1 ? 1 : $donationsPercentage }}%"></div>
+        <div class="flex w-full h-3 overflow-hidden bg-gray-200 rounded-full" role="progressbar" aria-valuenow="{{ $donationsPercentage }}" aria-valuemin="0" aria-valuemax="100">
+            <div class="flex flex-col justify-center overflow-hidden text-xs text-center text-white transition duration-500 bg-yellow-500 rounded-full whitespace-nowrap" style="width: {{ $donationsPercentage < 1 ? 1 : $donationsPercentage }}%"></div>
         </div>
         <!-- End Progress -->
     </div>
@@ -79,7 +79,7 @@
                 <span class="font-bold text-nowrap text-[#979797]">رقم الهاتف</span>
                 <div class="flex items-center w-full gap-2">
                     <x-text-input wire:model="phone_number" type="text" class="flex-1 flex-grow !w-full" placeholder=" ادخل رقم الهاتف" />
-                    <select wire:model="code" class="appearance-none py-2 pe-4 flex gap-x-2 text-nowrap  min-w-[40px] lg:min-w-[80px] cursor-pointer bg-white border border-gray-200 rounded-lg text-start focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-neutral-600">
+                    <select wire:model="code" class="appearance-none py-2 pe-4 flex gap-x-2 text-nowrap  min-w-[40px] lg:min-w-[80px] cursor-pointer bg-white border border-gray-200 rounded-lg text-start focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option selected>--@lang('messages.Code')--</option>
                         @foreach ($countries as $country)
                             <option value="{{ $country->code }}">(+{{ $country->code }})</option>

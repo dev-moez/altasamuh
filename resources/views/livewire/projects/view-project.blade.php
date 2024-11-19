@@ -46,12 +46,12 @@
                     <div class=mt-4>
                         <h6 class="mb-3 text-lg font-bold">تفاصيل المشروع</h6>
                         @if (count($project->details) > 0)
-                            <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+                            <table class="min-w-full divide-y divide-gray-200">
                                 <tbody>
                                     @foreach ($project->details as $details)
                                         <tr class="border-b border-gray-200">
-                                            <td class="px-6 py-2 text-sm font-bold text-gray-800 whitespace-nowrap dark:text-neutral-200">{{ $details['key'] ?? '' }}</td>
-                                            <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap dark:text-neutral-200">{{ $details['value'] ?? '' }}</td>
+                                            <td class="px-6 py-2 text-sm font-bold text-gray-800 whitespace-nowrap ">{{ $details['key'] ?? '' }}</td>
+                                            <td class="px-6 py-2 text-sm font-medium text-gray-800 whitespace-nowrap">{{ $details['value'] ?? '' }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

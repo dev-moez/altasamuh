@@ -40,7 +40,7 @@
                     </div>
 
                     <!-- Navigation Links -->
-                    <div class="items-center hidden sm:-my-px sm:ms-10 sm:flex gap-x-3">
+                    <div class="items-center hidden sm:-my-px sm:flex gap-x-3">
                         {{-- <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                             الرئيسية
                         </x-nav-link> --}}
@@ -207,7 +207,7 @@
 
                 <div class="mt-3 space-y-1">
                     <x-responsive-nav-link :href="route('profile.edit')">
-                        {{ __('Profile') }}
+                        {{ __('messages.Profile') }}
                     </x-responsive-nav-link>
 
                     <!-- Authentication -->
@@ -216,7 +216,7 @@
 
                         <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                            {{ __('Log Out') }}
+                            {{ __('messages.Log Out') }}
                         </x-responsive-nav-link>
                     </form>
                 </div>

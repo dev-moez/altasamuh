@@ -122,4 +122,6 @@ return [
     'Heading' => 'العنوان',
     'Sub heading' => 'العنوان الفرعي',
     'Privacy policy' => 'سياسة الخصوصية',
+    'Profile' => 'الملف الشخصي',
+    'Log Out' => 'تسجيل الخروج',
 ];

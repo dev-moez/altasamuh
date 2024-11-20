@@ -125,7 +125,7 @@
                             <a class="inline-block mx-auto" href="{{ route('home') }}"><img src="{{ asset('images/logo-white.png') }}?v=1" alt="Al Tasamoh Logo" class="w-auto h-8 mb-3"></a>
                         </div>
                         <div>
-                            <p class="text-center text-md lg:text-start">جمعية التسامح للأعمال الخيرية لتنمية المجتمع والمساهمة في إنماء المجتمع ومساعدة المحتاجين ومشاريع الأوقاف</p>
+                            <p class="text-sm text-center lg:text-md lg:text-start">جمعية التسامح للأعمال الخيرية لتنمية المجتمع والمساهمة في إنماء المجتمع ومساعدة المحتاجين ومشاريع الأوقاف</p>
                         </div>
                     </div>
 
@@ -137,7 +137,7 @@
                         <a href="{{ route('contact') }}" class="hover:underline">تواصل معنا</a>
                     </nav>
 
-                    <div class="flex flex-col gap-2 pt-2 mt-6 text-center border-t lg:mt-0 lg:items-center md:items-start lg:border-t-0 lg:text-start border-t-blue-500">
+                    <div class="flex flex-col gap-2 pt-2 mt-2 text-center lg:items-center md:items-start lg:text-start ">
                         <h3 class="hidden mb-4 text-lg font-semibold lg:block">تواصل معنا</h3>
                         <div class="flex justify-center w-full space-x-3 space-x-reverse">
                             @if (app(GeneralSettings::class)->whatsapp_number)
@@ -208,7 +208,7 @@
 
                     </div>
                 </div>
-                <div class="py-2 subfooter">
+                <div class="p-2 subfooter">
                     <p class="text-sm text-center text-white lg:text-md">
                         جميع الحقوق محفوظة لـ جمعية التسامح للاعمال الخيرية © {{ date('Y') }} . تمت البرمجة بواسطة <strong><a href="https://badayh-agency.com/">شركة بداية</a></strong>
                     </p>

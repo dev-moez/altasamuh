@@ -104,7 +104,7 @@
             </div>
 
             <div class="flex flex-col items-center justify-around py-4 lg:py-8 lg:flex-row gap-y-3">
-                <div class="text-xl font-bold text-center text-primary">
+                <div class="font-bold text-center lg:text-xl text-primary text-md">
                     هل لديــــك أي استفســار؟
                 </div>
                 <div>

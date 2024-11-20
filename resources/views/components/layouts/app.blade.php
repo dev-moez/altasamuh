@@ -125,11 +125,11 @@
                             <a class="inline-block mx-auto" href="{{ route('home') }}"><img src="{{ asset('images/logo-white.png') }}?v=1" alt="Al Tasamoh Logo" class="w-auto h-8 mb-3"></a>
                         </div>
                         <div>
-                            <p class="text-md">جمعية التسامح للأعمال الخيرية لتنمية المجتمع والمساهمة في إنماء المجتمع ومساعدة المحتاجين ومشاريع الأوقاف</p>
+                            <p class="text-center text-md lg:text-start">جمعية التسامح للأعمال الخيرية لتنمية المجتمع والمساهمة في إنماء المجتمع ومساعدة المحتاجين ومشاريع الأوقاف</p>
                         </div>
                     </div>
 
-                    <nav class="flex flex-col gap-2 pt-2 mt-6 text-center border-t lg:border-t-0 lg:mt-0 lg:text-start border-t-blue-500">
+                    <nav class="flex-col hidden gap-2 pt-2 mt-6 text-center border-t lg:flex lg:border-t-0 lg:mt-0 lg:text-start border-t-blue-500">
                         <h5 class="font-bold">روابط هامة</h5>
                         <a href="{{ route('privacy-policy') }}" class="hover:underline">سياسة الخصوصية</a>
                         <a href="{{ route('about') }}" class="hover:underline">من نحن</a>
@@ -138,7 +138,7 @@
                     </nav>
 
                     <div class="flex flex-col gap-2 pt-2 mt-6 text-center border-t lg:mt-0 lg:items-center md:items-start lg:border-t-0 lg:text-start border-t-blue-500">
-                        <h3 class="mb-4 text-lg font-semibold">تواصل معنا</h3>
+                        <h3 class="hidden mb-4 text-lg font-semibold lg:block">تواصل معنا</h3>
                         <div class="flex justify-center w-full space-x-3 space-x-reverse">
                             @if (app(GeneralSettings::class)->whatsapp_number)
                                 <a href="https://api.whatsapp.com/send?phone={{ app(GeneralSettings::class)->whatsapp_number }}" target="_blank" class="text-white hover:text-gray-400">
@@ -209,7 +209,7 @@
                     </div>
                 </div>
                 <div class="py-2 subfooter">
-                    <p class="text-center text-white">
+                    <p class="text-sm text-center text-white lg:text-md">
                         جميع الحقوق محفوظة لـ جمعية التسامح للاعمال الخيرية © {{ date('Y') }} . تمت البرمجة بواسطة <strong><a href="https://badayh-agency.com/">شركة بداية</a></strong>
                     </p>
                 </div>
@@ -224,7 +224,6 @@
                     year: "numeric",
                     hour: "numeric",
                     minute: "numeric",
-                    second: "numeric",
                     hour12: true
                 });
                 let hijriDateTime = hijriDateFormatter.format(now);

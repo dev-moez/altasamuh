@@ -21,7 +21,7 @@
                     {{ app(GeneralSettings::class)->header_text }}
                 </a>
             </div>
-            <div id="hijri-clock" class="text-xs md:text-sm">
+            <div id="gregorian-clock" class="text-xs md:text-sm">
             </div>
         </div>
     </div>

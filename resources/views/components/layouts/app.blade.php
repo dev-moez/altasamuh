@@ -216,9 +216,9 @@
         </footer>
 
         <script>
-            function updateHijriClock() {
+            function updateGregorianClockInArabicKuwait() {
                 const now = new Date();
-                const hijriDateFormatter = new Intl.DateTimeFormat("ar-KW-u-ca-islamic", {
+                const gregorianDateFormatter = new Intl.DateTimeFormat("ar-KW", {
                     day: "numeric",
                     month: "long",
                     year: "numeric",
@@ -226,13 +226,12 @@
                     minute: "numeric",
                     hour12: true
                 });
-                let hijriDateTime = hijriDateFormatter.format(now);
-                hijriDateTime = hijriDateTime.replace(" في ", "  ");
-
-                document.getElementById("hijri-clock").innerText = hijriDateTime;
+                let gregorianDateTime = gregorianDateFormatter.format(now);
+                gregorianDateTime = gregorianDateTime.replace("في", "  ");
+                document.getElementById("gregorian-clock").innerText = gregorianDateTime;
             }
 
-            setInterval(updateHijriClock, 1000);
+            setInterval(updateGregorianClockInArabicKuwait, 1000);
         </script>
         <script>
             window.whatsappWidgetSetting = {

@@ -122,7 +122,7 @@
                         <h5 class="my-4 font-bold text-white lg:text-xl text-md">إفطار صائم والأضاحي</h5>
                     </div>
 
-                    <div>
+                    <div class="col-span-full lg:col-span-1">
                         <div class="inline-block bg-white rounded-full w-54 h-54">
                             <div class="flex items-center p-5 mx-auto bg-white rounded-full lg:size-24 size-20">
                                 <img src="{{ asset('images/about/receive/5.png') }}" alt="" class="lg:size-18 size-18">

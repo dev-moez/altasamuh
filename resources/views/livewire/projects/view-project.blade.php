@@ -2,7 +2,7 @@
 <div>
     <div class="py-4">
         <div class="container">
-            <div class="p-3 mb-4 text-xs font-bold bg-white rounded-md lg:text-lg">
+            <div class="p-3 mb-4 text-xs font-bold text-gray-500 bg-white rounded-md lg:text-lg">
                 <a href="{{ route('home') }}">الرئيسية</a> / <a href="{{ route('projects.list', $project->categories->first()) }}">المشاريع</a> / {{ $project->title }}
             </div>
             <div class="grid grid-cols-1 gap-2 p-3 bg-white rounded-md lg:p-5 lg:gap-4 lg:grid-cols-2">

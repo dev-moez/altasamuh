@@ -76,11 +76,11 @@
 
     @if ($showPhoneNumber)
         <div>
-            <div class="flex flex-col items-start gap-4">
-                <span class="font-bold text-nowrap text-[#979797]">رقم الهاتف</span>
+            <div class="flex flex-col items-start gap-4 mt-2 lg:mt-0">
+                <span class="font-bold hidden lg:inline-block text-nowrap text-[#979797]">رقم الهاتف</span>
                 <div class="flex items-center w-full gap-2">
-                    <x-text-input wire:model="phone_number" type="text" class="flex-1 flex-grow !w-full" placeholder=" ادخل رقم الهاتف" />
-                    <select wire:model="code" class="appearance-none py-3 pe-4 flex gap-x-2 text-nowrap  min-w-[40px] lg:min-w-[80px] cursor-pointer bg-white border border-gray-200 rounded-lg text-start focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <x-text-input wire:model="phone_number" type="text" class="flex-1 flex-grow !w-full lg:text-lg text-md " placeholder=" ادخل رقم الهاتف" />
+                    <select wire:model="code" class="appearance-none ps-8 py-3 flex text-nowrap w-[90px] lg:text-lg text-md  min-w-[90px] lg:min-w-[100px] cursor-pointer bg-white border border-gray-200 rounded-lg text-start focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option selected>--@lang('messages.Code')--</option>
                         @foreach ($countries as $country)
                             <option value="{{ $country->code }}">(+{{ $country->code }})</option>

@@ -3,12 +3,12 @@
     <div class="container mt-8">
         <div class="bg-white rounded-2xl border border-[#0072BB]">
             <div class="relative">
-                <img src="{{ $category->getFirstMedia(Category::MEDIA_CATEGORY)?->getUrl() }}" alt="" class="lg:max-h-[340px] max-h-[240px] w-full object-cover object-center rounded-xl">
+                <img src="{{ $category->getFirstMedia(Category::MEDIA_CATEGORY)?->getUrl() }}" alt="" class="lg:max-h-[340px] max-h-[180px] w-full object-cover object-center rounded-xl">
                 <h1 class="absolute text-3xl font-bold text-center text-white transform -translate-x-1/2 bottom-1/2 left-1/2">
                     {{ $category->name }}
                 </h1>
             </div>
-            <div class="w-full lg:max-w-[80%] text-center mt-5 text-lg mx-auto px-4 pb-5">
+            <div class="w-full lg:max-w-[80%] text-center mt-5 lg:text-lg text-sm mx-auto px-4 pb-5">
                 {{ $category->description }}
             </div>
         </div>

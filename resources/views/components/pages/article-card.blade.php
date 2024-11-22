@@ -6,7 +6,7 @@
 
     <div class="ps-4">
         <h6 class="mb-3 font-bold">
-            <a href="{{ route('articles.view', $article) }}" class="line-clamp-2 lg:text-lg text-md">
+            <a href="{{ route('articles.view', $article) }}" class="text-sm line-clamp-2 lg:text-lg">
                 {{ $article->title }}
             </a>
         </h6>

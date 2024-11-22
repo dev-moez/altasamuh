@@ -42,7 +42,7 @@
             </div>
         </div>
     </section>
-    <section class="pt-12 pb-4">
+    <section class="pt-12">
         <div class="container">
             <div class="p-2 border-[#0072BB] border-2 rounded-xl">
                 {{-- <div class="px-6 pb-5 mt-8 border border-blue-600 rounded-xl"> --}}
@@ -58,7 +58,7 @@
                 {{-- </div> --}}
                 <div class="grid grid-cols-1 gap-4 lg:gap-0 lg:gap-x-2 lg:grid-cols-3">
                     @forelse($projects as $project)
-                        <div class="border-2 border-gray-200 rounded-lg ">
+                        <div class="relative border-2 border-gray-200 rounded-lg -top-8">
                             <a href="{{ route('projects.view', $project) }}">
                                 <img src="{{ $project->getFirstMedia('project-cover')?->getUrl() }}" alt="" class="object-cover object-center w-full rounded-t-lg h-72">
                             </a>

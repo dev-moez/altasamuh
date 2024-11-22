@@ -10,7 +10,7 @@
             </x-section-header>
             <div class="grid grid-cols-1 mt-5 lg:grid-cols-2 md:grid-cols-2 gap-x-5">
                 <div class="order-2 mt-2 lg:order-1">
-                    <div class="leading-4 text-md lg:leading-10 lg:text-lg">
+                    <div class="leading-5 text-md lg:leading-10 lg:text-lg">
                         {!! $generalSettings->about_text !!}
                     </div>
                 </div>

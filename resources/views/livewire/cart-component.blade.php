@@ -30,7 +30,7 @@
             </div>
             <div class="mt-6">
                 @foreach ($cartItems as $item)
-                    <div class="flex justify-between pb-2 mb-4 border-b border-gray-200">
+                    <div class="flex items-center justify-between pb-2 mb-4 text-sm border-b border-gray-200 lg:text-md">
                         <span>{{ $item->cartable->title }}</span>
                         <span>{{ $item->amount }} دينار كويتي</span>
 
@@ -44,9 +44,9 @@
                         لا يوجد عناصر في السلة
                     </div>
                 @else
-                    <div class="flex justify-between w-full">
+                    <div class="flex flex-col justify-between w-full lg:flex-row">
                         <div class="flex items-center justify-start w-full mx-auto gap-x-3">
-                            <h2 class="font-bold text-gray-600">
+                            <h2 class="font-bold text-gray-600 text-nowrap">
                                 طريقة الدفع
                             </h2>
                             <button wire:click.prevent="$set('paymentMethodId', {{ PaymentMethodEnum::KNET->value }})" class="flex items-center w-16 h-10 {{ $paymentMethodId == PaymentMethodEnum::KNET->value ? 'border-[3px] border-[#0072BB]' : 'border border-gray-300' }} rounded-md">
@@ -59,7 +59,7 @@
                                 <img src="{{ asset('images/apple-pay.png') }}" alt="" class="block w-8 max-w-full mx-auto max-h-8">
                             </button>
                         </div>
-                        <x-primary-button wire:loading.attr='disabled' wire:click="checkout" class="text-nowrap">
+                        <x-primary-button wire:loading.attr='disabled' wire:click="checkout" class="mt-3 text-nowrap col-span-full lg:mt-0">
                             الذهاب للدفع
                         </x-primary-button>
                     </div>

@@ -20,13 +20,13 @@
             </div>
         </div>
 
-        <div class="py-5 mt-4 bg-gray-200">
+        <div class="py-5 mt-4 bg-gray-200 lg:py-8">
             <div class="container block px-4 mx-auto mt-0 lg:mt-4 lg:px-0">
                 <x-section-header class="text-primary">
                     أهداف وأغراض الجمعية
                 </x-section-header>
 
-                <div class="grid grid-cols-1 gap-3 mt-0 lg:gap-5 lg:grid-cols-3 lg:mt-4">
+                <div class="grid grid-cols-1 gap-3 mt-0 lg:gap-5 lg:grid-cols-3 lg:mt-6">
                     <div class="flex items-start justify-start gap-x-3">
                         <img src="{{ asset('images/about/goals/1.png') }}" alt="" class="lg:size-16 size-12">
                         <div>
@@ -84,7 +84,7 @@
                 <x-section-header class="text-white">
                     ماذا نستقبل
                 </x-section-header>
-                <div class="flex flex-wrap items-center justify-center mt-6 text-center lg:gap-8 gap-y-4 gap-x-8">
+                <div class="grid items-center justify-center grid-cols-2 mt-6 text-center lg:grid-cols-5 lg:gap-8 gap-y-4 gap-x-8">
                     <div>
                         <div class="inline-block bg-white rounded-full w-54 h-54">
                             <div class="flex items-center p-5 mx-auto bg-white rounded-full lg:size-24 size-20">

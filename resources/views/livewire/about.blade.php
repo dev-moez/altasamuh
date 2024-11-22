@@ -26,7 +26,7 @@
                     أهداف وأغراض الجمعية
                 </x-section-header>
 
-                <div class="grid grid-cols-1 gap-3 mt-0 lg:gap-5 lg:grid-cols-3 lg:mt-6">
+                <div class="grid grid-cols-1 gap-3 mt-4 lg:gap-5 lg:grid-cols-3 lg:mt-6">
                     <div class="flex items-start justify-start gap-x-3">
                         <img src="{{ asset('images/about/goals/1.png') }}" alt="" class="lg:size-16 size-12">
                         <div>

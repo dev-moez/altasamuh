@@ -9,7 +9,7 @@
                 <div>
                     <h1 class="block mb-3 font-bold lg:text-2xl text-md lg:hidden">{{ $project->title }}</h1>
                     <img src="{{ $project->getFirstMedia(Project::MEDIA_COLLECTION)?->getUrl() }}" alt="" class="lg:max-w-full lg:h-[563px] lg:max-h-[563px]  w-full h-[220px]  rounded-md object-cover object-top lg:object-center">
-                    <div class="hidden mt-5 lg:block">
+                    <div class="hidden mt-3 lg:block">
                         <h6 class="mb-3 text-lg font-bold">وصف المشروع</h6>
                         {!! $project->description !!}
                     </div>

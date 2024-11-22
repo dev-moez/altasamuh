@@ -77,8 +77,8 @@
         </div>
     </section>
     @if ($articles->count() > 0)
-        <section class="pb-12 bg-top bg-no-repeat bg-cover" style="background-image: url('{{ asset('images/articles-bg.png') }}')">
-            <div class="container mt-5">
+        <section class="pb-12 mt-5 bg-top bg-no-repeat bg-cover" style="background-image: url('{{ asset('images/articles-bg.png') }}')">
+            <div class="container">
                 <x-section-header class="text-blue-900">
                     أخبــار الجمــعيــة
                 </x-section-header>

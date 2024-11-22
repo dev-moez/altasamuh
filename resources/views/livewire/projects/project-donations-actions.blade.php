@@ -91,19 +91,19 @@
         </div>
     @endif
     {{-- @endif --}}
-    @if ($showPhoneNumber)
-        <div class="flex items-center justify-center w-full mx-auto mt-3 gap-x-3">
-            <button wire:loading.attr="disabled" wire:click.prevent="$set('paymentMethodId', {{ PaymentMethodEnum::KNET->value }})" class="flex items-center w-16 h-10 {{ $paymentMethodId == PaymentMethodEnum::KNET->value ? 'border-[3px] border-[#0072BB]' : 'border border-gray-300' }} rounded-md">
-                <img src="{{ asset('images/knet.png') }}" alt="" class="block w-10 max-w-full mx-auto">
-            </button>
-            <button wire:loading.attr="disabled" wire:click.prevent="$set('paymentMethodId', {{ PaymentMethodEnum::VISA_MASTER_CARD->value }})" class="flex items-center w-16 h-10 {{ $paymentMethodId == PaymentMethodEnum::VISA_MASTER_CARD->value ? 'border-[3px] border-[#0072BB]' : 'border border-gray-300' }} rounded-md">
-                <img src="{{ asset('images/visa-master-card.png') }}" alt="" class="block w-8 max-w-full mx-auto max-h-6">
-            </button>
-            <button wire:loading.attr="disabled" wire:click.prevent="$set('paymentMethodId', {{ PaymentMethodEnum::APPLE_PAY->value }})" class="flex items-center w-16 h-10 {{ $paymentMethodId == PaymentMethodEnum::APPLE_PAY->value ? 'border-[3px] border-[#0072BB]' : 'border border-gray-300' }} rounded-md">
-                <img src="{{ asset('images/apple-pay.png') }}" alt="" class="block w-8 max-w-full mx-auto max-h-8">
-            </button>
-        </div>
-    @endif
+    {{-- @if ($showPhoneNumber) --}}
+    <div class="flex items-center justify-center w-full mx-auto mt-3 gap-x-3">
+        <button wire:loading.attr="disabled" wire:click.prevent="$set('paymentMethodId', {{ PaymentMethodEnum::KNET->value }})" class="flex items-center w-16 h-10 {{ $paymentMethodId == PaymentMethodEnum::KNET->value ? 'border-[3px] border-[#0072BB]' : 'border border-gray-300' }} rounded-md">
+            <img src="{{ asset('images/knet.png') }}" alt="" class="block w-10 max-w-full mx-auto">
+        </button>
+        <button wire:loading.attr="disabled" wire:click.prevent="$set('paymentMethodId', {{ PaymentMethodEnum::VISA_MASTER_CARD->value }})" class="flex items-center w-16 h-10 {{ $paymentMethodId == PaymentMethodEnum::VISA_MASTER_CARD->value ? 'border-[3px] border-[#0072BB]' : 'border border-gray-300' }} rounded-md">
+            <img src="{{ asset('images/visa-master-card.png') }}" alt="" class="block w-8 max-w-full mx-auto max-h-6">
+        </button>
+        <button wire:loading.attr="disabled" wire:click.prevent="$set('paymentMethodId', {{ PaymentMethodEnum::APPLE_PAY->value }})" class="flex items-center w-16 h-10 {{ $paymentMethodId == PaymentMethodEnum::APPLE_PAY->value ? 'border-[3px] border-[#0072BB]' : 'border border-gray-300' }} rounded-md">
+            <img src="{{ asset('images/apple-pay.png') }}" alt="" class="block w-8 max-w-full mx-auto max-h-8">
+        </button>
+    </div>
+    {{-- @endif --}}
     {{-- Actions --}}
     <div class="flex flex-grow gap-4 mt-3" wire:ignore>
         {{-- @role('user') --}}

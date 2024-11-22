@@ -4,7 +4,7 @@
         <div class="bg-white rounded-2xl border border-[#0072BB]">
             <div class="relative">
                 <img src="{{ $category->getFirstMedia(Category::MEDIA_CATEGORY)?->getUrl() }}" alt="" class="lg:max-h-[280px] lg:h-[280px] h-[150px] max-h-[150px] w-full object-cover object-center rounded-xl">
-                <h1 class="absolute text-3xl font-bold text-center text-white transform -translate-x-1/2 bottom-1/2 left-1/2">
+                <h1 class="absolute text-3xl font-bold text-center text-white transform -translate-x-1/2 bottom-1/2 left-1/2 w-[90%]">
                     {{ $category->name }}
                 </h1>
             </div>

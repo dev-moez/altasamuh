@@ -119,7 +119,7 @@
                                 <img src="{{ asset('images/about/receive/4.png') }}" alt="" class="lg:size-18 size-18">
                             </div>
                         </div>
-                        <h5 class="my-4 font-bold text-white lg:text-xl text-md">إفطار صائم والأضاحي</h5>
+                        <h5 class="my-4 font-bold text-white lg:text-xl text-md text-nowrap">إفطار صائم والأضاحي</h5>
                     </div>
 
                     <div class="col-span-full lg:col-span-1">

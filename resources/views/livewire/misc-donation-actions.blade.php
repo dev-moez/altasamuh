@@ -2,7 +2,7 @@
 <div>
     <div class="flex flex-wrap gap-3 mt-4">
         @forelse($miscDonations as $donation)
-            <button type="button" wire:click.prevent="$set('misc_donation_id', {{ $donation->id }} )" class="px-3 py-2 lg:text-md text-xs rounded-md font-bold {{ $misc_donation_id == $donation->id ? 'bg-green-500 text-white' : 'text-gray-800 bg-gray-200' }}">{{ $donation->title }}</button>
+            <button type="button" wire:click.prevent="$set('misc_donation_id', {{ $donation->id }} )" class="px-3 py-2 lg:text-lg text-xs rounded-md font-bold {{ $misc_donation_id == $donation->id ? 'bg-green-500 text-white' : 'text-gray-800 bg-gray-200' }}">{{ $donation->title }}</button>
         @empty
         @endforelse
     </div>
@@ -32,15 +32,15 @@
         </div>
         <!-- End Input Number -->
     </div>
-    <div class="flex items-center justify-between w-full gap-4 mt-3">
-        <div class="grid w-full grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-2">
-            <div class="flex flex-wrap items-center justify-center order-2 gap-3 lg:justify-start lg:order-1">
-                @forelse($quickDonations as $quickDonation)
-                    <button type="button" wire:click.prevent="$set('amount', {{ $quickDonation->value }})" class="inline-flex px-4 py-1 border border-gray-400 rounded-3xl {{ $amount == $quickDonation->value ? 'bg-green-500 border-green-500 text-white' : '' }}" wire:click="$set('amount', {{ $quickDonation->value }}}">{{ $quickDonation->value }}</button>
-                @empty
-                @endforelse
-            </div>
-        </div>
+    <div class="flex items-center justify-center w-full gap-4 mt-3">
+        {{-- <div class="grid w-full grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-2"> --}}
+        {{-- <div class="flex flex-wrap items-center justify-center order-2 gap-3 lg:order-1"> --}}
+        @forelse($quickDonations as $quickDonation)
+            <button type="button" wire:click.prevent="$set('amount', {{ $quickDonation->value }})" class="inline-flex px-4 py-1 border border-gray-400 rounded-3xl {{ $amount == $quickDonation->value ? 'bg-green-500 border-green-500 text-white' : '' }}" wire:click="$set('amount', {{ $quickDonation->value }}}">{{ $quickDonation->value }}</button>
+        @empty
+        @endforelse
+        {{-- </div> --}}
+        {{-- </div> --}}
     </div>
 
     <div class="flex items-center justify-center w-full mx-auto mt-4 gap-x-3">

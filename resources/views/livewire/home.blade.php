@@ -30,7 +30,7 @@
         <div class="container">
             <div class="flex flex-grow-0 w-full">
                 <div class="flex-1 p-6 border-[5px] lg:border-l-0 border-[#0072BB] rounded-lg rounded-l-lg lg:rounded-l-none">
-                    <h4 class="lg:text-4xl text-lg font-bold text-[#2E3192] mb-3">
+                    <h4 class="lg:text-5xl text-lg font-bold text-[#2E3192] mb-3">
                         الزكاة والصدقات والكفارات
                     </h4>
                     <p class="font-bold text-[#979797]">الغرض من التبرع</p>

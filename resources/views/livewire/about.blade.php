@@ -143,8 +143,8 @@
                 <div class="grid grid-cols-2 gap-6 my-5 lg:grid-cols-4">
                     @foreach ($boardMembers as $boardMember)
                         <div class="px-2 py-3 text-center bg-[#0072BB] rounded-lg">
-                            <h4 class="font-bold text-white lg:text-xl text-md">{{ $boardMember->name }}</h4>
-                            <p class="text-gray-100 lg:text-lg text-md">{{ $boardMember->role }}</p>
+                            <h4 class="text-sm font-bold text-white lg:text-xl">{{ $boardMember->name }}</h4>
+                            <p class="text-sm text-gray-100 lg:text-lg">{{ $boardMember->role }}</p>
                         </div>
                     @endforeach
                 </div>

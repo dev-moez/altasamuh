@@ -40,7 +40,7 @@
     </div>
 
     {{-- Make donation  --}}
-    <div class="flex flex-col items-start justify-between gap-4 mt-5 lg:items-center lg:flex-row">
+    <div class="flex items-center justify-between gap-4 mt-5">
         <div class="font-bold text-nowrap">
             <span class="text-[#979797]">
                 أدخل المبلغ بالدينار
@@ -92,7 +92,7 @@
     @endif
     {{-- @endif --}}
     @if ($showPhoneNumber)
-        <div class="flex items-center justify-center w-full mx-auto mt-4 gap-x-3">
+        <div class="flex items-center justify-center w-full mx-auto mt-3 gap-x-3">
             <button wire:loading.attr="disabled" wire:click.prevent="$set('paymentMethodId', {{ PaymentMethodEnum::KNET->value }})" class="flex items-center w-16 h-10 {{ $paymentMethodId == PaymentMethodEnum::KNET->value ? 'border-[3px] border-[#0072BB]' : 'border border-gray-300' }} rounded-md">
                 <img src="{{ asset('images/knet.png') }}" alt="" class="block w-10 max-w-full mx-auto max-h-8">
             </button>
@@ -105,7 +105,7 @@
         </div>
     @endif
     {{-- Actions --}}
-    <div class="flex flex-col flex-grow gap-4 my-4 mt-6 lg:flex-row" wire:ignore>
+    <div class="flex flex-grow gap-4 mt-3" wire:ignore>
         {{-- @role('user') --}}
         <x-primary-button wire:loading.attr="disabled" wire:click.prevent="donate" class="flex-1 w-full lg:w-auto">تبرع الان</x-primary-button>
         {{-- @else

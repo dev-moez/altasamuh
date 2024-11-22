@@ -2,21 +2,21 @@
 <div>
     <div class="pt-4 pb-12">
         <div class="container">
-            <div class="p-3 mb-4 bg-white rounded-md">
+            <div class="p-3 mb-4 text-xs font-bold bg-white rounded-md lg:text-lg">
                 <a href="{{ route('home') }}">الرئيسية</a> / <a href="{{ route('projects.list', $project->categories->first()) }}">المشاريع</a> / {{ $project->title }}
             </div>
-            <div class="grid grid-cols-1 gap-5 p-5 bg-white rounded-md lg:grid-cols-2">
+            <div class="grid grid-cols-1 gap-2 p-3 bg-white rounded-md lg:p-5 lg:gap-4 lg:grid-cols-2">
                 <div>
-                    <h1 class="block mb-3 text-2xl font-bold lg:hidden">{{ $project->title }}</h1>
-                    <img src="{{ $project->getFirstMedia(Project::MEDIA_COLLECTION)?->getUrl() }}" alt="" class="w-full rounded-md">
+                    <h1 class="block mb-3 font-bold lg:text-2xl text-md lg:hidden">{{ $project->title }}</h1>
+                    <img src="{{ $project->getFirstMedia(Project::MEDIA_COLLECTION)?->getUrl() }}" alt="" class="w-full rounded-md max-h-[240px] lg:h-auto lg:max-h-[340px]">
                     <div class="hidden mt-5 lg:block">
                         <h6 class="mb-3 text-lg font-bold">وصف المشروع</h6>
                         {!! $project->description !!}
                     </div>
                 </div>
                 <div>
-                    <h1 class="hidden mb-3 text-2xl font-bold lg:block">{{ $project->title }}</h1>
-                    <div class="flex justify-between gap-4">
+                    <h1 class="hidden mb-2 text-2xl font-bold lg:block">{{ $project->title }}</h1>
+                    <div class="flex justify-between gap-2">
                         <div class="flex items-center gap-x-4">
                             عدد المتبرعين: <span class="font-bold text-green-500">{{ $project->donations()->paid()->count() }}</span>
                         </div>
@@ -36,7 +36,7 @@
 
                         </div>
                     </div>
-                    <div class="p-5 mt-8 border border-[#0072BB] rounded-md text-start items-start">
+                    <div class="lg:p-5 p-3 mt-3 border border-[#0072BB] rounded-md text-start items-start">
                         <livewire:projects.project-donation-actions :project="$project" showPhoneNumber="true" />
                     </div>
                     <div class="block mt-5 lg:hidden">

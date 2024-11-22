@@ -33,26 +33,6 @@ window.addEventListener('info-message', event => {
     Notify.info(event.detail[0]['message']);
 });
 
-function displayHijriDate() {
-    // Get current Gregorian date and time
-    var now = require('moment-hijri');
-
-    // Get Hijri date
-    var hijriDate = now.format('iDD/iMMMM/iYYYY');
-
-    // Format the time (Arabic 12-hour format with AM/PM)
-    var hours = now.format('hh');
-    var minutes = now.format('mm');
-    var seconds = now.format('ss');
-    var amPm = now.format('A') === 'AM' ? 'ص' : 'م'; // Arabic for AM/PM
-
-    // Combine the date and time
-    var formattedDate = hijriDate + '    ' + hours + ':' + minutes + ':' + seconds + ' ' + amPm;
-
-    // Replace the element with id "date" with the formatted date/time
-    document.getElementById("datetime").innerHTML = formattedDate;
-}
-
 Swiper.use([Navigation, Pagination, Autoplay]);
 
 

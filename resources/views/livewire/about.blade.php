@@ -26,52 +26,52 @@
                     أهداف وأغراض الجمعية
                 </x-section-header>
 
-                <div class="grid grid-cols-1 mt-0 lg:grid-cols-3 lg:mt-4">
-                    <div class="flex items-start justify-start py-4 gap-x-3">
+                <div class="grid grid-cols-1 gap-3 mt-0 lg:grid-cols-3 lg:mt-4">
+                    <div class="flex items-start justify-start gap-x-3">
                         <img src="{{ asset('images/about/goals/1.png') }}" alt="" class="lg:size-16 size-12">
                         <div>
                             <h5 class="font-bold text-md lg:text-xl text-primary">الخدمات الإنسانية</h5>
-                            <p>نقدم الخدمات الإنسانية والخيرية والإغاثية والصحية للمنكوبين والمحتاجين خارج الكويت.</p>
+                            <p class="lg:text-lg text-md">نقدم الخدمات الإنسانية والخيرية والإغاثية والصحية للمنكوبين والمحتاجين خارج الكويت.</p>
                         </div>
                     </div>
 
-                    <div class="flex items-start justify-start py-4 gap-x-3">
+                    <div class="flex items-start justify-start gap-x-3">
                         <img src="{{ asset('images/about/goals/2.png') }}" alt="" class="lg:size-16 size-12">
                         <div>
                             <h5 class="font-bold text-md lg:text-xl text-primary">مشاريع البناء</h5>
-                            <p>نبني المساجد والمدارس والمستشفيات والجامعات والمعاهد خارج الكويت.</p>
+                            <p class="lg:text-lg text-md">نبني المساجد والمدارس والمستشفيات والجامعات والمعاهد خارج الكويت.</p>
                         </div>
                     </div>
 
-                    <div class="flex items-start justify-start py-4 gap-x-3">
+                    <div class="flex items-start justify-start gap-x-3">
                         <img src="{{ asset('images/about/goals/3.png') }}" alt="" class="lg:size-16 size-12">
                         <div>
                             <h5 class="font-bold text-md lg:text-xl text-primary">الأيتام</h5>
-                            <p>نقوم بإنشاء دور الأيتام وكفالة الأيتام خارج الكويت.</p>
+                            <p class="lg:text-lg text-md">نقوم بإنشاء دور الأيتام وكفالة الأيتام خارج الكويت.</p>
                         </div>
                     </div>
 
-                    <div class="flex items-start justify-start py-4 gap-x-3">
+                    <div class="flex items-start justify-start gap-x-3">
                         <img src="{{ asset('images/about/goals/4.png') }}" alt="" class="lg:size-16 size-12">
                         <div>
                             <h5 class="font-bold text-md lg:text-xl text-primary">إفطار الصائم</h5>
-                            <p>نقوم بتوفير إفطار الصائم والأضاحي ومساعدة الأسر الفقيرة ورفع المعاناة.</p>
+                            <p class="lg:text-lg text-md">نقوم بتوفير إفطار الصائم والأضاحي ومساعدة الأسر الفقيرة ورفع المعاناة.</p>
                         </div>
                     </div>
 
-                    <div class="flex items-start justify-start py-4 gap-x-3">
+                    <div class="flex items-start justify-start gap-x-3">
                         <img src="{{ asset('images/about/goals/5.png') }}" alt="" class="lg:size-16 size-12">
                         <div>
                             <h5 class="font-bold text-md lg:text-xl text-primary">استقبال الإعانات</h5>
-                            <p>نتلقى الإعانات والوصايا والهبات والزكوات والصدقات وتوزيعها على مستحقيها.</p>
+                            <p class="lg:text-lg text-md">نتلقى الإعانات والوصايا والهبات والزكوات والصدقات وتوزيعها على مستحقيها.</p>
                         </div>
                     </div>
 
-                    <div class="flex items-start justify-start py-4 gap-x-3">
+                    <div class="flex items-start justify-start gap-x-3">
                         <img src="{{ asset('images/about/goals/6.png') }}" alt="" class="lg:size-16 size-12">
                         <div>
                             <h5 class="font-bold text-md lg:text-xl text-primary">مشاريع خاصة</h5>
-                            <p>نقوم بتلقي تبرعات المحسنين لإنشاء مساجد ومشاريع خيرية حسب رغبتهم.</p>
+                            <p class="lg:text-lg text-md">نقوم بتلقي تبرعات المحسنين لإنشاء مساجد ومشاريع خيرية حسب رغبتهم.</p>
                         </div>
                     </div>
 

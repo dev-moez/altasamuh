@@ -58,6 +58,6 @@ class Article extends Model implements HasMedia
 
     public function getContentBriefAttribute(): string
     {
-        return substr(strip_tags($this->content), 0, 150) . '...';
+        return substr(strip_tags($this->content), 0, 200) . '...';
     }
 }

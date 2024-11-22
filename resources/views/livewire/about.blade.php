@@ -88,7 +88,7 @@
                     <div>
                         <div class="inline-block bg-white rounded-full w-54 h-54">
                             <div class="flex items-center p-5 mx-auto bg-white rounded-full lg:size-24 size-20">
-                                <img src="{{ asset('images/about/receive/1.png') }}" alt="" class="lg:size-20 size-18">
+                                <img src="{{ asset('images/about/receive/1.png') }}" alt="" class="lg:size-18 size-18">
                             </div>
                         </div>
                         <h5 class="my-4 font-bold text-white lg:text-xl text-md">مشاريع منوعة</h5>
@@ -97,7 +97,7 @@
                     <div>
                         <div class="inline-block bg-white rounded-full w-54 h-54">
                             <div class="flex items-center p-5 mx-auto bg-white rounded-full lg:size-24 size-20">
-                                <img src="{{ asset('images/about/receive/2.png') }}" alt="" class="lg:size-20 size-18">
+                                <img src="{{ asset('images/about/receive/2.png') }}" alt="" class="lg:size-18 size-18">
                             </div>
 
                         </div>
@@ -107,7 +107,7 @@
                     <div>
                         <div class="inline-block bg-white rounded-full w-54 h-54">
                             <div class="flex items-center p-5 mx-auto bg-white rounded-full lg:size-24 size-20">
-                                <img src="{{ asset('images/about/receive/3.png') }}" alt="" class="lg:size-20 size-18">
+                                <img src="{{ asset('images/about/receive/3.png') }}" alt="" class="lg:size-18 size-18">
                             </div>
                         </div>
                         <h5 class="my-4 font-bold text-white lg:text-xl text-md">كفالة أيتام</h5>
@@ -116,7 +116,7 @@
                     <div>
                         <div class="inline-block bg-white rounded-full w-54 h-54">
                             <div class="flex items-center p-5 mx-auto bg-white rounded-full lg:size-24 size-20">
-                                <img src="{{ asset('images/about/receive/4.png') }}" alt="" class="lg:size-20 size-18">
+                                <img src="{{ asset('images/about/receive/4.png') }}" alt="" class="lg:size-18 size-18">
                             </div>
                         </div>
                         <h5 class="my-4 font-bold text-white lg:text-xl text-md">إفطار صائم والأضاحي</h5>
@@ -125,7 +125,7 @@
                     <div>
                         <div class="inline-block bg-white rounded-full w-54 h-54">
                             <div class="flex items-center p-5 mx-auto bg-white rounded-full lg:size-24 size-20">
-                                <img src="{{ asset('images/about/receive/5.png') }}" alt="" class="lg:size-20 size-18">
+                                <img src="{{ asset('images/about/receive/5.png') }}" alt="" class="lg:size-18 size-18">
                             </div>
                         </div>
                         <h5 class="my-4 font-bold text-white lg:text-xl text-md">صدقات</h5>

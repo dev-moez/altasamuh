@@ -26,7 +26,7 @@
                     أهداف وأغراض الجمعية
                 </x-section-header>
 
-                <div class="grid grid-cols-1 gap-3 mt-0 lg:grid-cols-3 lg:mt-4">
+                <div class="grid grid-cols-1 gap-3 mt-0 lg:gap-5 lg:grid-cols-3 lg:mt-4">
                     <div class="flex items-start justify-start gap-x-3">
                         <img src="{{ asset('images/about/goals/1.png') }}" alt="" class="lg:size-16 size-12">
                         <div>
@@ -140,7 +140,7 @@
                     أعضاء مجلس الإدارة
                 </x-section-header>
 
-                <div class="grid grid-cols-2 gap-6 my-5 lg:grid-cols-4">
+                <div class="grid grid-cols-2 gap-3 my-5 lg:grid-cols-4">
                     @foreach ($boardMembers as $boardMember)
                         <div class="px-2 py-3 text-center bg-[#0072BB] rounded-lg">
                             <h4 class="text-sm font-bold text-white lg:text-xl">{{ $boardMember->name }}</h4>

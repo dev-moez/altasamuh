@@ -76,7 +76,7 @@
 
     @if ($showPhoneNumber)
         <div>
-            <div class="flex flex-col items-start gap-4 mt-2 lg:mt-0">
+            <div class="flex flex-col items-start gap-4 mt-3 lg:mt-0">
                 <span class="font-bold hidden lg:inline-block text-nowrap text-[#979797]">رقم الهاتف</span>
                 <div class="flex items-center w-full gap-2">
                     <x-text-input wire:model="phone_number" type="text" class="flex-1 flex-grow !w-full lg:text-lg text-md " placeholder=" ادخل رقم الهاتف" />

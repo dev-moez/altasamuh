@@ -42,14 +42,14 @@
             </div>
         </div>
     </section>
-    <section class="py-8">
+    <section class="pt-12 pb-4">
         <div class="container">
             <div class="p-2 border-[#0072BB] border-2 rounded-xl">
                 {{-- <div class="px-6 pb-5 mt-8 border border-blue-600 rounded-xl"> --}}
                 {{-- Tabs --}}
                 <div class="relative flex flex-wrap items-center justify-center w-full px-2 py-2 mx-auto bg-white rounded-3xl gap-x-1 -top-10">
                     @forelse($categories as $category)
-                        <button wire:click.prevent="$set('currentCategoryId', {{ $category->id }} )" type="button" class="px-6 py-2 rounded-2xl {{ $currentCategoryId == $category->id ? 'bg-[#0072BB] text-white font-bold' : 'bg-transparent text-gray-700' }}">
+                        <button wire:click.prevent="$set('currentCategoryId', {{ $category->id }} )" type="button" class="px-2 py-2 rounded-2xl {{ $currentCategoryId == $category->id ? 'bg-[#0072BB] text-white font-bold' : 'bg-transparent text-gray-700' }}">
                             {{ $category->name }}
                         </button>
                     @empty

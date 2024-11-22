@@ -58,7 +58,7 @@
                 {{-- </div> --}}
                 <div class="grid grid-cols-1 gap-4 lg:gap-0 lg:gap-x-2 lg:grid-cols-3">
                     @forelse($projects as $project)
-                        <div class="relative border-2 border-gray-200 rounded-lg -top-8">
+                        <div class="relative border-2 border-gray-200 rounded-lg">
                             <a href="{{ route('projects.view', $project) }}">
                                 <img src="{{ $project->getFirstMedia('project-cover')?->getUrl() }}" alt="" class="object-cover object-center w-full rounded-t-lg h-72">
                             </a>

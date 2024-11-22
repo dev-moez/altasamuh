@@ -5,12 +5,12 @@
 
 
     <div class="ps-4">
-        <h6 class="mb-3 text-lg font-bold">
+        <h6 class="mb-3 font-bold">
             <a href="{{ route('articles.view', $article) }}" class="line-clamp-2 lg:text-lg text-md">
                 {{ $article->title }}
             </a>
         </h6>
-        <p class="mb-2 text-gray-400 lg:text-sm text-md">{{ $article->content_brief }}</p>
+        <p class="mb-2 text-sm text-gray-400 lg:text-sm">{{ $article->content_brief }}</p>
         <a href="{{ route('articles.view', $article) }}" class="text-sm text-gray-700 hover:text-blue-600">
             اقرأ المزيد
         </a>

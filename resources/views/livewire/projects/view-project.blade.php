@@ -8,7 +8,7 @@
             <div class="grid grid-cols-1 gap-2 p-3 bg-white rounded-md lg:p-5 lg:gap-4 lg:grid-cols-2">
                 <div>
                     <h1 class="block mb-3 font-bold lg:text-2xl text-md lg:hidden">{{ $project->title }}</h1>
-                    <img src="{{ $project->getFirstMedia(Project::MEDIA_COLLECTION)?->getUrl() }}" alt="" class="w-full rounded-md max-h-[260px] lg:h-auto lg:max-h-[545px] object-cover">
+                    <img src="{{ $project->getFirstMedia(Project::MEDIA_COLLECTION)?->getUrl() }}" alt="" class="w-full rounded-md max-h-[280px] lg:max-h-[545px] object-cover">
                     <div class="hidden mt-5 lg:block">
                         <h6 class="mb-3 text-lg font-bold">وصف المشروع</h6>
                         {!! $project->description !!}

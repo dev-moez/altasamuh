@@ -77,13 +77,13 @@
         </div>
     </section>
     @if ($articles->count() > 0)
-        <section class="pb-12 bg-top bg-no-repeat bg-cover " style="background-image: url('{{ asset('images/articles-bg.png') }}')">
+        <section class="pb-12 bg-top bg-no-repeat bg-cover" style="background-image: url('{{ asset('images/articles-bg.png') }}')">
             <div class="container">
                 <x-section-header class="text-blue-900">
                     أخبــار الجمــعيــة
                 </x-section-header>
 
-                <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+                <div class="grid grid-cols-1 gap-4 mt-5 lg:grid-cols-3">
                     @forelse ($articles as $article)
                         <x-pages.article-card :article="$article" />
                     @empty

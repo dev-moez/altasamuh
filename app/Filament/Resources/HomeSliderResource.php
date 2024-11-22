@@ -58,11 +58,6 @@ class HomeSliderResource extends Resource
                             ->rules(['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'])
                             ->helperText(__('messages.Only jpeg, png, jpg, gif, svg images are allowed. Maximum size: 2MB'))
                             ->required(),
-                        Forms\Components\TextInput::make('heading')
-                            ->label(__('messages.Heading'))
-                            ->maxLength(255),
-                        Forms\Components\Textarea::make('sub_heading')
-                            ->label(__('messages.Sub heading')),
                         Forms\Components\TextInput::make('url')
                             ->activeUrl()
                             ->label(__('messages.URL'))

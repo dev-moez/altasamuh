@@ -7,12 +7,13 @@
                 <!-- Slides -->
                 @foreach ($slides as $slide)
                     <div class="relative flex items-center justify-center text-center text-white bg-blue-500 lg:h-[500px] h-[320px] swiper-slide">
-                        <img src="{{ $slide['image'] }}" alt="" class="object-cover w-full lg:h-[500px] h-[320px]">
-                        <div class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-w-[80%] w-[80%]">
+                        <a href="{{ $slide['link'] }}" class="block w-full h-full p-0">
+                            <img src="{{ $slide['image'] }}" alt="" class="object-cover object-center w-full lg:h-[500px] h-[320px]">
+                        </a>
+                        {{-- <div class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-w-[80%] w-[80%]">
                             <h2 class="mb-4 text-xl font-bold lg:text-3xl">{{ $slide['heading'] }}</h2>
                             <p class="lg:text-lg text-md">{{ $slide['sub_heading'] }}</p>
-                        </div>
-
+                        </div> --}}
                     </div>
                 @endforeach
             </div>
@@ -25,14 +26,14 @@
         </div>
     </div>
 
-    <section class="bg-white py-14">
+    <section class="py-6 bg-white">
         <div class="container">
             <div class="flex flex-grow-0 w-full">
                 <div class="flex-1 p-6 border-[5px] lg:border-l-0 border-[#0072BB] rounded-lg rounded-l-lg lg:rounded-l-none">
-                    <h4 class="lg:text-4xl text-3xl font-bold text-[#2E3192] mb-3">
+                    <h4 class="lg:text-4xl text-lg font-bold text-[#2E3192] mb-3">
                         الزكاة والصدقات والكفارات
                     </h4>
-                    <p class="mt-4 font-bold text-[#979797]">الغرض من التبرع</p>
+                    <p class="font-bold text-[#979797]">الغرض من التبرع</p>
                     <livewire:misc-donation-actions wire:key='{{ uniqid() }}' />
                 </div>
                 <div class="relative flex-1 hidden overflow-hidden lg:block">

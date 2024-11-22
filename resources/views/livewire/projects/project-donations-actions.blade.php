@@ -1,7 +1,7 @@
 @use('App\Enums\PaymentMethodEnum', 'PaymentMethodEnum')
 <div>
     {{-- Donations details --}}
-    <div id="donationsDetails" class="flex flex-grow gap-3">
+    <div id="donationsDetails" class="flex flex-grow gap-2">
         <div class="flex-1 border border-[#0072BB] rounded-md">
             <h5 class="px-2 py-2 text-xs font-black text-center text-white bg-[#0072BB]">
                 <span class="hidden lg:inline-block">
@@ -11,19 +11,19 @@
                     الهدف
                 </span>
             </h5>
-            <div class="p-2 text-center">
+            <div class="p-1 text-center lg:p-2">
                 <span>{{ number_format($requiredDonationValue, 0, ',', ',') }} د.ك</span>
             </div>
         </div>
         <div class="flex-1 border border-[#07A54F] rounded-md">
             <h5 class="px-2 py-2 text-xs font-black text-center text-white bg-[#07A54F]">المدفوع</h5>
-            <div class="p-2 text-center">
+            <div class="p-1 text-center lg:p-2">
                 <span>{{ number_format($donationsAmount, 0, ',', ',') }} د.ك</span>
             </div>
         </div>
         <div class="flex-1 border border-[#FF3C38] rounded-md">
             <h5 class="px-2 py-2 text-xs font-black text-center text-white bg-[#FF3C38]">المتبقي</h5>
-            <div class="p-2 text-center">
+            <div class="p-1 text-center lg:p-2">
                 <span>{{ number_format($remainingAmount, 0, ',', ',') }} د.ك</span>
             </div>
         </div>

@@ -1,12 +1,12 @@
 @use('App\Models\Article', 'Article')
 <div class="flex items-start align-top">
 
-    <img src="{{ $article->getFirstMedia(Article::MEDIA_COVER)->getUrl() }}" alt="" class="flex-grow-0 object-cover object-center w-32 h-32 rounded-md lg:w-48 lg:h-48">
+    <img src="{{ $article->getFirstMedia(Article::MEDIA_COVER)->getUrl() }}" alt="" class="flex-grow-0 object-cover object-center rounded-md w-36 h-36 lg:w-48 lg:h-48">
 
 
     <div class="ps-4">
         <h6 class="mb-3 text-lg font-bold">
-            <a href="{{ route('articles.view', $article) }}">
+            <a href="{{ route('articles.view', $article) }}" class="line-clamp-2">
                 {{ $article->title }}
             </a>
         </h6>

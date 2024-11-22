@@ -91,7 +91,7 @@
                     @endforelse
                 </div>
                 <div class="mt-10 text-center">
-                    <a href="{{ route('articles.list') }}" class="px-8 py-2 font-bold text-white rounded-2xl text-md hover:bg-blue-600 bg-primary">
+                    <a href="{{ route('articles.list') }}" class="px-6 py-2 text-sm font-bold text-white rounded-2xl lg:text-md hover:bg-blue-600 bg-primary">
                         المزيد من الأخبار
                     </a>
                 </div>

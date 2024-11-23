@@ -7,6 +7,7 @@ use App\Models\CartItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Str;
 
 class AddToCartAction
 {
@@ -49,6 +50,10 @@ class AddToCartAction
         if (Auth::check()) {
             return Cart::firstOrCreate(['user_id' => Auth::id()]);
         } else {
+            if (!Cookie::has('altasamuh_cart_cookie')) {
+                $cookieId = Str::uuid();
+                Cookie::queue('altasamuh_cart_cookie', $cookieId, 2628000); // Expires in 1 month
+            }
             return Cart::firstOrCreate(['session_id' => Cookie::get('altasamuh_cart_cookie')]);
         }
     }

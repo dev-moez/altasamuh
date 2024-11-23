@@ -18,7 +18,7 @@
         <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
             @forelse($projects as $project)
                 <div class="border-2 border-gray-200 rounded-md ">
-                    <img src="{{ $project->getFirstMedia('project-cover')?->getUrl() }}" alt="" class="object-cover object-center w-full h-72">
+                    <img src="{{ $project->getFirstMedia('project-cover')?->getUrl() }}" alt="" class="object-cover object-top w-full h-[200px]">
                     <div class="px-3 pt-4 pb-6 bg-white">
                         <div class="mb-4">
                             <a href="{{ route('projects.view', $project) }}">

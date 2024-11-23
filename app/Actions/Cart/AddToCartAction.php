@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\CartItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cookie;
 
 class AddToCartAction
 {
@@ -48,10 +49,7 @@ class AddToCartAction
         if (Auth::check()) {
             return Cart::firstOrCreate(['user_id' => Auth::id()]);
         } else {
-            if (!session()->has('altasamuh_cart_session')) {
-                session()->put('altasamuh_cart_session', uniqid('altasamuh_cart_', true));
-            }
-            return Cart::firstOrCreate(['session_id' => Session::get('altasamuh_cart_session')]);
+            return Cart::firstOrCreate(['session_id' => Cookie::get('altasamuh_cart_cookie')]);
         }
     }
 }

@@ -12,6 +12,8 @@ use App\Settings\GeneralSettings;
 use Filament\Tables\Table;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Assets\Css;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Str;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +36,11 @@ class AppServiceProvider extends ServiceProvider
         // if (!session()->has('altasamuh_cart_session')) {
         //     session()->put('altasamuh_cart_session', uniqid('altasamuh_cart_', true));
         // }
+
+        if (!Cookie::has('altasamuh_cart_cookie')) {
+            $cookieId = Str::uuid();
+            Cookie::set('altasamuh_cart_cookie', $cookieId, 2628000); // Expires in 1 month
+        }
         Carbon::setLocale('ar');
         Gate::define('use-translation-manager', function (?User $user) {
             // Your authorization logic

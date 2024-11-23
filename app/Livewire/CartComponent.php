@@ -18,13 +18,14 @@ class CartComponent extends Component
 
     public function mount()
     {
-        $this->cartItems = CartItem::with('cartable')->whereHas('cart', function ($query) {
-            $query
-                ->where(function ($query) {
-                    $query->where('user_id', auth()->id())
-                        ->orWhere('session_id', Session::getId());
-                });
-        })->get();
+        // $this->cartItems = CartItem::with('cartable')->whereHas('cart', function ($query) {
+        //     $query
+        //         ->where(function ($query) {
+        //             $query->where('user_id', auth()->id())
+        //                 ->orWhere('session_id', Session::getId());
+        //         });
+        // })->get();
+        $this->refreshCart();
     }
     public function render()
     {

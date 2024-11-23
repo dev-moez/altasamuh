@@ -76,8 +76,6 @@ class CartComponent extends Component
     {
         $this->cartItems = CartItem::whereHas('cart', function ($query) {
             $query
- * have not been checked out. It listens for the 'refreshCart' event.
- */
                 ->where(function ($query) {
                     $query->where('user_id', auth()->id())
                         ->orWhere('session_id', Session::getId());

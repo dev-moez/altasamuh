@@ -45,18 +45,20 @@ class AddToCartAction
 
     private function getCart(): Cart
     {
+        $sessionId = Session::getId();
         if (auth()->check()) {
             return auth()->user()->carts()->firstOrCreate(['checked_out' => false]);
         }
 
         if (!Session::has('altasamuh_cart_session_id')) {
             Session::regenerate(true);
-            Session::put('altasamuh_cart_session_id', Session::getId());
+            $sessionId = Session::getId();
+            Session::put('altasamuh_cart_session_id', $sessionId);
         }
 
         return Cart::firstOrCreate([
             'checked_out' => false,
-            'session_id' => Session::get('altasamuh_cart_session_id')
+            'session_id' => $sessionId,
         ]);
     }
 }

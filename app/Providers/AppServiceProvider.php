@@ -31,9 +31,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
 
-        if (!session()->has('altasamuh_cart_session')) {
-            session()->put('altasamuh_cart_session', uniqid('altasamuh_cart_', true));
-        }
+        // if (!session()->has('altasamuh_cart_session')) {
+        //     session()->put('altasamuh_cart_session', uniqid('altasamuh_cart_', true));
+        // }
         Carbon::setLocale('ar');
         Gate::define('use-translation-manager', function (?User $user) {
             // Your authorization logic

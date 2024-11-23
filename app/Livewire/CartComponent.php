@@ -9,6 +9,7 @@ use Livewire\Attributes\On;
 use App\Models\Cart;
 use App\Models\CartItem;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CartComponent extends Component
 {

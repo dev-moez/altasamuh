@@ -10,7 +10,7 @@
                 {{ $article->title }}
             </a>
         </h6>
-        <p class="mb-2 text-sm text-gray-400 lg:text-sm">{{ $article->content_brief }}</p>
+        <p class="mb-2 text-sm text-gray-400 lg:text-sm lg:line-clamp-6 line-clamp-5">{{ strip_tags($article->content) }}</p>
         <a href="{{ route('articles.view', $article) }}" class="text-sm text-gray-700 hover:text-blue-600">
             اقرأ المزيد
         </a>

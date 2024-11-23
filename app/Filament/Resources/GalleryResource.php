@@ -47,6 +47,7 @@ class GalleryResource extends Resource
                 Section::make()
                     ->schema([
                         SpatieMediaLibraryFileUpload::make('cover')
+                            ->label('messages.Cover')
                             ->collection(Gallery::MEDIA_COLLECTION)
                             ->required(),
                         Forms\Components\TextInput::make('title')

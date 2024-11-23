@@ -48,8 +48,7 @@ class AddToCartAction
         if (Auth::check()) {
             return Cart::firstOrCreate(['user_id' => Auth::id()]);
         } else {
-            $sessionId = session()->getId();
-            return Cart::firstOrCreate(['session_id' => $sessionId]);
+            return Cart::firstOrCreate(['session_id' => Session::get('altasamuh_cart_session_id')]);
         }
     }
     // private function getCart(): Cart

@@ -66,11 +66,10 @@ class CartComponent extends Component
 
     public function clearCart()
     {
-        $sessionId = Session::getId();
         if (auth()->check())
             Cart::where('user_id', auth()->id())->delete();
         else
-            Cart::where('session_id', $sessionId)->delete();
+            Cart::where('session_id', Session::get('altasamuh_cart_session_id'))->delete();
         $this->dispatch('refreshCart');
     }
 
@@ -78,11 +77,10 @@ class CartComponent extends Component
     #[On('refreshCart')]
     public function refreshCart()
     {
-        $sessionId = Session::getId();
-        $this->cartItems = CartItem::whereHas('cart', function ($query) use ($sessionId) {
-            $query->where(function ($query) use ($sessionId) {
+        $this->cartItems = CartItem::whereHas('cart', function ($query) {
+            $query->where(function ($query) {
                 $query->where('user_id', auth()->id())
-                    ->orWhere('session_id', $sessionId);
+                    ->orWhere('session_id', Session::get('altasamuh_cart_session_id'));
             });
         })->get();
     }

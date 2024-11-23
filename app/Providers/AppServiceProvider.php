@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
 
         if (!Cookie::has('altasamuh_cart_cookie')) {
             $cookieId = Str::uuid();
-            Cookie::set('altasamuh_cart_cookie', $cookieId, 2628000); // Expires in 1 month
+            Cookie::queue('altasamuh_cart_cookie', $cookieId, 2628000); // Expires in 1 month
         }
         Carbon::setLocale('ar');
         Gate::define('use-translation-manager', function (?User $user) {

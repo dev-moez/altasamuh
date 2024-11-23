@@ -66,10 +66,11 @@ class CartComponent extends Component
 
     public function clearCart()
     {
+        $sessionId = Session::getId();
         if (auth()->check())
             Cart::where('user_id', auth()->id())->delete();
         else
-            Cart::where('session_id', Session::getId())->delete();
+            Cart::where('session_id', $sessionId)->delete();
         $this->dispatch('refreshCart');
     }
 

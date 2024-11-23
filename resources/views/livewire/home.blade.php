@@ -26,10 +26,10 @@
         </div>
     </div>
 
-    <section class="py-6 bg-white">
+    <section class="py-3 bg-white">
         <div class="container">
             <div class="flex flex-grow-0 w-full">
-                <div class="flex-1 p-6 border-[5px] lg:border-l-0 border-[#0072BB] rounded-lg rounded-l-lg lg:rounded-l-none">
+                <div class="flex-1 p-3 pb-0 border-[5px] lg:border-l-0 border-[#0072BB] rounded-lg rounded-l-lg lg:rounded-l-none">
                     <h4 class="lg:text-5xl text-lg font-bold text-[#2E3192] mb-3">
                         الزكاة والصدقات والكفارات
                     </h4>

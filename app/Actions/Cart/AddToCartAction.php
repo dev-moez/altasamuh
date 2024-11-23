@@ -5,32 +5,32 @@ namespace App\Actions\Cart;
 use App\Models\Cart;
 use App\Models\CartItem;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
 
 class AddToCartAction
 {
-    public function __construct(public readonly string $cartableType, public readonly int $cartableId, public readonly int $amount, public readonly ?string $phoneNumber = null, public readonly ?string $countryCode = null) {}
+    public function __construct(
+        public readonly string $cartableType,
+        public readonly int $cartableId,
+        public readonly int $amount,
+        public readonly ?string $phoneNumber = null,
+        public readonly ?string $countryCode = null
+    ) {}
 
     public function execute()
     {
-        if (auth()->guest()) {
-            if (!Session::has('altasamuh_cart_session_id')) {
-                Session::regenerate(); // Use Laravel's session regeneration
-                Session::put('altasamuh_cart_session_id', Session::getId());
-            }
-            $cart = Cart::firstOrCreate(['checked_out' => false, 'session_id' => Session::get('altasamuh_cart_session_id')]);
-        } else {
-            $cart = auth()->user()->carts()->firstOrCreate(['checked_out' => false]);
-        }
+        $cart = $this->getCart();
+
         $cart->update([
             'phone_number' => $this->phoneNumber,
             'country_code' => $this->countryCode
         ]);
+
         $cartItem = $cart->items()->where([
             'cartable_type' => $this->cartableType,
             'cartable_id' => $this->cartableId
         ])->first();
+
         if ($cartItem) {
             $cartItem->amount += $this->amount;
             $cartItem->save();
@@ -43,8 +43,20 @@ class AddToCartAction
         }
     }
 
-    // public function getCartSessionId()
-    // {
-    //     return Session::get('altasamuh_cart_session_id');
-    // }
+    private function getCart(): Cart
+    {
+        if (auth()->check()) {
+            return auth()->user()->carts()->firstOrCreate(['checked_out' => false]);
+        }
+
+        if (!Session::has('altasamuh_cart_session_id')) {
+            Session::regenerate();
+            Session::put('altasamuh_cart_session_id', Session::getId());
+        }
+
+        return Cart::firstOrCreate([
+            'checked_out' => false,
+            'session_id' => Session::get('altasamuh_cart_session_id')
+        ]);
+    }
 }

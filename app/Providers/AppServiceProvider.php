@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
     {
 
         if (!session()->has('altasamuh_cart_session_id')) {
-            session()->put('altasamuh_cart_session_id', uniqid('cart_', true));
+            session()->put('altasamuh_cart_session_id', uniqid('altasamuh_cart_', true));
         }
         Carbon::setLocale('ar');
         Gate::define('use-translation-manager', function (?User $user) {

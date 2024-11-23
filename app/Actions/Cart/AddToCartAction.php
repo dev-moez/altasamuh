@@ -48,7 +48,7 @@ class AddToCartAction
         if (Auth::check()) {
             return Cart::firstOrCreate(['user_id' => Auth::id()]);
         } else {
-            return Cart::firstOrCreate(['session_id' => Session::get('altasamuh_cart_session_id')]);
+            return Cart::firstOrCreate(['session_id' => Session::get('altasamuh_cart_session')]);
         }
     }
     // private function getCart(): Cart
@@ -58,10 +58,10 @@ class AddToCartAction
     //         return auth()->user()->carts()->firstOrCreate(['checked_out' => false]);
     //     }
 
-    //     if (!Session::has('altasamuh_cart_session_id')) {
+    //     if (!Session::has('altasamuh_cart_session')) {
     //         Session::regenerate(true);
     //         $sessionId = Session::getId();
-    //         Session::put('altasamuh_cart_session_id', $sessionId);
+    //         Session::put('altasamuh_cart_session', $sessionId);
     //     }
 
     //     return Cart::firstOrCreate([

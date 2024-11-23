@@ -69,7 +69,7 @@ class CartComponent extends Component
         if (auth()->check())
             Cart::where('user_id', auth()->id())->delete();
         else
-            Cart::where('session_id', Session::get('altasamuh_cart_session_id'))->delete();
+            Cart::where('session_id', Session::get('altasamuh_cart_session'))->delete();
         $this->dispatch('refreshCart');
     }
 
@@ -80,7 +80,7 @@ class CartComponent extends Component
         $this->cartItems = CartItem::whereHas('cart', function ($query) {
             $query->where(function ($query) {
                 $query->where('user_id', auth()->id())
-                    ->orWhere('session_id', Session::get('altasamuh_cart_session_id'));
+                    ->orWhere('session_id', Session::get('altasamuh_cart_session'));
             });
         })->get();
     }

@@ -20,7 +20,7 @@ class CheckoutAction
     {
         $this->cart = Cart::where(function ($query) {
             $query->where('user_id', auth()->id())
-                ->orWhere('session_id', session()->get('altasamuh_cart_session_id'));
+                ->orWhere('session_id', session()->get('altasamuh_cart_session'));
         })->with('items')->firstOrFail();
     }
 
@@ -58,7 +58,7 @@ class CheckoutAction
 
             $this->cart->delete();
         });
-        // Session::forget('altasamuh_cart_session_id');
+        // Session::forget('altasamuh_cart_session');
         return redirect()->away($paymentData['invoiceURL']);
     }
 }

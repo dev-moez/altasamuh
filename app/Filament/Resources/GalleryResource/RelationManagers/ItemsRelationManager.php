@@ -46,7 +46,7 @@ class ItemsRelationManager extends RelationManager
                     ->image()
                     ->imageCropAspectRatio('16:9'),
                 Forms\Components\TextInput::make('youtube_url')
-                    ->label(__('messages.Youtube link'))
+                    ->label(__('messages.Youtube ID'))
                     ->maxLength(255),
                 TextInput::make('display_order')
                     ->label(__('messages.Display order'))
@@ -69,7 +69,7 @@ class ItemsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('caption')
                     ->label(__('messages.Caption')),
                 TextColumn::make('youtube_url')
-                    ->label(__('messages.Youtube link')),
+                    ->label(__('messages.Youtube code')),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('messages.Created at')),
             ])

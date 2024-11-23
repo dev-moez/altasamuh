@@ -18,7 +18,8 @@ class ViewGallery extends Component
         $this->slides = $gallery->items()->orderBy('display_order')->get()->map(function ($slider) {
             return [
                 'heading' => $slider->caption,
-                'image' => $slider->getFirstMediaUrl(GalleryItem::GALLERY_MEDIA),
+                'url' => $slider->youtube_url ? $slider->youtube_url : $slider->getFirstMediaUrl(GalleryItem::GALLERY_MEDIA),
+                'type' => $slider->youtube_url ? 'video' : 'image'
             ];
         });;
     }

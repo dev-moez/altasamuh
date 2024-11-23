@@ -31,6 +31,7 @@ return [
     'Caption' => 'التسمية',
     'Image' => 'الصورة',
     'Youtube link' => 'رابط اليوتيوب',
+    'Youtube ID' => 'كود اليوتيوب',
     'Only jpeg, png, jpg, gif, svg images are allowed. Maximum size: 2MB' => 'يسمح فقط صورة jpeg, png, jpg, gif, svg. حجم الصورة الأقصى: 2MB',
     'Content' => 'المحتوى',
     'Slug' => 'الرابط',

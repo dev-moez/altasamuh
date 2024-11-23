@@ -53,3 +53,15 @@ const swiper = new Swiper('.swiper-container', {
         prevEl: '.swiper-button-prev',
     },
 });
+
+const gallerySwiper = new Swiper('.gallery-swiper', {
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        type: 'bullets',
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});

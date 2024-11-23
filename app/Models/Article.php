@@ -6,6 +6,7 @@ use App\Casts\ArabicDateCast;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Agent\Agent;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -58,6 +59,9 @@ class Article extends Model implements HasMedia
 
     public function getContentBriefAttribute(): string
     {
-        return substr(strip_tags($this->content), 0, 130) . '...';
+        $agent = new Agent();
+        if ($agent->isMobile())
+            return substr(strip_tags($this->content), 0, 120) . '...';
+        return substr(strip_tags($this->content), 0, 150) . '...';
     }
 }

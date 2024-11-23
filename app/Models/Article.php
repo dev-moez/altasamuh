@@ -61,7 +61,7 @@ class Article extends Model implements HasMedia
     {
         $agent = new Agent();
         if ($agent->isMobile())
-            return substr(strip_tags($this->content), 0, 130) . '...';
+            return substr(strip_tags($this->content), 0, 140) . '...';
         return substr(strip_tags($this->content), 0, 200) . '...';
     }
 }

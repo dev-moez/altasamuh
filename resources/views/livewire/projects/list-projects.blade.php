@@ -1,6 +1,6 @@
 @use('App\Models\Category', 'Category')
 <div>
-    <div class="container mt-8">
+    <div class="container mt-4">
         <div class="bg-white rounded-2xl border border-[#0072BB]">
             <div class="relative">
                 <img src="{{ $category->getFirstMedia(Category::MEDIA_CATEGORY)?->getUrl() }}" alt="" class="lg:max-h-[280px] lg:h-[280px] h-[150px] max-h-[150px] w-full object-cover object-center rounded-t-xl">
@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div class="container py-10">
+    <div class="container pt-2">
         <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
             @forelse($projects as $project)
                 <div class="border-2 border-gray-200 rounded-md ">

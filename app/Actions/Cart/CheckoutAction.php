@@ -21,7 +21,7 @@ class CheckoutAction
         $this->cart = Cart::where(function ($query) {
             $query->where('user_id', auth()->id())
                 ->orWhere('session_id', session()->get('altasamuh_cart_session_id'));
-        })->where('checked_out', false)->with('items')->firstOrFail();
+        })->with('items')->firstOrFail();
     }
 
     public function execute()
@@ -56,7 +56,7 @@ class CheckoutAction
                 'affiliate_id' => Session::get('affiliate_id') ?? null
             ]);
 
-            $this->cart->update(['checked_out' => true]);
+            $this->cart->delete();
         });
         // Session::forget('altasamuh_cart_session_id');
         return redirect()->away($paymentData['invoiceURL']);

@@ -46,10 +46,10 @@ class AddToCartAction
     private function getCart(): Cart
     {
         if (Auth::check()) {
-            return Cart::firstOrCreate(['user_id' => Auth::id(), 'checked_out' => false]);
+            return Cart::firstOrCreate(['user_id' => Auth::id()]);
         } else {
             $sessionId = session()->getId();
-            return Cart::firstOrCreate(['session_id' => $sessionId, 'checked_out' => false]);
+            return Cart::firstOrCreate(['session_id' => $sessionId]);
         }
     }
     // private function getCart(): Cart

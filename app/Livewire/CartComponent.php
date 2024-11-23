@@ -19,7 +19,7 @@ class CartComponent extends Component
     public function mount()
     {
         $this->cartItems = CartItem::with('cartable')->whereHas('cart', function ($query) {
-            $query->where(['checked_out' => false])
+            $query
                 ->where(function ($query) {
                     $query->where('user_id', auth()->id())
                         ->orWhere('session_id', Session::getId());
@@ -70,11 +70,14 @@ class CartComponent extends Component
         $this->dispatch('refreshCart');
     }
 
+
     #[On('refreshCart')]
     public function refreshCart()
     {
         $this->cartItems = CartItem::whereHas('cart', function ($query) {
-            $query->where('checked_out', false)
+            $query
+ * have not been checked out. It listens for the 'refreshCart' event.
+ */
                 ->where(function ($query) {
                     $query->where('user_id', auth()->id())
                         ->orWhere('session_id', Session::getId());

@@ -74,12 +74,12 @@ class CartComponent extends Component
     #[On('refreshCart')]
     public function refreshCart()
     {
-        $this->cartItems = CartItem::whereHas('cart', function ($query) {
-            $query
-                ->where(function ($query) {
-                    $query->where('user_id', auth()->id())
-                        ->orWhere('session_id', Session::getId());
-                });
+        $sessionId = Session::getId();
+        $this->cartItems = CartItem::whereHas('cart', function ($query) use ($sessionId) {
+            $query->where(function ($query) use ($sessionId) {
+                $query->where('user_id', auth()->id())
+                    ->orWhere('session_id', $sessionId);
+            });
         })->get();
     }
 }

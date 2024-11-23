@@ -45,20 +45,29 @@ class AddToCartAction
 
     private function getCart(): Cart
     {
-        $sessionId = Session::getId();
-        if (auth()->check()) {
-            return auth()->user()->carts()->firstOrCreate(['checked_out' => false]);
+        if (Auth::check()) {
+            return Cart::firstOrCreate(['user_id' => Auth::id(), 'checked_out' => false]);
+        } else {
+            $sessionId = session()->getId();
+            return Cart::firstOrCreate(['session_id' => $sessionId, 'checked_out' => false]);
         }
-
-        if (!Session::has('altasamuh_cart_session_id')) {
-            Session::regenerate(true);
-            $sessionId = Session::getId();
-            Session::put('altasamuh_cart_session_id', $sessionId);
-        }
-
-        return Cart::firstOrCreate([
-            'checked_out' => false,
-            'session_id' => $sessionId,
-        ]);
     }
+    // private function getCart(): Cart
+    // {
+    //     $sessionId = Session::getId();
+    //     if (auth()->check()) {
+    //         return auth()->user()->carts()->firstOrCreate(['checked_out' => false]);
+    //     }
+
+    //     if (!Session::has('altasamuh_cart_session_id')) {
+    //         Session::regenerate(true);
+    //         $sessionId = Session::getId();
+    //         Session::put('altasamuh_cart_session_id', $sessionId);
+    //     }
+
+    //     return Cart::firstOrCreate([
+    //         'checked_out' => false,
+    //         'session_id' => $sessionId,
+    //     ]);
+    // }
 }

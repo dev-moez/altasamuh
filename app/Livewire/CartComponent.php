@@ -9,7 +9,6 @@ use Livewire\Attributes\On;
 use App\Models\Cart;
 use App\Models\CartItem;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
 class CartComponent extends Component
 {
@@ -67,7 +66,6 @@ class CartComponent extends Component
             Cart::where('user_id', auth()->id())->delete();
         else
             Cart::where('session_id', Session::getId())->delete();
-        Session::forget('altasamuh_cart_session_id');
         $this->dispatch('refreshCart');
     }
 

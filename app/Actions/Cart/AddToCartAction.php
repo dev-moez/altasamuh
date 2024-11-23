@@ -50,7 +50,7 @@ class AddToCartAction
         }
 
         if (!Session::has('altasamuh_cart_session_id')) {
-            Session::regenerate();
+            Session::regenerate(true);
             Session::put('altasamuh_cart_session_id', Session::getId());
         }
 

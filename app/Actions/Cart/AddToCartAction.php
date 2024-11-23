@@ -48,6 +48,7 @@ class AddToCartAction
         if (Auth::check()) {
             return Cart::firstOrCreate(['user_id' => Auth::id()]);
         } else {
+            Session::regenerate(true);
             $sessionId = session()->getId();
             return Cart::firstOrCreate(['session_id' => $sessionId]);
         }

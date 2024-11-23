@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Actions\Cart\AddToCartAction;
 use App\Actions\Cart\CheckoutAction;
+use App\Http\Middleware\StartSession;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use App\Models\Cart;
@@ -18,6 +19,7 @@ class CartComponent extends Component
 
     public function mount()
     {
+        $this->middleware(StartSession::class);
         // $this->cartItems = CartItem::with('cartable')->whereHas('cart', function ($query) {
         //     $query
         //         ->where(function ($query) {

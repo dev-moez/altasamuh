@@ -15,15 +15,9 @@ class AddToCartAction
     public function execute()
     {
         if (auth()->guest()) {
-            // Start the session if it hasn't already been started
-            if (session_status() == PHP_SESSION_NONE) {
-                session_start();
-            }
-
-            // Ensure a unique session ID
             if (!Session::has('altasamuh_cart_session_id')) {
-                session_regenerate_id(true); // Generate a new session ID
-                Session::put('altasamuh_cart_session_id', session_id());
+                Session::regenerate(); // Use Laravel's session regeneration
+                Session::put('altasamuh_cart_session_id', Session::getId());
             }
             $cart = Cart::firstOrCreate(['checked_out' => false, 'session_id' => Session::get('altasamuh_cart_session_id')]);
         } else {
@@ -49,8 +43,8 @@ class AddToCartAction
         }
     }
 
-    public function getCartSessionId()
-    {
-        return Session::get('altasamuh_cart_session_id');
-    }
+    // public function getCartSessionId()
+    // {
+    //     return Session::get('altasamuh_cart_session_id');
+    // }
 }

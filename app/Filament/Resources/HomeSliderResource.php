@@ -46,13 +46,13 @@ class HomeSliderResource extends Resource
             ->schema([
                 Section::make()
                     ->schema([
-                        SpatieMediaLibraryFileUpload::make('file')
+                        SpatieMediaLibraryFileUpload::make('desktop_slider')
                             ->collection(HomeSlider::HOME_SLIDER_MEDIA_DESKTOP)
                             ->label(__('messages.Image (Desktop)'))
                             ->rules(['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'])
                             ->helperText(__('messages.Only jpeg, png, jpg, gif, svg images are allowed. Maximum size: 2MB'))
                             ->required(),
-                        SpatieMediaLibraryFileUpload::make('file')
+                        SpatieMediaLibraryFileUpload::make('mobile_slider')
                             ->collection(HomeSlider::HOME_SLIDER_MEDIA_MOBILE)
                             ->label(__('messages.Image (Mobile)'))
                             ->rules(['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'])

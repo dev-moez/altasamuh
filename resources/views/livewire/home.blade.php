@@ -6,9 +6,9 @@
             <div class="swiper-wrapper">
                 <!-- Slides -->
                 @foreach ($slides as $slide)
-                    <div class="relative flex items-center justify-center text-center text-white bg-blue-500 lg:h-[500px] h-[320px] swiper-slide">
+                    <div class="relative flex items-center justify-center text-center text-white bg-blue-500 lg:h-[500px] h-[175px] swiper-slide">
                         <a href="{{ $slide['link'] }}" class="block w-full h-full p-0">
-                            <img src="{{ $slide['image'] }}" alt="" class="object-cover object-center w-full lg:h-[500px] h-[320px]">
+                            <img src="{{ $slide['image'] }}" alt="" class="object-cover object-center w-full lg:h-[500px] h-[175px]">
                         </a>
                         {{-- <div class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-w-[80%] w-[80%]">
                             <h2 class="mb-4 text-xl font-bold lg:text-3xl">{{ $slide['heading'] }}</h2>

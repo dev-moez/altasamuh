@@ -33,7 +33,7 @@ class CartComponent extends Component
     #[On('addToCart')]
     public function addToCart(
         string $cartableType,
-        int  $cartableId,
+        int $cartableId,
         float $amount,
         ?string $phoneNumber = null
     ) {

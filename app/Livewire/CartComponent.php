@@ -19,7 +19,7 @@ class CartComponent extends Component
 
     public function mount()
     {
-        $this->middleware(StartSession::class);
+        // $this->middleware(StartSession::class);
         // $this->cartItems = CartItem::with('cartable')->whereHas('cart', function ($query) {
         //     $query
         //         ->where(function ($query) {

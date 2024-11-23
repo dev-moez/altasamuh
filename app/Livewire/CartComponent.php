@@ -9,6 +9,7 @@ use Livewire\Attributes\On;
 use App\Models\Cart;
 use App\Models\CartItem;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CartComponent extends Component
 {
@@ -21,7 +22,7 @@ class CartComponent extends Component
             $query->where(['checked_out' => false])
                 ->where(function ($query) {
                     $query->where('user_id', auth()->id())
-                        ->orWhere('session_id', session()->get('altasamuh_cart_session_id'));
+                        ->orWhere('session_id', Session::getId());
                 });
         })->get();
     }
@@ -65,7 +66,7 @@ class CartComponent extends Component
         if (auth()->check())
             Cart::where('user_id', auth()->id())->delete();
         else
-            Cart::where('session_id', session()->get('altasamuh_cart_session_id'))->delete();
+            Cart::where('session_id', Session::getId())->delete();
         $this->dispatch('refreshCart');
     }
 
@@ -76,7 +77,7 @@ class CartComponent extends Component
             $query->where('checked_out', false)
                 ->where(function ($query) {
                     $query->where('user_id', auth()->id())
-                        ->orWhere('session_id', session()->get('altasamuh_cart_session_id'));
+                        ->orWhere('session_id', Session::getId());
                 });
         })->get();
     }

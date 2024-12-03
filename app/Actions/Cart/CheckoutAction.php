@@ -24,7 +24,6 @@ class CheckoutAction
         $this->cart = Cart::where(function ($query) use ($userId) {
             $query->where('session_id', session()->get('altasamuh_cart_session'));
         })->with('items')->firstOrFail();
-        dd($this->cart);
         $orderId = uniqid();
         $postFields = [
             'NotificationOption' => 'LNK',

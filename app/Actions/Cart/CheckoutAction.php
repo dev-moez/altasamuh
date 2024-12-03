@@ -16,16 +16,14 @@ class CheckoutAction
     public $cart;
     public ?string $phone_number;
 
-    public function __construct(public readonly ?int $paymentMethodId = 2)
+    public function __construct(public readonly ?int $paymentMethodId = 2) {}
+
+    public function execute()
     {
         $this->cart = Cart::where(function ($query) {
             $query->where('user_id', auth()->id())
                 ->orWhere('session_id', session()->get('altasamuh_cart_session'));
         })->with('items')->firstOrFail();
-    }
-
-    public function execute()
-    {
         $orderId = uniqid();
         $postFields = [
             'NotificationOption' => 'LNK',
@@ -45,7 +43,7 @@ class CheckoutAction
         $paymentData = $mfPayment->getInvoiceURL($postFields, $this->paymentMethodId, $orderId);
         DB::transaction(function () use ($paymentData, $orderId) {
             Transaction::create([
-                'user_id' => auth()->id(),
+                'user_id' => auth()->user()?->id,
                 'amount' => $this->cart->amount,
                 'invoice_id' => $paymentData['invoiceId'],
                 'invoice_url' => $paymentData['invoiceURL'],

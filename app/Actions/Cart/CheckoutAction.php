@@ -22,8 +22,7 @@ class CheckoutAction
     {
         $userId = auth()->check() ? auth()->user()->id : null;
         $this->cart = Cart::where(function ($query) use ($userId) {
-            $query->where('user_id', $userId)
-                ->orWhere('session_id', session()->get('altasamuh_cart_session'));
+            $query->where('session_id', session()->get('altasamuh_cart_session'));
         })->with('items')->firstOrFail();
         $orderId = uniqid();
         $postFields = [

@@ -57,7 +57,7 @@ class CheckoutAction
 
         $this->cart->delete();
         // });
-        // Session::forget('altasamuh_cart_session');
+
         return redirect()->away($paymentData['invoiceURL']);
     }
 }

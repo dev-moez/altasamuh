@@ -10,6 +10,7 @@ use MyFatoorah\Library\API\Payment\MyFatoorahPayment;
 use Illuminate\Support\Facades\DB;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cookie;
 
 class CheckoutAction
 {
@@ -22,7 +23,7 @@ class CheckoutAction
     {
         $userId = auth()->check() ? auth()->user()->id : null;
         $this->cart = Cart::where(function ($query) use ($userId) {
-            $query->where('session_id', session()->get('altasamuh_cart_session'));
+            $query->where('session_id', Cookie::get('altasamuh_cart_cookie'));
         })->with('items')->firstOrFail();
         $orderId = uniqid();
         $postFields = [

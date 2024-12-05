@@ -48,13 +48,13 @@ class AddToCartAction
     private function getCart(): Cart
     {
         if (Auth::check()) {
-            return Cart::firstOrCreate(['user_id' => Auth::id()]);
+            return Cart::firstOrCreate(['user_id' => Auth::id(), 'checked_out' => false]);
         } else {
             if (!Cookie::has('altasamuh_cart_cookie')) {
                 $cookieId = Str::uuid();
                 Cookie::queue('altasamuh_cart_cookie', $cookieId, 2628000); // Expires in 1 month
             }
-            return Cart::firstOrCreate(['session_id' => Cookie::get('altasamuh_cart_cookie')]);
+            return Cart::firstOrCreate(['session_id' => Cookie::get('altasamuh_cart_cookie'), 'checked_out' => false]);
         }
     }
 }

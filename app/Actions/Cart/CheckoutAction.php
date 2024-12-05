@@ -22,9 +22,14 @@ class CheckoutAction
     public function execute()
     {
         $userId = auth()->check() ? auth()->user()->id : null;
-        $this->cart = Cart::where(function ($query) use ($userId) {
-            $query->where('session_id', Cookie::get('altasamuh_cart_cookie'));
-        })->with('items')->firstOrFail();
+        if (is_null($userId)) {
+            $this->cart = Cart::where(function ($query) use ($userId) {
+                $query->where('session_id', Cookie::get('altasamuh_cart_cookie'));
+            })->notCheckedout()->with('items')->firstOrFail();
+        } else {
+            $this->cart = Cart::firstOrCreate(['user_id' => Auth::id(), 'checked_out' => false]);
+        }
+
         $orderId = uniqid();
         $postFields = [
             'NotificationOption' => 'LNK',
@@ -42,21 +47,21 @@ class CheckoutAction
             'isTest' => config('myfatoorah.test_mode'),
         ]);
         $paymentData = $mfPayment->getInvoiceURL($postFields, $this->paymentMethodId, $orderId);
-        // DB::transaction(function () use ($paymentData, $orderId) {
-        Transaction::create([
-            'user_id' => auth()->user()?->id,
-            'amount' => $this->cart->amount,
-            'invoice_id' => $paymentData['invoiceId'],
-            'invoice_url' => $paymentData['invoiceURL'],
-            'order_id' => $orderId,
-            'cart_id' => $this->cart->id,
-            'phone_number' => $this->cart->phone_number,
-            'country_code' => $this->cart->country_code,
-            'affiliate_id' => Session::get('affiliate_id') ?? null
-        ]);
+        DB::transaction(function () use ($paymentData, $orderId) {
+            $transaction = Transaction::create([
+                'user_id' => auth()->user()?->id,
+                'amount' => $this->cart->amount,
+                'invoice_id' => $paymentData['invoiceId'],
+                'invoice_url' => $paymentData['invoiceURL'],
+                'order_id' => $orderId,
+                'cart_id' => $this->cart->id,
+                'phone_number' => $this->cart->phone_number,
+                'country_code' => $this->cart->country_code,
+                'affiliate_id' => Session::get('affiliate_id') ?? null
+            ]);
 
-        $this->cart->delete();
-        // });
+            $this->cart->update(['checked_out' => true]);
+        });
 
         return redirect()->away($paymentData['invoiceURL']);
     }

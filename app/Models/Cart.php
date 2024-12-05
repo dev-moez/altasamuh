@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\User;
 use App\Models\CartItem;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Builder;
 
 class Cart extends Model
 {
@@ -40,5 +41,15 @@ class Cart extends Model
     public function getAmountAttribute(): float
     {
         return $this->items->sum(fn($item) => $item->amount);
+    }
+
+    public function scopeCheckedOut(Builder $query): Builder
+    {
+        return $query->where('checked_out', true);
+    }
+
+    public function scopeNotCheckedOut(Builder $query): Builder
+    {
+        return $query->where('checked_out', false);
     }
 }

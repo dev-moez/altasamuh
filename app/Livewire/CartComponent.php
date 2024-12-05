@@ -82,7 +82,7 @@ class CartComponent extends Component
             $query->where(function ($query) {
                 $query->where('user_id', auth()->id())
                     ->orWhere('session_id', Cookie::get('altasamuh_cart_cookie'));
-            });
+            })->notCheckedout();
         })->get();
     }
 }

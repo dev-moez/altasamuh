@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
+@import "/vendor/filament/filament/resources/css/theme.css";
+@config 'tailwind.config.js';
+
+* {
+    font-family: "Cairo", sans-serif;
+}
+
+.filament-apex-charts-filter-form div {
+    right: unset !important;
+    left: 0 !important;
+}
+
+.fi-topbar .fi-icon-btn-badge-ctn,
+.fi-topbar .fi-icon-btn-badge-ctn span {
+    background-color: red !important;
+    color: white !important;
+}
